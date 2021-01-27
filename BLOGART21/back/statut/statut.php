@@ -68,9 +68,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 	//foreach($all as $row) {
 ?>
         <tr>
-		<td><h4>&nbsp; <?php echo "ici idStat"; ?> &nbsp;</h4></td>
+		<td><h4>&nbsp; <?php echo $row["idStat"]; ?> &nbsp;</h4></td>
 
-        <td>&nbsp; <?php echo "ici libStat"; ?> &nbsp;</td>
+        <td>&nbsp; <?php echo $row["libStat"]; ?> &nbsp;</td>
 
 		<td>&nbsp;<a href="./updateStatut.php?id=<?= $row["idStat"]; ?>"><i>Modifier</i></a>&nbsp;
 		<br /></td>

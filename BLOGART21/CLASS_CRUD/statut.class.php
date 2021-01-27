@@ -13,7 +13,7 @@
 			global $db;
 			$query = 'SELECT * FROM STATUT;';
 			$result = $db->query($query);
-			$allStatuts = $result->fetchaAll();
+			$allStatuts = $result->fetchAll();
 			return($allStatuts);
 
 		}
