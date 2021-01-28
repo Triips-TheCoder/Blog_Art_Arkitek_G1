@@ -9,7 +9,9 @@
 
 // Mode DEV
 require_once __DIR__ . '/../../util/utilErrOn.php';
-
+require_once __DIR__ . '/../../CLASS_CRUD/langue.class.php';
+global $db; 
+$maLangue = new LANGUE;
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -21,15 +23,34 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="author" content="" />
 
     <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <style type='text/css'>
+    body{
+        color: black; 
+    }
+    </style>
 </head>
 <body>
     <h1>BLOGART21 Admin - Gestion du CRUD Langue</h1>
+    <table border = '3' bgcolor = 'aliceblue'>
+    <thead>
+        <tr>
+            <th>&nbsp;numLang&nbsp;</th>
+            <th>&nbsp;lib1Lang&nbsp;</th>
+            <th>&nbsp;lib2Lang&nbsp;</th>
+            <th>&nbsp;numPays&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+<?php 
+    $allLangues = $maLangue -> get_AllLangues(); 
+    foreach($allLangues as $ligne); 
 
-    <br><br>
-
-    <h2>En construction :-)</h2>
-
-    <br><br>
+    <tr>
+    <td><h4>&nbsp;  <?php echo $ligne['numLang']; ?> &nbsp;</h4></td>
+    <td><h4>&nbsp; <?php echo $ligne['lib1Lang']; ?> &nbsp;</h4></td>
+    <td><h4>&nbsp; <?php echo  $ligne['lib2Lang'];?> &nbsp;</h4></td>
+    <td><h4>&nbsp; <?php echo $ligne['numPays']; ?> &nbsp;</h4></td>
+    </tr>
 
 <?
 require_once __DIR__ . '/footer.php';

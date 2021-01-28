@@ -5,8 +5,8 @@
 
 	class LANGUE{
 		function get_1Langue($numLang){
-
-
+			global $db;
+		
 		}
 
 		function get_1LangueByPays($numLang){
@@ -15,8 +15,11 @@
 		}
 
 		function get_AllLangues(){
-
-
+			global $db;
+			$query = 'SELECT * FROM LANGUE;';
+			$result = $db -> query($query); 
+			$allLangues = $result -> fetchAll();
+			return($allLangues); 
 		}
 
 		function get_AllLanguesByPays(){

@@ -60,12 +60,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <tbody>
 <?php
   $allStatuts = $monStatut->get_AllStatuts();
-  foreach($allStatuts as $row);
+  foreach($allStatuts as $row) {
 
-	// Appel méthode : tous les statuts en BDD
 
-    // Boucle pour afficher
-	//foreach($all as $row) {
 ?>
         <tr>
 		<td><h4>&nbsp; <?php echo $row["idStat"]; ?> &nbsp;</h4></td>
@@ -78,7 +75,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 		<br /></td>
         </tr>
 <?php
-	//}	// End of foreach
+	}	
 ?>
     </tbody>
     </table>
