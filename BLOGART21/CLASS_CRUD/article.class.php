@@ -4,6 +4,10 @@ require_once __DIR__ . '../../CONNECT/database.php';
 class ARTICLE{
     function get_1Article($numArt){
         global $db; 
+        $query = 'SELECT * FROM ANGLE (numArt) VALUES (?);'; 
+        $result = $db->query($query); 
+        $article = $result->fetch(); 
+        return($article); 
     }
 
     function get_AllArticles(){
@@ -39,7 +43,7 @@ class ARTICLE{
         catch (PDOException $e) {
                 $db->rollBack();
                 $request->closeCursor();
-                die('Erreur insert LANGUE : ' . $e->getMessage());
+                die('Erreur insert ARTICLE : ' . $e->getMessage());
         }
     }
 
@@ -59,7 +63,7 @@ class ARTICLE{
         catch (PDOException $e) {
                 $db->rollBack();
                 $request->closeCursor();
-                die('Erreur insert LANGUE : ' . $e->getMessage());
+                die('Erreur insert ARTICLE : ' . $e->getMessage());
         }
     }
 
@@ -77,7 +81,7 @@ class ARTICLE{
         catch (PDOException $e) {
                 $db->rollBack();
                 $request->closeCursor();
-                die('Erreur delete LANGUE : ' . $e->getMessage());
+                die('Erreur delete ARTICLE : ' . $e->getMessage());
         }
     }
 }

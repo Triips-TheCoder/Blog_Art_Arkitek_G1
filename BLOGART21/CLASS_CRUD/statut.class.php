@@ -5,8 +5,11 @@
 
 	class STATUT{
 		function get_1Statut($idStat){
-			global $db;
-
+			global $db; 
+			$query = 'SELECT * FROM STATUT (idStat) VALUES (?);'; 
+			$result = $db->query($query); 
+			$statut = $result->fetch(); 
+			return($statut); 
 		}
 
 		function get_AllStatuts(){

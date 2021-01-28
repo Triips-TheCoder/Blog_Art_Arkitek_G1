@@ -5,7 +5,11 @@
 
 	class LANGUE{
 		function get_1Langue($numLang){
-			global $db;
+			global $db; 
+			$query = 'SELECT * FROM LANGUE (numAngl) VALUES (?);'; 
+			$result = $db->query($query); 
+			$langue = $result->fetch(); 
+			return($langue); 
 		
 		}
 

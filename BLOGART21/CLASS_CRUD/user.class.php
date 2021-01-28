@@ -5,7 +5,11 @@
 
 	class USER{
 		function get_1User($pseudoUser, $passUser){
-
+			global $db; 
+			$query = 'SELECT * FROM USER (pseudoUser,passUser) VALUES (?);'; 
+			$result = $db->query($query); 
+			$user = $result->fetch(); 
+			return($user); 	
 
 		}
 
