@@ -22,16 +22,16 @@
 
 			try {
           $db->beginTransaction();
-
-
-
-					$db->commit();
-					$request->closeCursor();
+				$query = 'INSERT INTO STATUT (libStat) VALUES (?);';
+				$request = $db->prepare($query);
+				$request->execute([$libStat]);
+				$db->commit();
+				$request->closeCursor();
 			}
 			catch (PDOException $e) {
-					die('Erreur insert STATUT : ' . $e->getMessage());
 					$db->rollBack();
 					$request->closeCursor();
+					die('Erreur insert STATUT : ' . $e->getMessage());
 			}
 		}
 
@@ -46,9 +46,9 @@
 					$request->closeCursor();
 			}
 			catch (PDOException $e) {
-					die('Erreur update STATUT : ' . $e->getMessage());
 					$db->rollBack();
 					$request->closeCursor();
+					die('Erreur update STATUT : ' . $e->getMessage());
 			}
 		}
 
@@ -64,9 +64,9 @@
 
 			}
 			catch (PDOException $e) {
-					die('Erreur delete STATUT : ' . $e->getMessage());
 					$db->rollBack();
 					$request->closeCursor();
+					die('Erreur delete STATUT : ' . $e->getMessage());
 			}
 		}
 

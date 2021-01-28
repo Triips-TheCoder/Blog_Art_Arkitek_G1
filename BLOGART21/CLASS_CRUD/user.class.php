@@ -10,7 +10,11 @@
 		}
 
 		function get_AllUsers(){
-
+			global $db; 
+			$query = 'SELECT * FROM USER;';
+			$result = $db->query($query); 
+			$allUsers = $result->fetchAll(); 
+			return($allUsers); 
 
 		}
 
@@ -33,16 +37,16 @@
 			global $db;
 			try {
           $db->beginTransaction();
-
-
-
-					$db->commit();
-					$request->closeCursor();
+				$query ='INSERT INTO USER (pseudoUser, passUser, nomUser, prenomUser, emailUser, idStat) VALUES (?, ?, ?, ?, ?, ?);';
+				$request = $db->prepare($query); 
+				$request->execute([$pseudoUser, $passUser,$nomUser,$prenomUser,$emailUser,$idStat]); 
+				$db->commit();
+				$request->closeCursor();
 			}
 			catch (PDOException $e) {
-					die('Erreur insert USER : ' . $e->getMessage());
 					$db->rollBack();
 					$request->closeCursor();
+					die('Erreur insert USER : ' . $e->getMessage());
 			}
 		}
 
@@ -57,9 +61,9 @@
 					$request->closeCursor();
 			}
 			catch (PDOException $e) {
-					die('Erreur update USER : ' . $e->getMessage());
 					$db->rollBack();
 					$request->closeCursor();
+					die('Erreur update USER : ' . $e->getMessage());
 			}
 		}
 
@@ -73,9 +77,9 @@
 					$request->closeCursor();
 			}
 			catch (PDOException $e) {
-					die('Erreur delete USER : ' . $e->getMessage());
 					$db->rollBack();
 					$request->closeCursor();
+					die('Erreur delete USER : ' . $e->getMessage());
 			}
 		}
 
