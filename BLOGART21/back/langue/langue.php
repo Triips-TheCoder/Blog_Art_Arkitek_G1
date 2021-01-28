@@ -43,16 +43,21 @@ $maLangue = new LANGUE;
     <tbody>
 <?php 
     $allLangues = $maLangue -> get_AllLangues(); 
-    foreach($allLangues as $ligne); 
-
+    foreach($allLangues as $ligne){ 
+?>
     <tr>
     <td><h4>&nbsp;  <?php echo $ligne['numLang']; ?> &nbsp;</h4></td>
     <td><h4>&nbsp; <?php echo $ligne['lib1Lang']; ?> &nbsp;</h4></td>
     <td><h4>&nbsp; <?php echo  $ligne['lib2Lang'];?> &nbsp;</h4></td>
     <td><h4>&nbsp; <?php echo $ligne['numPays']; ?> &nbsp;</h4></td>
     </tr>
-
-<?
+    
+<?php
+    }
+?> 
+    </tbody> 
+    </table>
+<?php 
 require_once __DIR__ . '/footer.php';
 ?>
 </body>
