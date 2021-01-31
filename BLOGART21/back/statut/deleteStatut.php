@@ -9,28 +9,44 @@
 
 // Mode DEV
 require_once __DIR__ . '/../../util/utilErrOn.php';
+require_once __DIR__ . '/../../util/ctrlSaisies.php';
+require_once __DIR__ . '/../../CLASS_CRUD/statut.class.php';
+global $db;
+$monStatut = NEW STATUT; 
+require_once __DIR__ . '/../../CLASS_CRUD/user.class.php';
+global $db;
+$monUser = new USER;
+$errCIR = 0;
 
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    // controle des saisies du formulaire
+    // Opérateur ternaire
+    $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
 
+    if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Annuler")) {
 
-    // insertion classe STATUT
+        header("Location: ./deleteStatut.php");
+    }   // End of if ((isset($_POST["submit"])) ...
 
+    if ((isset($_POST['id']) AND $_POST['id'] > 0)
+        AND (!empty($_POST['Submit']) AND ($Submit === "Valider"))) {
+            
+            $idStat = ctrlSaisies($_POST['id']);
 
+            if($allUser < 1){
+                
+                $monStatut->delete($idStat);
+                header("Location: ./statut.php");
 
-    // Ctrl CIR
+            }
+            else{
+                $errCIR = 1;
+                header("Location: ./statut.php?errCIR=".$errCIR);
+            }        
 
-
-   // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
-   // suppression effective du statut
-
-
-
-
-
-
-
-    // Init variables form
+    }   
+}   
+// Init variables form
     include __DIR__ . '/initStatut.php';
 ?>
 <!DOCTYPE html>
@@ -64,6 +80,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             font-style: italic;
             border-radius: 5px;
         }
+        body{
+            color: #000; 
+        }
     </style>
 </head>
 <body>
@@ -71,9 +90,17 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <h2>Suppression d'un statut</h2>
 <?
     // Supp : récup id à supprimer
+    if (isset($_GET['id']) and $_GET['id'] > 0) {
 
+        $id = ctrlSaisies(($_GET['id']));
 
+        $query = (array)$monStatut->get_1Statut($id);
 
+        if ($query) {
+            $libStat = $query['libStat'];
+            $idStat = $query['idStat'];
+        }   
+    }   
 ?>    <form method="post" action="./deleteStatut.php" enctype="multipart/form-data">
 
       <fieldset>

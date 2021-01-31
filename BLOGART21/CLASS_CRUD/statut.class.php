@@ -5,11 +5,11 @@
 
 	class STATUT{
 		function get_1Statut($idStat){
-			global $db; 
-			$query = 'SELECT * FROM STATUT (idStat) VALUES (?);'; 
-			$result = $db->query($query); 
-			$statut = $result->fetch(); 
-			return($statut); 
+			global $db;
+            $query = 'SELECT * FROM STATUT WHERE idStat = ?;';
+            $result = $db->prepare($query);
+            $result->execute([$idStat]);
+            return($result->fetch());
 		}
 
 		function get_AllStatuts(){
@@ -22,7 +22,7 @@
 		}
 
 		function create($libStat){
-
+			global $db;
 			try {
           $db->beginTransaction();
 				$query = 'INSERT INTO STATUT (libStat) VALUES (?);';
@@ -39,14 +39,14 @@
 		}
 
 		function update($idStat, $libStat){
-
-      try {
-          $db->beginTransaction();
-
-
-
-					$db->commit();
-					$request->closeCursor();
+			global $db; 
+			try {
+				$db->beginTransaction();
+				$query = 'UPDATE STATUT SET libStat = ? WHERE idStat = ?;';
+				$request = $db->prepare($query); 
+				$request->execute([$libStat, $idStat]);
+				$db->commit();
+				$request->closeCursor();
 			}
 			catch (PDOException $e) {
 					$db->rollBack();
@@ -56,21 +56,22 @@
 		}
 
 		function delete($idStat){
-
-      try {
-          $db->beginTransaction();
-
-
-
-					$db->commit();
-					$request->closeCursor();
-
+			global $db;
+	
+			try {
+				$db->beginTransaction();
+				$requete= "DELETE FROM STATUT WHERE idStat = $idStat; ";
+				$result = $db->prepare($requete);
+				$result->execute();
+				$db->commit();
+				$result->closeCursor();
+	
+				}
+				catch (PDOException $e) {
+						die('Erreur delete STATUT : ' . $e->getMessage());
+						$db->rollBack();
+						$result->closeCursor();
+				}
 			}
-			catch (PDOException $e) {
-					$db->rollBack();
-					$request->closeCursor();
-					die('Erreur delete STATUT : ' . $e->getMessage());
-			}
-		}
-
-	}	// End of class
+	
+		}	// End of class

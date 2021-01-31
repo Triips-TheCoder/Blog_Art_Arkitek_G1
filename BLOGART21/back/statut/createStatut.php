@@ -9,26 +9,33 @@
 
 // Mode DEV
 require_once __DIR__ . '/../../util/utilErrOn.php';
+require_once __DIR__ . '/../../util/ctrlSaisies.php';
+require_once __DIR__ . '/../../CLASS_CRUD/statut.class.php';
+global $db;
+$monStatut = NEW STATUT; 
 
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    // controle des saisies du formulaire
+        // Opérateur ternaire
+        $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
 
+        if ((isset($_POST["Submit"])) AND ($Submit === "Initialiser")) {
 
-    // insertion classe STATUT
+            header("Location: ./createStatut.php");
+        }   // End of if ((isset($_POST["submit"])) ...
 
+        // Mode création
+        if (((isset($_POST['libStat'])) AND !empty($_POST['libStat']))
+            AND (!empty($_POST['Submit']) AND ($Submit === "Valider"))) {
+            // Saisies valides
 
+            $libStat = ctrlSaisies(($_POST['libStat']));
 
+            $monStatut->create($libStat);
 
-    // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
-    // ajout effectif du statut
-
-
-
-
-
-
-
-    // Init variables form
+            header("Location: ./statut.php");
+        }   // Fin if ((isset($_POST['libStat'])) ...
+    }   // Fin if ($_SERVER["REQUEST_METHOD"] == "POST")
     include __DIR__ . '/initStatut.php';
 ?>
 <!DOCTYPE html>
@@ -51,7 +58,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
       <fieldset>
         <legend class="legend1">Formulaire Statut...</legend>
 
-        <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
+        <input type="hidden" id="id" name="id" value="<?= isset($_GET['id']) ? $_GET['id'] : '' ?>" />
 
         <div class="control-group">
             <label class="control-label" for="libStat"><b>Nom du statut :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>

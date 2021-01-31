@@ -1,3 +1,4 @@
+  
 <?
 /*
 * Table LANGUE
@@ -10,3 +11,5 @@
     $lib1Lang = "";
     // libellé long
     $lib2Lang = "";
+    $numPays = "";
+    $frPays = "";
