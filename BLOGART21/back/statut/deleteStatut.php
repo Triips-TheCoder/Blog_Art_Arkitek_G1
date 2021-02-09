@@ -13,6 +13,7 @@ require_once __DIR__ . '/../../util/ctrlSaisies.php';
 require_once __DIR__ . '/../../CLASS_CRUD/statut.class.php';
 global $db;
 $monStatut = NEW STATUT; 
+// Ctrl CIR
 require_once __DIR__ . '/../../CLASS_CRUD/user.class.php';
 global $db;
 $monUser = new USER;
@@ -25,29 +26,33 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Annuler")) {
 
-        header("Location: ./deleteStatut.php");
+        header("Location: ./statut.php");
     }   // End of if ((isset($_POST["submit"])) ...
 
     if ((isset($_POST['id']) AND $_POST['id'] > 0)
         AND (!empty($_POST['Submit']) AND ($Submit === "Valider"))) {
-            
+            $errCIR = 0;
             $idStat = ctrlSaisies($_POST['id']);
 
+            $allUser = (int)$monUser->get_NbAllUsersByidStat($idStat);
+            
             if($allUser < 1){
-                
-                $monStatut->delete($idStat);
-                header("Location: ./statut.php");
-
+                $count = $monStatut->delete($idStat);
+                if ($count == 1){ 
+                    header("Location: ./statut.php");
+                }else{
+                    die("Erreur delete STATUT !"); 
+                }
             }
             else{
                 $errCIR = 1;
                 header("Location: ./statut.php?errCIR=".$errCIR);
             }        
 
-    }   
-}   
+    }   // End of if ((isset($_POST['id'])
+}   // End of if ($_SERVER["REQUEST_METHOD"] === "POST")
 // Init variables form
-    include __DIR__ . '/initStatut.php';
+include __DIR__ . '/initStatut.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -126,6 +131,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       </fieldset>
     </form>
     <br>
+    <i><div class='error'><br>=>&nbsp;ATTENTION ! Avant de supprimer
+    un STATUT vérifier si ce STATUT n'est pas présent dans une autre table.</div><i>  
 <?
 require_once __DIR__ . '/footerStatut.php';
 

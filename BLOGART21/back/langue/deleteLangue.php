@@ -1,9 +1,6 @@
-<?php
-///////////////////////////////////////////////////////////////
+<?
 //
-//  CRUD LANGUE (PDO) - Code Modifié - 23 Janvier 2021
-//
-//  Script  : updateLangue.php  (ETUD)   -   BLOGART21
+//  Script  : deleteLangue.php  (ETUD)   -   BLOGART21
 //
 ///////////////////////////////////////////////////////////////
 
@@ -28,36 +25,24 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         // Opérateur ternaire
         $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
 
-        if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Initialiser")) {
+        if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Annuler")) {
 
             header("Location: ./langue.php");
         }   // End of if ((isset($_POST["submit"])) ...
 
         // Mode création
         if (((isset($_POST['id'])) AND !empty($_POST['id'])
-            AND (!empty($_POST['Submit']) AND ($Submit === "Valider")))) {
-            if ((isset($_POST['lib1Lang'])) AND !empty($_POST['lib1Lang'])){
-                if ((isset($_POST['lib2Lang'])) AND !empty($_POST['lib2Lang'])) {
-                    if ((isset($_POST['pays'])) AND !empty($_POST['pays'])) {
-            
+            AND (!empty($_POST['Submit']) AND ($Submit === "Supprimer")))) {
                         // Saisies valides
                         $erreur = false;
-
-                        $lib1Lang = ctrlSaisies(($_POST['lib1Lang']));
-
-                        $lib2Lang = ctrlSaisies(($_POST['lib2Lang']));
-
-                        $numPays = ($_POST['pays']);
                         
                         $numLang = ($_POST['id']);
                         echo $numLang;
 
-                        $maLangue->update($numLang, $lib1Lang, $lib2Lang, $numPays);
+                        $maLangue->delete($numLang);
 
                         header("Location: ./langue.php");
-                    }
-                }
-            }    
+  
         }   // Fin if ((isset($_POST['libStat'])) ...
         else {
             $erreur = true;
@@ -82,9 +67,9 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 </head>
 <body>
     <h1>BLOGART21 Admin - Gestion du CRUD Langue</h1>
-    <h2>Modification d'une langue</h2>
+    <h2>Suppression d'une langue</h2>
 <?
-    // Modif : récup id à modifier
+    // Modif : récup id à supprimer
     if (isset($_GET['id']) AND (!empty($_GET['id']))) {
 
         $id = ctrlSaisies(($_GET['id']));
@@ -94,7 +79,6 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         if ($query) {
             $lib1Lang = $query['lib1Lang'];
             $lib2Lang = $query['lib2Lang'];
-            $numPays = $query['numPays'];
             $numLang = $query['numLang'];
             //$frPays = $query['frPays'];
         }   // Fin if ($query)
@@ -103,44 +87,28 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
 
 ?>
-    <form method="post" action="./updateLangue.php" enctype="multipart/form-data">
+    <form method="post" action="./deleteLangue.php" enctype="multipart/form-data">
 
       <fieldset>
-        <legend class="legend1">Modification Langue...</legend>
+        <legend class="legend1">Supprimer une Langue...</legend>
 
         <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
 
         <div class="control-group">
             <label class="control-label" for="lib1Lang"><b>Langue libellé court&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="lib1Lang" id="lib1Lang" size="80" maxlength="80" value="<?= $lib1Lang; ?>" autofocus="autofocus" />
+            <input type="text" name="lib1Lang" id="lib1Lang" size="80" maxlength="80" value="<?= $lib1Lang; ?>" autofocus="autofocus" disabled="disabled" />
         </div>
         <div class="control-group">
             <label class="control-label" for="lib2Lang"><b>Langue libellé long&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="lib2Lang" id="lib2Lang" size="80" maxlength="80" value="<?= $lib2Lang; ?>" autofocus="autofocus" />
+            <input type="text" name="lib2Lang" id="lib2Lang" size="80" maxlength="80" value="<?= $lib2Lang; ?>" autofocus="autofocus" disabled="disabled" />
         </div>
-        <div class="control-group">
-            <label for="pays">Num Pays :</label>  
-            <select id="pays" name="pays"  onchange="select()">
-                <option value="" selected disabled hidden><? echo $frPays; ?></option>
-                <?php 
-                global $db;
-                $requete = 'SELECT * FROM PAYS ;';
-                $result = $db->query($requete);
-                $allPays = $result->fetchAll();
-                foreach ($allPays AS $pays)
-                {
-                ?>
-                <option value="<?php echo $pays['numPays'];?>"><?php echo $pays['frPays'];?></option>
-                <?php
-            }
-            ?>
-            </select>
+        <div class="control-group"> 
             <div class="controls">
                 <br><br>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Initialiser" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
+                <input type="submit" value="Annuler" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
+                <input type="submit" value="Supprimer" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
                 <br>
             </div>
         </div>

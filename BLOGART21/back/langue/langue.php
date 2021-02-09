@@ -52,9 +52,9 @@ $maLangue = new LANGUE;
     <td><h4>&nbsp; <?php echo  $ligne['lib2Lang'];?> &nbsp;</h4></td>
     <td><h4>&nbsp; <?php echo $ligne['numPays']; ?> &nbsp;</h4></td>
     <td>&nbsp;<a href="./updateLangue.php?id=<?= $ligne['numLang']; ?>"><i>Modifier</i></a>&nbsp;
-		<br/></td>
-		<td>&nbsp;<a href="./deleteLangue.php?id=<?= $ligne["numLang"]; ?>"><i>Supprimer</i></a>&nbsp;
-		<br/></td>
+	<br/></td>
+	<td>&nbsp;<a href="./deleteLangue.php?id=<?= $ligne['numLang']; ?>"><i>Supprimer</i></a>&nbsp;
+	<br/></td>
     </tr>
 <?php
     }

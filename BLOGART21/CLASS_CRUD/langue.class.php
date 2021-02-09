@@ -74,21 +74,23 @@
 			}
 
 		// Ctrl FK sur THEMATIQUE, ANGLE, MOTCLE avec del
+			
 		function delete($numLang){
-
+			global $db;
+	
 			try {
-          $db->beginTransaction();
-
-
-
-					$db->commit();
-					$request->closeCursor();
-
+				$db->beginTransaction();
+				$requete= "DELETE FROM LANGUE WHERE numLang = ?; ";
+				$result = $db->prepare($requete);
+				$result->execute([$numLang]);
+				$db->commit();
+				$result->closeCursor();
+	
+				}
+				catch (PDOException $e) {
+						die('Erreur delete LANGUE : ' . $e->getMessage());
+						$db->rollBack();
+						$result->closeCursor();
+				}
 			}
-			catch (PDOException $e) {
-					die('Erreur delete LANGUE : ' . $e->getMessage());
-					$db->rollBack();
-					$request->closeCursor();
-			}
-		}
 	}	// End of class

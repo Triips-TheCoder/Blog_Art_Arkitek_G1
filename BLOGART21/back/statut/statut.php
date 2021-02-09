@@ -17,7 +17,11 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     require_once __DIR__ . '/../../CLASS_CRUD/statut.class.php';
     global $db;
     $monStatut = new STATUT;
-
+    
+    $errCIR=0;
+    if (isset($_GET['errCIR']) AND !empty($_GET['errCIR'])) {
+        $errCIR = ($_GET['errCIR']);
+    }  
 
 
 
@@ -54,6 +58,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         <tr>
             <th>&nbsp;Numéro&nbsp;</th>
             <th>&nbsp;Nom&nbsp;</th>
+            <th colspan='2'>&nbsp;Action&nbsp;</th>
         </tr>
     </thead>
     <tbody>
@@ -73,11 +78,22 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 		<td>&nbsp;<a href="./deleteStatut.php?id=<?= $row["idStat"]; ?>"><i>Supprimer</i></a>&nbsp;
 		<br /></td>
         </tr>
+        
 <?php
 	}	
 ?>
     </tbody>
     </table>
+<?
+    if($errCIR == 1){
+?>
+        <i><div class='error'><br>=>&nbsp;Suppression impossible,
+        existence de user(s) associés(s) à ce statut. Vous devez d'abord 
+        supprimerr le(s) user(s) concerné(s).</div><i>   
+<?
+    
+    }
+?>
     <br><br>
 <?php
 require_once __DIR__ . '/footer.php';
