@@ -15,12 +15,17 @@
 
 		function get_1LangueByPays($numLang){
 			global $db;
-            $requete = 'SELECT * FROM LANGUE, PAYS WHERE langue.numPays = pays.numPays AND langue.numLang = ?;';
-            $result = $db->prepare($requete);
-            $result->execute([$numLang]);
-            return($result->fetch());
 
+			$query = 'SELECT * FROM langue INNER JOIN pays ON langue.numPays = pays.numPays WHERE numLang = ?';
 
+			$request = $db->prepare($query);
+	
+			$request->execute(array($numLang));
+	
+			$result = $request->fetch();
+	
+			$request->closeCursor();
+			return ($result);
 		}
 
 		function get_AllLangues(){
@@ -72,8 +77,6 @@
 						$result->closeCursor();
 				}
 			}
-
-		// Ctrl FK sur THEMATIQUE, ANGLE, MOTCLE avec del
 			
 		function delete($numLang){
 			global $db;
@@ -83,6 +86,7 @@
 				$requete= "DELETE FROM LANGUE WHERE numLang = ?; ";
 				$result = $db->prepare($requete);
 				$result->execute([$numLang]);
+				$count = $result->rowCount(); 
 				$db->commit();
 				$result->closeCursor();
 	

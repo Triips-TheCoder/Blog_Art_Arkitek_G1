@@ -1,7 +1,7 @@
 <?php
 ///////////////////////////////////////////////////////////////
 //
-//  CRUD LANGUE (PDO) - Code Modifié - 23 Janvier 2021
+//  CRUD LANGUE (PDO) - Code Modifié - 09 Fevrier 2021
 //
 //  Script  : createLangue.php  (ETUD)   -   BLOGART21
 //

@@ -1,7 +1,7 @@
 <?
 ///////////////////////////////////////////////////////////////
 //
-//  CRUD STATUT (PDO) - Code Modifié - 23 Janvier 2021
+//  CRUD STATUT (PDO) - Code Modifié - 09 Fevrier 2021
 //
 //  Script  : createStatut.php  (ETUD)   -   BLOGART21
 //

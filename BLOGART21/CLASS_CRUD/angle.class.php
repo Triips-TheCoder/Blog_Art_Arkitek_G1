@@ -19,6 +19,15 @@ class ANGLE {
         return($allAngles); 
     }
 
+    function get_AllAnglesByLang($numLang){
+        global $db;
+        $query = 'SELECT * FROM ANGLE AN INNER JOIN LANGUE LG ON AN.numLang = LG.numLang WHERE LG.numLang = ?;';
+        $result = $db->prepare($query);
+        $result->execute([$numLang]);
+        $allNbAnglesByIdStat = $result->fetchAll();
+        return($allNbAnglesByIdStat);
+
+    }
     function create($numAngl,$libAngl,$numLang){
         try {
             $db->beginTransaction(); 

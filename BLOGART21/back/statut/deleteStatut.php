@@ -1,7 +1,7 @@
 <?
 ///////////////////////////////////////////////////////////////
 //
-//  CRUD STATUT (PDO) - Code Modifié - 23 Janvier 2021
+//  CRUD STATUT (PDO) - Code Modifié - 09 Fevrier 2021
 //
 //  Script  : deleteStatut.php  (ETUD)   -   BLOGART21
 //
@@ -9,15 +9,18 @@
 
 // Mode DEV
 require_once __DIR__ . '/../../util/utilErrOn.php';
+// Ctrl CIR
 require_once __DIR__ . '/../../util/ctrlSaisies.php';
+
+// Instence de la class STATUT
 require_once __DIR__ . '/../../CLASS_CRUD/statut.class.php';
 global $db;
 $monStatut = NEW STATUT; 
-// Ctrl CIR
+
+// Instence de la class USER
 require_once __DIR__ . '/../../CLASS_CRUD/user.class.php';
 global $db;
 $monUser = new USER;
-$errCIR = 0;
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
@@ -34,7 +37,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $errCIR = 0;
             $idStat = ctrlSaisies($_POST['id']);
 
-            $allUser = (int)$monUser->get_NbAllUsersByidStat($idStat);
+            $allUser = (int)$monUser->get_NbAllUsersByIdStat($idStat);
+            
             
             if($allUser < 1){
                 $count = $monStatut->delete($idStat);

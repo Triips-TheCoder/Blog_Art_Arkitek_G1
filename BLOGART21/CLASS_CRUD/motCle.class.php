@@ -20,7 +20,15 @@
 			return($allMotsCle);
 
 		}
-
+		function get_AllMotClesByLang($numLang){
+			global $db;
+			$query = 'SELECT * FROM MOTCLE MC INNER JOIN LANGUE LG ON MC.numLang = LG.numLang WHERE LG.numLang = ?;';
+			$result = $db->prepare($query);
+			$result->execute([$numLang]);
+			$allNbMotCleByIdStat = $result->fetchAll();
+			return($allNbMotCleByIdStat);
+	
+		}
 		function create(){
 
 			try {

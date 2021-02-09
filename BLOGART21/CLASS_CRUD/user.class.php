@@ -32,7 +32,7 @@
 
 		}
 
-		function get_NbAllUsersByidStat($idStat){
+		function get_NbAllUsersByIdStat($idStat){
 			global $db;
             $query = 'SELECT * FROM USER US INNER JOIN STATUT ST ON US.idStat = ST.idStat WHERE ST.idStat = ?;';
             $result = $db->prepare($query);

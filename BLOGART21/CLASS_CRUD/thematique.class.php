@@ -16,6 +16,15 @@
 			return($allThematiques);
 
 		}
+		function get_AllThematiquesByLang($numLang){
+			global $db;
+			$query = 'SELECT * FROM THEMATIQUE TT INNER JOIN LANGUE LG ON TT.numLang = LG.numLang WHERE LG.numLang = ?;';
+			$result = $db->prepare($query);
+			$result->execute([$numLang]);
+			$allThematiquesByIdStat = $result->fetchAll();
+			return($allThematiquesByIdStat);
+	
+		}
 
 		function create(){
 
