@@ -38,6 +38,7 @@ $maLangue = new LANGUE;
             <th>&nbsp;lib1Lang&nbsp;</th>
             <th>&nbsp;lib2Lang&nbsp;</th>
             <th>&nbsp;numPays&nbsp;</th>
+            <th colspan="2">&nbsp;Action&nbsp;</th>
         </tr>
     </thead>
     <tbody>
@@ -50,14 +51,18 @@ $maLangue = new LANGUE;
     <td><h4>&nbsp; <?php echo $ligne['lib1Lang']; ?> &nbsp;</h4></td>
     <td><h4>&nbsp; <?php echo  $ligne['lib2Lang'];?> &nbsp;</h4></td>
     <td><h4>&nbsp; <?php echo $ligne['numPays']; ?> &nbsp;</h4></td>
+    <td>&nbsp;<a href="./updateLangue.php?id=<?= $ligne['numLang']; ?>"><i>Modifier</i></a>&nbsp;
+		<br/></td>
+		<td>&nbsp;<a href="./deleteLangue.php?id=<?= $ligne["numLang"]; ?>"><i>Supprimer</i></a>&nbsp;
+		<br/></td>
     </tr>
-    
 <?php
     }
 ?> 
     </tbody> 
     </table>
 <?php 
+
 require_once __DIR__ . '/footer.php';
 ?>
 </body>

@@ -54,7 +54,6 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         <tr>
             <th>&nbsp;Numéro&nbsp;</th>
             <th>&nbsp;Nom&nbsp;</th>
-            <th colspan="2">&nbsp;Action&nbsp;</th>
         </tr>
     </thead>
     <tbody>
