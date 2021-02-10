@@ -18,7 +18,7 @@ $monMembre = new MEMBRE;
 <html lang="fr">
 <head>
     <meta charset="utf-8" />
-    <title>Admin - Gestion du CRUD Commentaire Plus</title>
+    <title>Admin - Gestion du CRUD Membre</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
@@ -68,7 +68,13 @@ $monMembre = new MEMBRE;
 ?> 
     </tbody> 
     </table>
+
+    <footer>
+    <br /><br /><hr />
+    <h2>Créer un membre : <a href="./createMembre.php">CREER Membre</a></h2>
+    </footer>
 <?php 
+
 require_once __DIR__ . '/footer.php';
 ?>
 </body>

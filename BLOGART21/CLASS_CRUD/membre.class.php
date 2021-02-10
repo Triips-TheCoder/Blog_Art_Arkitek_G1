@@ -21,6 +21,23 @@
 
 		}
 
+		function createMembre($libsMembre){
+			global $db;
+			try {
+          $db->beginTransaction();
+				$query = 'INSERT INTO MEMBRE (libsMembre) VALUES (?);';
+				$request = $db->prepare($query);
+				$request->execute([$libsMembre]);
+				$db->commit();
+				$request->closeCursor();
+			}
+			catch (PDOException $e) {
+					$db->rollBack();
+					$request->closeCursor();
+					die('Erreur insert MEMBRE : ' . $e->getMessage());
+			}
+		}
+
 		function create(){
 
 			try {
