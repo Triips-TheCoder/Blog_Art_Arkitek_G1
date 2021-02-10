@@ -1,82 +1,107 @@
-<?php
-	// CRUD STATUT (ETUD)
+<?
+	// CRUD USER (ETUD)
 
 	require_once __DIR__ . '../../CONNECT/database.php';
 
 	class MOTCLE{
-		function get_1MotCle($numMotCle){
-            global $db; 
-            $query = 'SELECT * FROM MOTCLE'; 
-            $result = $db->query($query); 
-            $allMotsCle = $result->fetchAll(); 
-            return($allMotsCle);
-		}
-
-		function get_AllMotsCLe(){
+		function get_1MotCleByLangue($numMotCle){
 			global $db;
-			$query = 'SELECT * FROM MOTCLE;';
-			$result = $db->query($query);
-			$allMotsCle = $result->fetchAll();
-			return($allMotsCle);
-
+            $requete = 'SELECT * FROM MOTCLE INNER JOIN LANGUE ON  motcle.numLang = langue.numLang WHERE motcle.numMotCle = ?;';
+            $result = $db->prepare($requete);
+            $result->execute([$numMotCle]);
+            return($result->fetch());
 		}
-		function get_AllMotClesByLang($numLang){
+		function get_AllMotCleByLangue(){
 			global $db;
-			$query = 'SELECT * FROM MOTCLE MC INNER JOIN LANGUE LG ON MC.numLang = LG.numLang WHERE LG.numLang = ?;';
-			$result = $db->prepare($query);
-			$result->execute([$numLang]);
-			$allNbMotCleByIdStat = $result->fetchAll();
-			return($allNbMotCleByIdStat);
-	
+            $requete = 'SELECT * FROM MOTCLE INNER JOIN LANGUE ON  motcle.numLang = langue.numLang ORDER BY motcle.numMotCle ASC;';
+            $result = $db->prepare($requete);
+            $result->execute();
+            return($result->fetchAll());
 		}
-		function create(){
+		
+		function get_NbAllMotCleByidLangue($id){
+            global $db;
+            $query = 'SELECT * FROM MOTCLE INNER JOIN LANGUE ON motcle.numLang = langue.numLang WHERE motcle.numLang= ?;';
+            $result = $db->prepare($query);
+            $result->execute([$id]);
+            $allNbMotCleByLangue = $result->fetchAll();
+			$allNbMotCleByAllLangue = 0;
+			foreach ( $allNbMotCleByLangue  as $row){
+				$allNbMotCleByAllLangue = $allNbMotCleByAllLangue + 1;
+			}
+            return($allNbMotCleByAllLangue);
+        }
 
+		function get_NbAllMotCleByMotCleArticle($id){
+            global $db;
+            $query = 'SELECT * FROM MOTCLE INNER JOIN MOTCLEARTICLE ON motcle.numMotCle = motclearticle.numMotCle WHERE motcle.numMotCle= ?;';
+            $result = $db->prepare($query);
+            $result->execute([$id]);
+            $allNbMotCleByArticle = $result->fetchAll();
+			$allNbMotCleByCleArticle = 0;
+			foreach ( $allNbMotCleByArticle as $row){
+				$allNbMotCleByCleArticle = $allNbMotCleByCleArticle + 1;
+			}
+            return($allNbMotCleByCleArticle);
+        }
+		
+		function create($libMotCle, $numLang){
+			global $db;
 			try {
-                $db->beginTransaction();
+			  $db->beginTransaction();
+			  $requete= 'INSERT INTO MOTCLE (libMotCle, numLang) VALUES (?,?);';
+			  $result = $db->prepare($requete);
+			  $result->execute(array($libMotCle, $numLang));
 
+					$db->commit();
+					$result->closeCursor();
+			}
+			catch (PDOException $e) {
+					die('Erreur insert STATUT : ' . $e->getMessage());
+					$db->rollBack();
+					$result->closeCursor();
+			}
+		}
+		
+
+		function update($numMotCle, $libMotCle, $numLang){
+			global $db;
+			try {
+				$db->beginTransaction();
+				$requete="UPDATE MOTCLE SET libMotCle = ?, numLang = ? WHERE numMotCle = ?";
+				$result = $db->prepare($requete);
+				$result->execute(array($libMotCle, $numLang, $numMotCle));
 				$db->commit();
-				$request->closeCursor();
+				$result->closeCursor();
+	
+				}
+				catch (PDOException $e) {
+						die('Erreur delete STATUT : ' . $e->getMessage());
+						$db->rollBack();
+						$result->closeCursor();
+				}
 			}
-			catch (PDOException $e) {
-					$db->rollBack();
-					$request->closeCursor();
-					die('Erreur insert COMMENT : ' . $e->getMessage());
+
+
+		// Ctrl FK sur THEMATIQUE, ANGLE, MOTCLE avec del
+		function delete($numMotCle){
+			global $db;
+			try {
+				$db->beginTransaction();
+				$requete= "DELETE FROM  MOTCLE WHERE numMotCle = ?; ";
+				$result = $db->prepare($requete);
+				$result->execute([$numMotCle]);
+				$db->commit();
+				$result->closeCursor();
+	
+				}
+				catch (PDOException $e) {
+						die('Erreur delete STATUT : ' . $e->getMessage());
+						$db->rollBack();
+						$result->closeCursor();
+				}
 			}
-		}
 
-        function update($numSeqCom, $numArt){
-
-        try {
-          $db->beginTransaction();
-
-
-
-					$db->commit();
-					$request->closeCursor();
-			}
-			catch (PDOException $e) {
-					$db->rollBack();
-					$request->closeCursor();
-					die('Erreur update COMMENT : ' . $e->getMessage());
-			}
-		}
-
-		function delete($numSeqCom, $numArt){
-
-      try {
-          $db->beginTransaction();
-
-
-
-					$db->commit();
-					$request->closeCursor();
-
-			}
-			catch (PDOException $e) {
-					$db->rollBack();
-					$request->closeCursor();
-					die('Erreur delete COMMENT : ' . $e->getMessage());
-			}
-		}
+		
 
 	}	// End of class

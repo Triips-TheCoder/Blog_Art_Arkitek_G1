@@ -8,7 +8,7 @@ require_once __DIR__ . '/../../CLASS_CRUD/motcle.class.php';
 include __DIR__ . '/initLangue.php';
 
 
-// Init variables form
+
 $supprImpossible = false;
 $deleted = false;
 if (!isset($_GET['id'])) $_GET['id'] = '';
@@ -27,10 +27,9 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
 
     $numLang = $_POST["id"];
     $resultLangue = $maLangue->get_1LangueByPays($numLang);
-
     $thematiques = $maThematique->get_AllThematiquesByLang($numLang);
     $angles = $monAngle->get_AllAnglesByLang($numLang);
-    $motcles = $monMotCle->get_AllMotClesByLang($numLang);
+    $motcles = $monMotCle->get_AllMotCleByLang($numLang);
 
     if (!$thematiques && !$angles && !$motcles) {
         $maLangue->delete($numLang);

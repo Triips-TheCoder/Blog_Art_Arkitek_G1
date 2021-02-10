@@ -1,7 +1,7 @@
 <?
 /////////////////////////////////////////////////////
 //
-//  CRUD MOTCLE (PDO) - Modifié - 6 Décembre 2020
+//  CRUD MOTCLE (PDO) - Modifié - 10 Février 2021
 //
 //  Script  : motCle.php  (ETUD)   -   BLOGART21
 //
@@ -12,7 +12,6 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 require_once __DIR__ . '/../../CLASS_CRUD/motCle.class.php'; 
 global $db; 
 $monMotCle = new MOTCLE;
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -38,17 +37,20 @@ $monMotCle = new MOTCLE;
             <th>&nbsp;numMotCle&nbsp;</th>
             <th>&nbsp;libMotCle&nbsp;</th>
             <th>&nbsp;numLang&nbsp;</th>
+            <th colspan="2">&nbsp;Action&nbsp;</th>
         </tr>
     </thead>
     <tbody>
 <?php 
-    $allMotsCle = $monMotCle -> get_AllMotsCle(); 
-    foreach($allMotsCle as $ligne){ 
+    $allMotCle = $monMotCle->get_AllMotCleByLangue();
+    foreach($allMotCle as $row){ 
 ?>
     <tr>
-    <td><h4>&nbsp;  <?php echo $ligne['numMotCle']; ?> &nbsp;</h4></td>
-    <td><h4>&nbsp;  <?php echo $ligne['libMotCle']; ?> &nbsp;</h4></td>
-    <td><h4>&nbsp;  <?php echo  $ligne['numLang'];?> &nbsp;</h4></td>
+    <td><h4>&nbsp;  <?php echo $row['numMotCle']; ?> &nbsp;</h4></td>
+    <td><h4>&nbsp;  <?php echo $row['libMotCle']; ?> &nbsp;</h4></td>
+    <td><h4>&nbsp;  <?php echo  $row['numLang'];?> &nbsp;</h4></td>
+    <td>&nbsp;<a href="./updateMotCle.php?id=<?=$row["numMotCle"];?>"><i>Modifier</i></a>&nbsp;</td>
+    <td>&nbsp;<a href="./deleteMotCle.php?id=<?=$row["numMotCle"];?>"><i>Supprimer</i></a>&nbsp;</td>
     </tr>
     
 <?php
