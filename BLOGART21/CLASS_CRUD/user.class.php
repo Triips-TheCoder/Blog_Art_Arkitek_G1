@@ -27,9 +27,14 @@
 
 		}
 
-		function get_AllUsersByStat(){
-
-
+		function get_AllUsersByIdStat($idStat){
+			global $db;
+			$query = 'SELECT * FROM USER US INNER JOIN STATUT ST ON US.idStat = ST.idStat WHERE ST.idStat = ?;';
+			$result = $db->prepare($query);
+			$result->execute([$idStat]);
+			$allUsersByIdStat = $result->fetchAll();
+			return($allUsersByIdStat);
+	
 		}
 
 		function get_NbAllUsersByIdStat($idStat){

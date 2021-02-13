@@ -59,8 +59,13 @@ $maLangue = new LANGUE;
 <?php
     }
 ?> 
+
     </tbody> 
     </table>
+    <footer>
+    <br /><br /><hr />
+    <h2>Créez une langue <a href="./createLangue.php">Créer une Langue</a></h2>
+    </footer>
 <?php 
 
 require_once __DIR__ . '/footer.php';
