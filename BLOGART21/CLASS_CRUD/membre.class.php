@@ -116,26 +116,30 @@ class MEMBRE{
 		}
 	}
 
-    function update($numMemb, $prenomMemb, $nomMemb, $pseudoMemb, $passMemb, $eMailMemb, $souvenirMemb, $accordMemb, $idStat){
-        global $db;
-        try {
-            $db->beginTransaction();
+    function update($numMemb, $prenomMemb, $nomMemb, $pseudoMemb, $eMailMemb, $passMemb, $souvenirMemb)
+	{
+		global $db;
+		try {
+			$db->beginTransaction();
+			$query = $db->prepare('UPDATE membre SET prenomMemb=:prenomMemb, nomMemb=:nomMemb, pseudoMemb=:pseudoMemb, eMailMemb=:eMailMemb, passMemb=:passMemb, souvenirMemb=:souvenirMemb WHERE numMemb=:numMemb');
+			$query->execute([
+				'numMemb' => $numMemb,
+				'prenomMemb' => $prenomMemb,
+				'nomMemb' => $nomMemb,
+				'pseudoMemb' => $pseudoMemb,
+				'eMailMemb' => $eMailMemb,
+				'passMemb' => $passMemb,
+                'souvenirMemb' => $souvenirMemb
+			]);
+			$db->commit();
+			$query->closeCursor();
+		} catch (PDOException $e) {
+			$db->rollBack();
+			$query->closeCursor();
+			die('Erreur update MEMBRE : ' . $e->getMessage());
+		}
+	}
 
-            $query = "UPDATE membre SET prenomMemb = ?, nomMemb = ?, pseudoMemb = ?, passMemb = ?, eMailMemb = ?, souvenirMemb = ?, accordMemb = ? idStat = ? WHERE numMemb = ?";
-
-            $request = $db->prepare($query);
-
-            $request->execute(array($numMemb, $prenomMemb, $nomMemb, $pseudoMemb, $passMemb, $eMailMemb, $souvenirMemb, $accordMemb, $idStat));
-
-            $db->commit();
-            $request->closeCursor();
-        }
-        catch (PDOException $e) {
-                die('Erreur update MEMBRE : ' . $e->getMessage());
-                $db->rollBack();
-                $request->closeCursor();
-        }
-    }
 
     function delete($numMemb){
         global $db;

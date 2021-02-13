@@ -12,7 +12,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 require_once __DIR__ . '/../../CLASS_CRUD/membre.class.php'; 
 global $db; 
 $monMembre = new MEMBRE;
-
+$created = false; 
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -81,7 +81,9 @@ $monMembre = new MEMBRE;
     <h2>Créer un membre : <a href="./createMembre.php">Creer Membre</a></h2>
     </footer>
 <?php 
-
+    if($created == true){
+        echo "<p style ='color: green'>Le membre a bien été crée.</p>";
+    }
 require_once __DIR__ . '/footer.php';
 ?>
 </body>

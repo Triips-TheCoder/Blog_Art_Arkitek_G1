@@ -21,12 +21,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if ((isset($_POST["Submit"])) AND ($Submit === "Initialiser")) {
 
-            header("Location: ./create_angle.php");
+            header("Location: ./createAngle.php");
         }   // End of if ((isset($_POST["submit"])) ...
 
         // Mode création
         if (((isset($_POST['libAngl'])) AND !empty($_POST['libAngl']))
             AND (!empty($_POST['Submit']) AND ($Submit === "Valider"))) {
+                if(!empty($_POST['numLang']) AND isset($_POST['numLang'])){
             // Saisies valides
 
             $libAngl = ctrlSaisies(($_POST['libAngl']));
@@ -34,6 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $monAngle->create($libAngl);
 
             header("Location: ./angle.php");
+            }
         }   // Fin if ((isset($_POST['libStat'])) ...
     }   // Fin if ($_SERVER["REQUEST_METHOD"] == "POST")
     include __DIR__ . '/initAngle.php';
@@ -66,6 +68,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         </div>
 
         <div class="control-group">
+        <select id="numLang" name="numLang"  onchange="select()"> 
+                <?php 
+                global $db;
+                $requete = 'SELECT numLang, lib1Lang FROM LANGUE ;';
+                $result = $db->query($requete);
+                $allLangue = $result->fetchAll();
+                foreach ($allLangue AS $langue)
+                {
+                ?>
+                <option value="<?php echo $langue['numLang'];?>"><?php echo $langue['lib1Lang'];?></option>
+                <?php
+                }
+                ?>
+            </select>
             <div class="controls">
                 <br><br>
                 &nbsp;&nbsp;&nbsp;&nbsp;

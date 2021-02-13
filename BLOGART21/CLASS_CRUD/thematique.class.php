@@ -25,19 +25,22 @@
 			return($allThematiquesByIdStat);
 	
 		}
-
-		function create(){
-
+		
+		function create($libThem, $numLang){
+			global $db;
 			try {
-                $db->beginTransaction();
+			  $db->beginTransaction();
+			  $requete= 'INSERT INTO THEMATIQUE (libThem, numLang) VALUES (?,?);';
+			  $result = $db->prepare($requete);
+			  $result->execute(array($libThem, $numLang));
 
-				$db->commit();
-				$request->closeCursor();
+					$db->commit();
+					$result->closeCursor();
 			}
 			catch (PDOException $e) {
+					die('Erreur insert THEMATIQUE : ' . $e->getMessage());
 					$db->rollBack();
-					$request->closeCursor();
-					die('Erreur insert COMMENT : ' . $e->getMessage());
+					$result->closeCursor();
 			}
 		}
 

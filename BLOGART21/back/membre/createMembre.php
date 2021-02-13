@@ -5,7 +5,6 @@ require_once __DIR__ . '/../../util/ctrlSaisies.php';
 
 $monMembre = new MEMBRE;
 $created = "";
-$errMessage = ""; 
 $passOk = 0; 
 $emailOk = 0;
 
@@ -49,42 +48,40 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $errMessage = '';
                 $pseudoOk = 1;
             } else{
-                $errMessage = 'Ce pseudo existe déja'; 
+                echo "<h3 style='color: red;'>Ce pseudo existe déja !</h3>"; 
                 $pseudoOk = 0; 
             }
             if (filter_var($eMail1Memb, FILTER_VALIDATE_EMAIL)){
-                $errMessage = ""; 
+                $errMail = ""; 
             } else {
-                $errMessage = "&nbsp&nbsp&nbsp Le format du mail n'est pas valide &nbsp&nbsp&nbsp&nbsp";
+                echo "<h3 style='color: red;'>Le format du mail n'est pas valide !</h3>";
             }
             if (filter_var($eMail2Memb, FILTER_VALIDATE_EMAIL)){
-                $errMessage = ""; 
+                $errMail = ""; 
             } else {
                 $eMail2Memb = 0; 
-                $errMessage = "&nbsp&nbsp&nbsp Le format du mail n'est pas valide &nbsp&nbsp&nbsp&nbsp";
+                echo "<h3 style='color: red;'>Le format du mail n'est pas valide !</h3>";
             }
-            if (($pass1Memb == $pass2Memb)){
+            if (($pass1Memb === $pass2Memb)){
                 $passOk = 1; 
                 $errMessage = ""; 
             }  else{
-                $errMessage = "&nbsp&nbsp&nbsp Les mots de passe ne correspondent pas &nbsp&nbsp&nbsp&nbsp";
+                echo "<h3 style='color: red;'>Les mots de passe ne correspondent pas!</h3>";
  
             }
-            if (($eMail1Memb == $eMail2Memb)){
+            if (($eMail1Memb === $eMail2Memb)){
                 $emailOk = 1; 
                 $errMessage = ""; 
             }else{
-                $errMessage = "&nbsp&nbsp&nbsp Les mails ne correspondent pas &nbsp&nbsp&nbsp&nbsp";
+                echo "<h3 style='color: red;'>Les mails ne correspondent pas !</h3>";
             }
             if ($prenomMemb != "" && $nomMemb != "" && $emailOk == 1 && $passOk == 1 && $pseudoOk == 1 && $accordMemb = 1) {
-                $pass1Memb = password_hash($_POST['pass1Memb'], PASSWORD_DEFAULT);
+                $pass1Memb = ($_POST['pass1Memb']);
                 $created = true;
-                $monMembre->create($prenomMemb, $nomMemb, $pseudoMemb, $eMail1Memb, date('Y-m-d-h-i-s'), $pass1Memb, $souvenirMemb, $accordMemb, $idStat);
+                $monMembre->create($prenomMemb, $nomMemb, $pseudoMemb, $eMail1Memb, $dtCreaMemb, $pass1Memb, $souvenirMemb, $accordMemb, $idStat);
                 header("Location: ./membre.php");
-            } else {
-                $erreur = true;
-                $errSaisies = "Insert impossible, incohérence données saisies :<br>" . $msgErrExistPseudo . $msgErrPseudo . $msgErrMail1 . $msgErrMail2 . $msgErrMailIdentiq . $msgErrPassIdentiq . $msgErrOkRGPD;
-            }
+            } 
+            
 
             
             
@@ -141,25 +138,25 @@ include __DIR__ . '/initMembre.php'
             <label>Nom:</label>
             <span class='champ-obligatoire'>*</span>
             <br>
-            <input pattern="^[A-Za-z]{2,70}$" type="text" name="nomMemb" placeholder="Nom">
-            <br>
+            <input pattern="^[A-Za-z]{2,70}$" type="text" name="nomMemb" placeholder="Nom" >
+            <br> 
             <br>
             <label>Pseudo: (entre 7 et 70 caractères)</label>
             <span class='champ-obligatoire'>*</span>
             <br>
-            <input pattern="^[\w\.](' ')?([\w\.])?{7,70}$" type="text" name="pseudoMemb" placeholder="Pseudo" minlength='7' maxlength = '70'>
+            <input pattern="^[\w\.](' ')?([\w\.])?{7,70}$" type="text" name="pseudoMemb" placeholder="Pseudo" minlength='7' maxlength = '70' >
             <br>
             <br>
             <label>Email:</label>
             <span class='champ-obligatoire'>*</span>
             <br>
-            <input type="email" name="eMail1Memb" placeholder="Email">
+            <input type="email" name="eMail1Memb" placeholder="Email" >
             <br>
             <br>
             <label>Confirmation e-mail:</label>
             <span class='champ-obligatoire'>*</span>
             <br>
-            <input type="email" name="eMail2Memb" placeholder="Confirmation e-mail">
+            <input type="email" name="eMail2Memb" placeholder="Confirmation e-mail" >
             <br>
             <br>
             <label>Mot de passe:
@@ -167,20 +164,20 @@ include __DIR__ . '/initMembre.php'
             <i class ='italic'>(Au minimum un chiffre, un caractère spécial, une majuscule et une minuscule (8 caractères minimum)</i>
             </label>
             <br>
-            <input pattern='^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,100})$' type="password" name="pass1Memb" placeholder="Mot de passe" minlength='8' maxlength='64'>
+            <input pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" type="password" name="pass1Memb" placeholder="Mot de passe" minlength='8' maxlength='100' >
             <br>
             <br>
             <label>Confirmer votre mot de passe:</label>
             <span class='champ-obligatoire'>*</span>
             <br>
-            <input pattern='^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,100})$'  type="password" name="pass2Memb" placeholder="Mot de passe" minlength='8' maxlength='64'>
+            <input pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" type="password" name="pass2Memb" placeholder="Mot de passe" minlength='8' maxlength='100' >
             <br>
             <br>
             <input id='souvenir' type="checkbox" tabindex="0" name="souvenirMemb">
             <label for='souvenir'>Se souvenir de moi</label>
             <br>
             <br>
-            <input id='condition' type="checkbox" tabindex="0" name="accordMemb">
+            <input id='condition' type="checkbox" tabindex="0" name="accordMemb" >
             <label for='condition'>J'accepte les conditions d'utilisations            
             <span class='champ-obligatoire'>*</span>
             </label>
@@ -211,9 +208,6 @@ include __DIR__ . '/initMembre.php'
     </fieldset>
     </form>
     <?php
-    if($created == true){
-        echo "<p style ='color: green'>Le membre a bien été crée.</p>";
-    }
     require_once __DIR__ . '/footerMembre.php';
 
     require_once __DIR__ . '/footer.php';

@@ -4,34 +4,97 @@
      require_once __DIR__ . '/../../util/utilErrOn.php';
      include __DIR__ . '/initMembre.php';
      require_once __DIR__ . '/../../CLASS_CRUD/membre.class.php';
-     $updated = null;
+     require_once __DIR__ . '/../../util/ctrlSaisies.php';
      if(!isset($_GET['id'])) $_GET['id'] = '';
      if(!isset($_GET['date'])) $_GET['date'] = '';
      $monMembre = new MEMBRE;
- 
+     $updated = false;
+     $errMessage = ""; 
+     $passOk = 0; 
+     $emailOk = 0;
+     
+     
+     
+     
      if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $numMemb = $_POST["id"];
-        $dtCreaMemb = $_POST["date"];
-
-        if(isset($_POST['prenomMemb']) && isset($_POST['nomMemb']) 
-        && isset($_POST['pseudoMemb']) && isset($_POST['passMemb']) 
-        && isset($_POST['eMailMemb'])){
-            if(isset($_POST['souvenirMemb'])){
-                $souvenirMemb = 1;
-            }else{
-                $souvenirMemb = 0;
-            }
-            if(isset($_POST['accordMemb'])){
-                $accordMemb = 1;
-            }else{
-                $accordMemb = 0;
-            }
-
-            $monMembre->update($numMemb, $_POST['prenomMemb'], $_POST['nomMemb'], $_POST['pseudoMemb'], $_POST['passMemb'], $_POST['eMailMemb'], $souvenirMemb, $accordMemb);
-            $updated = true;
-        }
-
-    }else{
+         if ((isset($_POST["annuler"])) AND ($_POST["annuler"] === "Annuler")) {
+     
+             header("Location: ./membre.php");
+         } 
+         if(isset($_POST['souvenirMemb'])){
+             $souvenirMemb = 1;
+         }else{
+             $souvenirMemb = 0;
+         }
+         if(isset($_POST['accordMemb'])){
+             $accordMemb = 1;
+         }else{
+             $accordMemb = 0;
+         }
+         if(!empty($_POST['prenomMemb']) && !empty($_POST['nomMemb']) 
+         && !empty($_POST['pseudoMemb']) && !empty($_POST['eMail1Memb']) 
+         && !empty($_POST['eMail2Memb']) && !empty($_POST['pass1Memb']) && !empty($_POST['pass2Memb'])
+         && !empty($_POST['souvenirMemb']) && !empty($_POST['accordMemb'])){
+             if ((isset($_POST['statut'])) AND !empty($_POST['statut'])) {
+                 $numMemb = $_GET["id"];
+                 $prenomMemb = ctrlSaisies($_POST['prenomMemb']);
+                 $nomMemb = ctrlSaisies($_POST['nomMemb']);
+                 $pseudoMemb = ctrlSaisies($_POST['pseudoMemb']);
+                 $pass1Memb = ctrlSaisies($_POST['pass1Memb']);
+                 $pass2Memb = ctrlSaisies($_POST['pass2Memb']);
+                 $eMail1Memb = ctrlSaisies($_POST['eMail1Memb']);
+                 $eMail2Memb = ctrlSaisies($_POST['eMail2Memb']);
+                 $dtCreaMemb = date("Y-m-d-H-i-s");
+                 $ctrlSouvenirMemb = ctrlSaisies($_POST['souvenirMemb']);
+                 $ctrlAccordMemb = ctrlSaisies($_POST['accordMemb']);
+                 $idStat = ctrlSaisies($_POST['statut']);
+                 $pseudoExist = $monMembre->get_ExistPseudo($pseudoMemb);
+                 if ($pseudoExist == 0){
+                     $errMessage = '';
+                     $pseudoOk = 1;
+                 } else{
+                     $errMessage = 'Ce pseudo existe déja'; 
+                     $pseudoOk = 0; 
+                 }
+                 if (filter_var($eMail1Memb, FILTER_VALIDATE_EMAIL)){
+                     $errMessage = ""; 
+                 } else {
+                     $errMessage = "&nbsp&nbsp&nbsp Le format du mail n'est pas valide &nbsp&nbsp&nbsp&nbsp";
+                 }
+                 if (filter_var($eMail2Memb, FILTER_VALIDATE_EMAIL)){
+                     $errMessage = ""; 
+                 } else {
+                     $eMail2Memb = 0; 
+                     $errMessage = "&nbsp&nbsp&nbsp Le format du mail n'est pas valide &nbsp&nbsp&nbsp&nbsp";
+                 }
+                 if (($pass1Memb == $pass2Memb)){
+                     $passOk = 1; 
+                     $errMessage = ""; 
+                 }  else{
+                     $errMessage = "&nbsp&nbsp&nbsp Les mots de passe ne correspondent pas &nbsp&nbsp&nbsp&nbsp";
+      
+                 }
+                 if (($eMail1Memb == $eMail2Memb)){
+                     $emailOk = 1; 
+                     $errMessage = ""; 
+                 }else{
+                     $errMessage = "&nbsp&nbsp&nbsp Les mails ne correspondent pas &nbsp&nbsp&nbsp&nbsp";
+                 }
+                 if ($prenomMemb != "" && $nomMemb != "" && $emailOk == 1 && $passOk == 1 && $pseudoOk == 1 && $accordMemb = 1) {
+                     $pass1Memb = password_hash($_POST['pass1Memb'], PASSWORD_DEFAULT);
+                     $updated = true; 
+                     $monMembre->update($numMemb, $prenomMemb, $nomMemb, $pseudoMemb, $eMailMemb, $passMemb, $souvenirMemb);
+                     header("Location: ./updateMembre.php");
+                 } else {
+                     $erreur = true;
+                     $errSaisies = "Insert impossible, incohérence données saisies :<br>" . $msgErrExistPseudo . $msgErrPseudo . $msgErrMail1 . $msgErrMail2 . $msgErrMailIdentiq . $msgErrPassIdentiq . $msgErrOkRGPD;
+                 }
+     
+                 
+                 
+             }
+         }
+     }else{
         $numMemb = $_GET["id"];
         $dtCreaMemb = $_GET['date'];
     }
@@ -39,15 +102,15 @@
     $resultMembre = $monMembre->get_1Membre($numMemb);
     
     if($resultMembre){
-        $prenomMemb = $resultMembre['prenomMemb'];
-        $nomMemb = $resultMembre['nomMemb'];
-        $pseudoMemb = $resultMembre['pseudoMemb'];
+        $unPrenomMemb = $resultMembre['prenomMemb'];
+        $unNomMemb = $resultMembre['nomMemb'];
+        $unPseudoMemb = $resultMembre['pseudoMemb'];
         $passMemb = $resultMembre['passMemb'];
         $eMailMemb = $resultMembre['eMailMemb'];
         $souvenirMemb = $resultMembre['souvenirMemb'];
         $accordMemb = $resultMembre['accordMemb'];
     }
-
+    include __DIR__ . '/initMembre.php'
 ?>
 <html lang="fr">
 
@@ -71,39 +134,44 @@
         <input type="hidden" id="date" name="date" value="<?= $_GET['date']; ?>" />
         <label>Prénom du membre:</label>
         <br>
-        <input type="text" name="prenomMemb" placeholder="Prénom" value=<? echo($prenomMemb); ?>>
+        <input pattern="^[A-Za-z]{2,70}$" type="text" name="prenomMemb" placeholder="Prénom" minlength='2' maxlength='70' value=<? echo $unPrenomMemb;?>>
         <br>
         <br>
         <label>Nom du membre:</label>
         <br>
-        <input type="text" name="nomMemb" placeholder="Nom" value=<? echo($nomMemb); ?>>
+        <input pattern="^[A-Za-z]{2,70}$" type="text" name="nomMemb" placeholder="Nom" minlength='2' maxlength='70' value=<? echo($unNomMemb); ?>>
         <br>
         <br>
         <label>Pseudo du membre:</label>
         <br>
-        <input type="text" name="pseudoMemb" placeholder="Pseudo" value=<? echo($pseudoMemb); ?>>
+        <input pattern="^[\w\.](' ')?([\w\.])?{7,70}$" type="text" name="pseudoMemb" minlength='7' maxlength='70' placeholder="Pseudo" value=<? echo $unPseudoMemb; ?>>
         <br>
         <br>
-        <label>Modification de mot de passe:</label>
+        <label>Mot de passe:</label>
         <br>
-        <input type="password" name="passMemb" placeholder="Mot de passe" value=<? echo($passMemb); ?>>
-        <br>
-        <br>
-        <label>Confirmation du mot de passe:</label>
-        <br>
-        <input type="password" name="passMemb" placeholder="Mot de passe" value=<? echo($passMemb); ?>>
+        <input pattern='^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)\w{8,100}$' type="password" name="pass1Memb" placeholder="Mot de passe" minlength='8' maxlength='100' value=<? echo $passMemb ?>>
         <br>
         <br>
+        <label>Confirmer votre mot de passe:</label>
+        <br>
+        <input pattern='^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)\w{8,100}$'  type="password" name="pass2Memb" placeholder="Mot de passe" minlength='8' maxlength='100' value=<? echo $passMemb ?> >
+        <br>
+        <br> 
         <label>Email du membre:</label>
         <br>
-        <input type="text" name="eMailMemb" placeholder="Email" value=<? echo($eMailMemb); ?>>
+        <input type="email' name="eMail1Memb" placeholder="Email" value=<? echo $eMailMemb; ?>>
         <br>
         <br>
-        <input type="checkbox" tabindex="0" name="souvenirMemb" <? if($souvenirMemb == 1){ echo('checked'); } ?>>
-        <label>Se souvenir de moi</label>
+        <label>Confirmation changement d'Email</label>
+        <br>
+        <input type="email" name="eMail2Memb" placeholder="Email" value=<? echo $eMailMemb; ?>>
         <br>
         <br>
-        <input type="checkbox" tabindex="0" name="accordMemb" <? if($accordMemb == 1){ echo('checked'); } ?>>
+        <input id='souvenirs' type="checkbox" tabindex="0" name="souvenirMemb" <? if($souvenirMemb == 1){ echo'checked'; } ?>>
+        <label for='souvenirs'>Se souvenir de moi</label>
+        <br>
+        <br>
+        <input type="checkbox" tabindex="0" name="accordMemb" disabled <? if($accordMemb == 1){ echo'checked'; } ?>>
         <label>J'accepte les conditions d'utilisation</label>
         <br>
         <br>
