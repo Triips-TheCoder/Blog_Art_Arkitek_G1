@@ -18,13 +18,14 @@
 		}
 		function get_AllThematiquesByLang($numLang){
 			global $db;
-			$query = 'SELECT * FROM THEMATIQUE TT INNER JOIN LANGUE LG ON TT.numLang = LG.numLang WHERE LG.numLang = ?;';
-			$result = $db->prepare($query);
-			$result->execute([$numLang]);
-			$allThematiquesByIdStat = $result->fetchAll();
-			return($allThematiquesByIdStat);
-	
+			$query = $db->prepare('SELECT * FROM thematique WHERE numLang = :numLang');
+			$query->execute([
+				'numLang' => $numLang
+			]);
+			$result = $query->fetchAll(PDO::FETCH_OBJ);
+			return ($result);
 		}
+	
 		
 		function create($libThem, $numLang){
 			global $db;

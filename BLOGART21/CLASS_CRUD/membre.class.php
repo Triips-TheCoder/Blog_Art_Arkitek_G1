@@ -116,12 +116,12 @@ class MEMBRE{
 		}
 	}
 
-    function update($numMemb, $prenomMemb, $nomMemb, $pseudoMemb, $eMailMemb, $passMemb, $souvenirMemb)
+    function update($numMemb, $prenomMemb, $nomMemb, $pseudoMemb, $eMailMemb, $passMemb, $idStat)
 	{
 		global $db;
 		try {
 			$db->beginTransaction();
-			$query = $db->prepare('UPDATE membre SET prenomMemb=:prenomMemb, nomMemb=:nomMemb, pseudoMemb=:pseudoMemb, eMailMemb=:eMailMemb, passMemb=:passMemb, souvenirMemb=:souvenirMemb WHERE numMemb=:numMemb');
+			$query = $db->prepare('UPDATE membre SET prenomMemb=:prenomMemb, nomMemb=:nomMemb, pseudoMemb=:pseudoMemb, eMailMemb=:eMailMemb, passMemb=:passMemb, idStat = :idStat WHERE numMemb=:numMemb');
 			$query->execute([
 				'numMemb' => $numMemb,
 				'prenomMemb' => $prenomMemb,
@@ -129,7 +129,7 @@ class MEMBRE{
 				'pseudoMemb' => $pseudoMemb,
 				'eMailMemb' => $eMailMemb,
 				'passMemb' => $passMemb,
-                'souvenirMemb' => $souvenirMemb
+                'idStat' => $idStat
 			]);
 			$db->commit();
 			$query->closeCursor();
