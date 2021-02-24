@@ -1,0 +1,135 @@
+
+
+@font-face {
+    font-family: "Silk Serif Medium";
+    src: url(../Footer/fonts/Silk\ Serif\ Medium.otf) format("otf");    
+}
+@font-face {
+    font-family: "Louis George Cafe Regular";
+    src: url(/fonts/Louis\ George\ Cafe.ttf) format("ttf");
+
+   }
+
+
+
+/* Section Newsletter */
+
+
+
+.ContainerFooter{
+    background-color: #101010;
+    
+}
+.Newsletter{
+    width: 100%;
+    height: 368px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;}
+
+.TitreNewsletter {
+    font-family: "Silk Serif Medium";
+    font-size: 30px;
+    color: #FCF8F2;
+    margin-top: 34px;
+}
+
+.AccrocheNewsletter{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 18px;
+    color: #FCF8F2;
+    margin-top: 67px;
+    margin-bottom: 48px;
+}
+
+.DroitNewsletter{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 14px;
+    color: #FCF8F2;
+    align-self: center ;
+    margin-top: 38px;
+}
+
+.ContainerFooter hr {
+   width: 100%;
+   color: #FCF8F2;
+   
+}
+
+.Footer{
+    display: flex;
+    height: 234px;
+    margin-top: 60px;
+    padding-left: 93px;
+    padding-right: 93px;
+    justify-content: space-between;
+
+}
+
+.InstagramFooter{
+    display: flex;
+  
+}
+.InstagramFooter .FooterInstaLogo{
+    width: 18px;
+}
+
+.Footer p{
+    color: #FCF8F2;
+    margin: 0;
+}
+
+.Footer img{
+color: blanchedalmond;
+    width: 50px;
+    height: auto;
+}
+
+.ChampNewsletter img{
+   right: 0;
+    position: absolute;
+    height: 80%;
+    width: auto;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-right: 2%;
+    
+
+}
+
+.ChampNewsletter{
+    position: relative;
+    width: 30vw;
+    height: 42px;
+    align-items: center;
+}
+
+.ChampNewsletter input[type=email]{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    border:2px solid;
+    border-radius:4px;
+    outline:none;
+    padding:8px;
+    box-sizing:border-box;
+    transition:.3s;
+  }
+  
+.ChampNewsletter input[type=email]:focus{
+    border-color: #FF9185;
+    box-shadow:0 0 8px 0 #FF9185;
+  }
+
+  .Footer a{
+      text-decoration: none;
+      margin: 0;
+  }
+ 
+  .InstagramFooter .FooterInstaLogo img{
+      width: 100%;
+      height: auto;
+      
+      
+  }
