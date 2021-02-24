@@ -1,25 +1,53 @@
-<?php
-require_once __DIR__ . '/../../util/utilErrOn.php';
-require_once __DIR__ . '/../../CLASS_CRUD/langue.class.php';
-require_once __DIR__ . '/../../CLASS_CRUD/thematique.class.php';
-require_once __DIR__ . '/../../CLASS_CRUD/getNextNumThem.php';
-$lang = new LANGUE;
-$thematique = new THEMATIQUE;
-$created = false;
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Annuler")) {
 
-        header("Location: ./thematique.php");
-    }   
 
-    if(!empty($_POST['libThem']) && !empty($_POST['numLang'])  && (!empty($_POST['Submit']) && ($_POST["Submit"] === "Valider"))){
-        $thematique->create(getNextNumThem($_POST['numLang']), $_POST['libThem'], $_POST['numLang']);
-        $created = true;
-    }
-}
-include __DIR__ . '/initThematique.php';
-?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -84,16 +112,9 @@ include __DIR__ . '/initThematique.php';
 <body>
 <div class="global-div">
     <h1 class='title'>BLOGART21 Admin - Gestion du CRUD Thematique</h1>
-    <h2 class='title'>Ajout d'une thématique</h2>
-    <?
-    if ($created) {
-        echo '<p style="color:green;">Le mot-clé "' . $_POST['libThem'] . '" a été créé.</p>';
-    } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        echo "<p style='color:red;'>La thématique n'a pas été créé car : aucune thématique n'a été rentré </p>";
+    <h2 class='title'>Suppression d'une thématique</h2>
 
-    }
-    ?>
-    <form method="post" action="./createThematique.php" enctype="multipart/form-data">
+    <form method="post" action="./deleteThematique.php" enctype="multipart/form-data">
         
         <div class="control-group">
             <label class="control-label" for="libThem"><b>Thematique :</b></label>

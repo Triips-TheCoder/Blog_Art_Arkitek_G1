@@ -11,13 +11,17 @@
             $result->execute([$numMotCle]);
             return($result->fetch());
 		}
-		function get_AllMotCleByLangue(){
-			global $db;
-            $requete = 'SELECT * FROM MOTCLE INNER JOIN LANGUE ON  motcle.numLang = langue.numLang ORDER BY motcle.numMotCle ASC;';
-            $result = $db->prepare($requete);
-            $result->execute();
-            return($result->fetchAll());
-		}
+
+    	function get_AllMotClesByLang($numLang){
+    	  global $db;
+    	  $queryText = 'SELECT * FROM motcle WHERE numLang = :numLang';
+    	  $query = $db->prepare($queryText);
+    	  $query->bindParam(':numLang', $numLang);
+    	  $query->execute();
+    	  $result = $query->fetchAll();
+    	  $query->closeCursor();
+    	  return ($result);
+    	}
 		
 		function get_NbAllMotCleByidLangue($id){
             global $db;

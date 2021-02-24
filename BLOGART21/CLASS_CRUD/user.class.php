@@ -27,23 +27,34 @@
 
 		}
 
-		function get_AllUsersByIdStat($idStat){
+		function get_AllUsersByStat($idStat){
 			global $db;
-			$query = 'SELECT * FROM USER US INNER JOIN STATUT ST ON US.idStat = ST.idStat WHERE ST.idStat = ?;';
-			$result = $db->prepare($query);
-			$result->execute([$idStat]);
-			$allUsersByIdStat = $result->fetchAll();
-			return($allUsersByIdStat);
+
+			$query = 'SELECT * FROM user WHERE idStat = ?';
+
+			$request = $db->prepare($query);
 	
+			$request->execute(array($idStat));
+	
+			$result = $request->fetchAll();
+	
+			$request->closeCursor();
+			return ($result);
 		}
 
-		function get_NbAllUsersByIdStat($idStat){
+		function get_NbAllUsersByStat($idStat){
 			global $db;
-            $query = 'SELECT * FROM USER US INNER JOIN STATUT ST ON US.idStat = ST.idStat WHERE ST.idStat = ?;';
-            $result = $db->prepare($query);
-            $result->execute([$idStat]);
-			$allNbUsersByStat = $result->fetchAll();
-            return($allNbUsersByStat);
+
+			$query = 'SELECT COUNT(*) FROM user WHERE idStat = ?';
+
+			$request = $db->prepare($query);
+	
+			$request->execute(array($idStat));
+	
+			$result = $request->fetch();
+	
+			$request->closeCursor();
+			return (intval($result[0]));
 
 		}
 

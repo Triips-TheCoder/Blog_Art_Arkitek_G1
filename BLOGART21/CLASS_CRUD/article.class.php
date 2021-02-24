@@ -21,6 +21,22 @@ class ARTICLE{
         return($allArticles); 
     }
 
+	function get_AllArticlesByAngle($numAngl)
+    {
+        global $db;
+
+        $query = 'SELECT * FROM article WHERE numAngl = ?';
+
+        $request = $db->prepare($query);
+
+        $request->execute(array($numAngl));
+
+        $result = $request->fetchAll();
+
+        $request->closeCursor();
+        return ($result);
+    }
+
    	function create(
 		$dtCreArt,
 		$libTitrArt,

@@ -39,7 +39,7 @@ require_once __DIR__ . '/util/utilErrOn.php';
 	<br /><hr />
 	<div>
 	Gestion du CRUD :
-	<a href="./BACK/angle/angle.php">Angle </a>
+	<a href="./BACK/angle/angle.php"><span>Angle</span></a>
 	<br /><br />
 	Gestion du CRUD :
 	<a href="./BACK/article/article.php">Article </a>
@@ -51,7 +51,7 @@ require_once __DIR__ . '/util/utilErrOn.php';
 	<a href="./BACK/commentplus/commentplus.php">Réponse sur Commentaire </a>
 	<br /><br />
 	Gestion du CRUD :
-	<a href="./BACK/langue/langue.php">Langue </a>
+	<a href="./BACK/langue/langue.php"><span>Langue</span></a>
 	<br /><br />
 	Gestion du CRUD :
 	<a href="./BACK/likeart/likeart.php">Like Article </a>

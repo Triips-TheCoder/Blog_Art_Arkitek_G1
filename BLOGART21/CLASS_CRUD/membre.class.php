@@ -16,12 +16,49 @@ class MEMBRE{
 		return ($result);
     }
 
-    function get_AllMembersByStat(){
+    function get_AllMembreByStatut($idStat){
         global $db;
-        $query = "SELECT * FROM MEMBRE ME INNER JOIN STATUT ST ON ME.idStat = ST.idStat;";
-        $result = $db->query($query);
-        $allMembersByStat = $result->fetchAll();
-        return($allMembersByStat);
+
+        $query = 'SELECT * FROM membre WHERE idStat = ?';
+
+        $request = $db->prepare($query);
+
+        $request->execute(array($idStat));
+
+        $result = $request->fetchAll();
+
+        $request->closeCursor();
+        return ($result);
+    }
+
+    function get_AllMembresWithStatut(){
+        global $db;
+
+        $query = 'SELECT * FROM membre INNER JOIN statut ON membre.idStat = statut.idStat';
+
+        $request = $db->prepare($query);
+
+        $request->execute();
+
+        $result = $request->fetchAll();
+
+        $request->closeCursor();
+        return ($result);
+    }
+
+    function get_1MembreWithStatut($numMemb){
+        global $db;
+
+        $query = 'SELECT * FROM membre INNER JOIN statut ON membre.idStat = statut.idStat WHERE numMemb = ?';
+
+        $request = $db->prepare($query);
+
+        $request->execute(array($numMemb));
+
+        $result = $request->fetch();
+
+        $request->closeCursor();
+        return ($result);
     }
 
     function get_AllMembresByMail($eMailMemb){

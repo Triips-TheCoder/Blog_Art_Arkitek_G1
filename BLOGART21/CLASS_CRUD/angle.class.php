@@ -2,13 +2,21 @@
 require_once __DIR__ . '../../CONNECT/database.php';
 
 class ANGLE {
-    function get_1Article($numAngl){
-        global $db; 
-        $query = 'SELECT * FROM ANGLE (numAngl) VALUES (?);'; 
-        $result = $db->query($query); 
-        $angle = $result->fetch(); 
-        return($angle); 
+    function get_1Angle($numAngl){
+        global $db;
 
+        $queryText = 'SELECT * FROM angle WHERE numAngl = :numAngl';
+
+        $query = $db->prepare($queryText);
+        $query->bindParam(':numAngl', $numAngl);
+
+
+        $query->execute();
+
+        $result = $query->fetch();
+
+        $query->closeCursor();
+        return ($result);
     }
 
     function get_AllAngles(){
@@ -19,62 +27,92 @@ class ANGLE {
         return($allAngles); 
     }
 
-	function get_AllAnglesByLang($numLang)
-	{
-		global $db;
-		$query = $db->prepare('SELECT * FROM angle WHERE numLang = :numLang');
-		$query->execute([
-			'numLang' => $numLang
-		]);
-		$result = $query->fetchAll(PDO::FETCH_OBJ);
-		return ($result);
-	}
+    function get_AllAnglesByLang($numLang){
+        global $db;
+
+        $query = 'SELECT * FROM angle WHERE numLang = :numLang';
+
+        $query = $db->prepare($query);
+        $query->bindParam(':numLang', $numLang);
+
+        $query->execute();
+
+        $result = $query->fetchAll();
+
+        $query->closeCursor();
+        return ($result);
+    }
     
-    function create($numAngl,$libAngl,$numLang){
+    function create($numAngl, $libAngl, $numLang){
+        global $db;
         try {
-            $db->beginTransaction(); 
-            $query = 'INSERT INTO ANGLE (numAngl, libAngl, numLang) VALUES (?, ?, ?);'; 
-            $request = $db->prepare($query);
-            $request->execute([$numAngl, $libAngl, $numLang]);
-            $db->commit(); 
-            $request->closeCursor(); 
+            $queryText = "INSERT INTO angle (numAngl, libAngl, numLang) VALUES (:numAngl, :libAngl, :numLang)";
+
+            $db->beginTransaction();
+
+            $query = $db->prepare($queryText);
+            $query->bindParam(':numAngl', $numAngl);
+            $query->bindParam(':libAngl', $libAngl);
+            $query->bindParam(':numLang', $numLang);
+
+            $query->execute();
+
+            $db->commit();
+
+            $query->closeCursor();
         }
-        catch (PDOException $e){
-            $db->rollBack();
-            $request->closeCursor();
-            die('Erreur insert ANGLE : ' . $e->getMessage());
+        catch (PDOException $e) {
+                die('Erreur insert ANGLE : ' . $e->getMessage());
+                $db->rollBack();
+                $query->closeCursor();
         }
     }
+
     
     function update($numAngl, $libAngl, $numLang){
+        global $db;
         try {
-            $db->beginTransaction(); 
-            $db->commit(); 
-            $request->closeCurosr(); 
+            $db->beginTransaction();
+
+            $queryText = "UPDATE angle SET libAngl = :libAngl, numLang = :numLang WHERE numAngl = :numAngl";
+
+            $query = $db->prepare($queryText);
+            $query->bindParam(':numAngl', $numAngl);
+            $query->bindParam(':libAngl', $libAngl);
+            $query->bindParam(':numLang', $numLang);
+
+            $query->execute();
+
+            $db->commit();
+            $query->closeCursor();
         }
-        catch(PDOException $e){
-            $db->rollBack(); 
-            $request->closeCursor(); 
-            die('Erreur insert ANGLE : ' . $e->getMessage()); 
+        catch (PDOException $e) {
+                die('Erreur update ANGLE : ' . $e->getMessage());
+                $db->rollBack();
+                $query->closeCursor();
         }
     }
-
     
-    function delete($numAngl, $libAngl, $numLang){
-
+    function delete($numAngl){
+        global $db;
         try {
-      $db->beginTransaction();
+            $queryText = "DELETE FROM angle WHERE numAngl = :numAngl";
 
+              $db->beginTransaction();
 
+            $query = $db->prepare($queryText);
+            $query->bindParam(':numAngl', $numAngl);
 
-                $db->commit();
-                $request->closeCursor();
+            $query->execute();
+
+            $db->commit();
+            $query->closeCursor();
 
         }
         catch (PDOException $e) {
-                $db->rollBack();
-                $request->closeCursor();
                 die('Erreur delete ANGLE : ' . $e->getMessage());
+                $db->rollBack();
+                $query->closeCursor();
         }
     }
-}
+}	// End of class

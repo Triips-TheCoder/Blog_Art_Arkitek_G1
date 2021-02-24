@@ -1,44 +1,32 @@
 <?
-///////////////////////////////////////////////////////////////
-//
-//  CRUD STATUT (PDO) - Code Modifié - 23 Janvier 2021
-//
-//  Script  : createStatut.php  (ETUD)   -   BLOGART21
-//
-///////////////////////////////////////////////////////////////
-
-// Mode DEV
 require_once __DIR__ . '/../../util/utilErrOn.php';
-require_once __DIR__ . '/../../util/ctrlSaisies.php';
+
+require_once __DIR__ . '/../../CLASS_CRUD/langue.class.php';
+$lang = new LANGUE;
+
 require_once __DIR__ . '/../../CLASS_CRUD/angle.class.php';
-global $db;
-$monAngle = NEW ANGLE; 
+require_once __DIR__ . '/../../CLASS_CRUD/getNextNumAngl.php';
+$angle = new ANGLE;
+$created = false;
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        // Opérateur ternaire
-        $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
+    $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
 
-        if ((isset($_POST["Submit"])) AND ($Submit === "Initialiser")) {
+    if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Initialiser")) {
 
-            header("Location: ./createAngle.php");
-        }   // End of if ((isset($_POST["submit"])) ...
+        header("Location: ./angle.php");
+    }   
 
-        // Mode création
-        if (((isset($_POST['libAngl'])) AND !empty($_POST['libAngl']))
-            AND (!empty($_POST['Submit']) AND ($Submit === "Valider"))) {
-                if(!empty($_POST['numLang']) AND isset($_POST['numLang'])){
-            // Saisies valides
+    if(!empty($_POST['libAngl']) && !empty($_POST['numLang'])){
+        $angle->create(getNextNumAngl($_POST['numLang']), $_POST['libAngl'], $_POST['numLang']);
+        $created = true;
+        $libAngl = $_POST['libAngl'];
+    }
+}
 
-            $libAngl = ctrlSaisies(($_POST['libAngl']));
-            
-            $monAngle->create($libAngl);
-
-            header("Location: ./angle.php");
-            }
-        }   // Fin if ((isset($_POST['libStat'])) ...
-    }   // Fin if ($_SERVER["REQUEST_METHOD"] == "POST")
-    include __DIR__ . '/initAngle.php';
+// Init variables form
+include __DIR__ . '/initAngle.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -103,16 +91,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <div class="global-div">
     <h1 class='title'>BLOGART21 Admin - Gestion du CRUD Angle</h1>
     <h2 class='title'>Ajout d'un Angle</h2>
+    <?php
+    if ($created) {
+        echo '<p style="color:green;">L angle "' . $_POST['libAngl'] . '" a été crée.</p>';
+    } else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        echo "<p style='color:red;'>Le mot-clé n'a pas été créé car : aucun nom n'a été rentré </p>";
 
-    <form method="post" action="./create_angle.php" enctype="multipart/form-data">
-        <input type="hidden" id="id" name="id" value="<?= isset($_GET['id']) ? $_GET['id'] : '' ?>" />
+    }
+    ?>
+    <form method="post" action="./createAngle.php" enctype="multipart/form-data">
 
         <div class="control-group">
-            <label class="control-label" for="libStat"><b>Nom de l'angle :</b></label>
-            <input class='input-text' type="text" name="libStat" id="libAngl" size="80" maxlength="80" value="<?= $libAngl; ?>" autofocus="autofocus" />
+            <label class="control-label" for="libAngl"><b>Nom de l'angle :</b></label>
+            <input class='input-text' type="text" name="libAngl" id="libAngl" size="80" maxlength="80" autofocus="autofocus" />
         </div>
 
         <div class="control-group">
+        <label for="numLang">Lang :</label>
         <select class='list-box' id="numLang" name="numLang"  onchange="select()"> 
                 <?php 
                 global $db;

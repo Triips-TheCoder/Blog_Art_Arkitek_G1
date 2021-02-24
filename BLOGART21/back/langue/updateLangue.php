@@ -28,7 +28,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         // Opérateur ternaire
         $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
 
-        if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Initialiser")) {
+        if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Annuler")) {
 
             header("Location: ./langue.php");
         }   // End of if ((isset($_POST["submit"])) ...
@@ -171,7 +171,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         <div class="control-group">
             <label for="pays">Num Pays :</label>  
             <select class='list-box' id="pays" name="pays"  onchange="select()">
-                <option value="" selected disabled hidden><? echo $frPays; ?></option>
+                <option value="<?php echo $numPays;?>" selected disabled hidden><? echo $frPays; ?></option>
                 <?php 
                 global $db;
                 $requete = 'SELECT * FROM PAYS ;';
@@ -187,7 +187,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             </select>
             <div class="controls">
                 <br><br>
-                <input class='btn btn-primary bouton1' type="submit" value="Initialiser" name="Submit" />
+                <input class='btn btn-primary bouton1' type="submit" value="Annuler" name="Submit" />
                 <input class='btn btn-success bouton2' type="submit" value="Valider" name="Submit" />
                 <br>
             </div>

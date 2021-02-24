@@ -55,24 +55,24 @@
 			}
 		}
 
+
 		function delete($idStat){
 			global $db;
-	
 			try {
+				$query = "DELETE FROM statut WHERE idStat = ?";
+	
 				$db->beginTransaction();
-				$requete= "DELETE FROM STATUT WHERE idStat = ?; ";
-				$result = $db->prepare($requete);
-				$result->execute([$idStat]);
-				$count = $result->rowCount(); 
+				 
+				$request = $db->prepare($query);
+	
+				$request->execute(array($idStat));
+	
 				$db->commit();
-				$result->closeCursor();
-	
-				}
-				catch (PDOException $e) {
-						die('Erreur delete STATUT : ' . $e->getMessage());
-						$db->rollBack();
-						$result->closeCursor();
-				}
-			}
-	
-		}	// End of class
+				 $request->closeCursor();
+			 } catch (PDOException $e) {
+				 die('Erreur delete STATUT : ' . $e->getMessage());
+				 $db->rollBack();
+				 $request->closeCursor();
+			 }
+		}
+	}	

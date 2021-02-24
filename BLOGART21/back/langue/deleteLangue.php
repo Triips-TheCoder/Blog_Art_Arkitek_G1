@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     $resultLangue = $maLangue->get_1LangueByPays($numLang);
     $thematiques = $maThematique->get_AllThematiquesByLang($numLang);
     $angles = $monAngle->get_AllAnglesByLang($numLang);
-    $motcles = $monMotCle->get_AllMotCleByLang($numLang);
+    $motcles = $monMotCle->get_AllMotClesByLang($numLang);
 
     if (!$thematiques && !$angles && !$motcles) {
         $maLangue->delete($numLang);

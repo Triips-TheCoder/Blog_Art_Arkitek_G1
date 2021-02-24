@@ -15,17 +15,14 @@
 
 		function get_1LangueByPays($numLang){
 			global $db;
-
-			$query = 'SELECT * FROM langue INNER JOIN pays ON langue.numPays = pays.numPays WHERE numLang = ?';
-
-			$request = $db->prepare($query);
-	
-			$request->execute(array($numLang));
-	
-			$result = $request->fetch();
-	
-			$request->closeCursor();
-			return ($result);
+			$queryText =
+				"SELECT * FROM langue INNER JOIN pays ON langue.numPays = pays.numPays WHERE numLang =:numLang";
+			$query = $db->prepare($queryText);
+			$query->bindParam(":numLang", $numLang);
+			$query->execute();
+			$result = $query->fetch();
+			$query->closeCursor();
+			return $result;
 		}
 
 		function get_AllLangues(){

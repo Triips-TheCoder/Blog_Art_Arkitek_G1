@@ -23,7 +23,22 @@ $maThematique = new THEMATIQUE;
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style type='text/css'>
+body{
+    padding: 15px;
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    text-decoration: none; 
+    }   
+    
+.title {
+    margin: 20px 0; 
+}
+</style>
     <style type='text/css'>
     body{
         color: black; 
@@ -32,12 +47,13 @@ $maThematique = new THEMATIQUE;
 </head>
 <body>
     <h1>BLOGART21 Admin - Gestion du CRUD Thematique</h1>
-    <table border = '3' bgcolor = 'aliceblue'>
+    <table class='table-bordered' border = '3' bgcolor = 'aliceblue'>
     <thead>
         <tr>
             <th>&nbsp;numThem&nbsp;</th>
             <th>&nbsp;libThem&nbsp;</th>
             <th>&nbsp;numLang&nbsp;</th>
+            <th colspan='2'>&nbsp;Action&nbsp;</th>
         </tr>
     </thead>
     <tbody>
@@ -49,6 +65,8 @@ $maThematique = new THEMATIQUE;
     <td><h4>&nbsp;  <?php echo $ligne['numThem']; ?> &nbsp;</h4></td>
     <td><h4>&nbsp;  <?php echo $ligne['libThem']; ?> &nbsp;</h4></td>
     <td><h4>&nbsp;  <?php echo $ligne['numLang']; ?> &nbsp;</h4></td>
+    <td><a href="./updateThematique.php?id=<?= $ligne["numThem"]; ?>"><i>Modifier</i></a></td>
+    <td><a href="./deleteThematique.php?id=<?= $ligne["libThem"]; ?>"><i>Supprimer</i></a></td>
     </tr>
 
 <?php

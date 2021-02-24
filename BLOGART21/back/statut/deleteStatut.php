@@ -1,7 +1,7 @@
-<?
+<?php
 ///////////////////////////////////////////////////////////////
 //
-//  CRUD STATUT (PDO) - Code Modifié - 09 Fevrier 2021
+//  CRUD STATUT (PDO) - Code Modifié - 23 Janvier 2021
 //
 //  Script  : deleteStatut.php  (ETUD)   -   BLOGART21
 //
@@ -9,54 +9,59 @@
 
 // Mode DEV
 require_once __DIR__ . '/../../util/utilErrOn.php';
-// Ctrl CIR
-require_once __DIR__ . '/../../util/ctrlSaisies.php';
 
-// Instence de la class STATUT
-require_once __DIR__ . '/../../CLASS_CRUD/statut.class.php';
-global $db;
-$monStatut = NEW STATUT; 
 
-// Instence de la class USER
-require_once __DIR__ . '/../../CLASS_CRUD/user.class.php';
-global $db;
-$monUser = new USER;
-$erreur = 0;
+    // Init variables form
+    include __DIR__ . '/initStatut.php';
+    $supprImpossible = false;
+    $deleted = false;
+    if(!isset($_GET['id'])) $_GET['id'] = '';
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // controle des saisies du formulaire
 
-    // Opérateur ternaire
-    $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
 
-    if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Annuler")) {
+    // insertion classe STATUT
+    require_once __DIR__ . '/../../CLASS_CRUD/statut.class.php';
+    $monStatut = new STATUT;
 
-        header("Location: ./statut.php");
-    }   // End of if ((isset($_POST["submit"])) ...
+    // Ctrl CIR
+    require_once __DIR__ . '/../../CLASS_CRUD/user.class.php';
+    $monUser = new USER;
 
-    if ((isset($_POST['id']) AND $_POST['id'] > 0)
-        AND (!empty($_POST['Submit']) AND ($Submit === "Supprimer"))) {
-            $errCIR = 0;
-            $idStat = ctrlSaisies($_POST['id']);
+    require_once __DIR__ . '/../../CLASS_CRUD/membre.class.php';
+    $monMembre = new MEMBRE;
 
-            $allUser = (int)$monUser->get_NbAllUsersByIdStat($idStat);
-            
-            
-            if($allUser < 1){
-                $count = $monStatut->delete($idStat);
-                $erreur = 0;
-                if ($erreur == 0){ 
-                    header("Location: ./statut.php");
-                }else if ($erreur == 1) {
-                    header("Location: ./deleteStatut.php");
-                    echo "<h1 style ='color: red'>Erreur delete STATUT !</h1>"; 
-                }
-            }
- 
 
-    }   // End of if ((isset($_POST['id'])
-}   // End of if ($_SERVER["REQUEST_METHOD"] === "POST")
-// Init variables form
-include __DIR__ . '/initStatut.php';
+
+    // Gestion du $_SERVER["REQUEST_METHOD"] => En POST
+    // suppression effective du statut
+    if($_SERVER["REQUEST_METHOD"] == 'POST'){
+        if($_POST["Submit"] === "Annuler"){
+            header("Location: ./statut.php");
+            die();
+        }
+
+        $idStat = $_POST["id"];
+        $resultStatut = $monStatut->get_1Statut($idStat);
+        $users = $monUser->get_AllUsersByStat($idStat);
+        $membres = $monMembre->get_AllMembreByStatut($idStat);
+
+        if(!$users && !$membres){
+            $monStatut->delete($idStat);
+            $deleted = true;
+        }else{
+            $supprImpossible = true;
+        }
+
+    }else{
+        $idStat = $_GET["id"];
+        $resultStatut = $monStatut->get_1Statut($idStat);
+    }
+    
+    if($resultStatut){
+        $libStat = $resultStatut["libStat"];
+    }
+?>
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -138,33 +143,51 @@ include __DIR__ . '/initStatut.php';
 <div class="global-div">
     <h1 class='title'>BLOGART21 Admin - Gestion du CRUD Statut</h1>
     <h2 class='title'>Suppression d'un statut</h2>
-<?
-    // Supp : récup id à supprimer
-    if (isset($_GET['id']) and $_GET['id'] > 0) {
 
-        $id = ctrlSaisies(($_GET['id']));
+    <?php 
+    if($supprImpossible){
+        echo '<div style="color:red;">';
+        echo '<p>Impossible de supprimer le statut '.$libStat.' car il est référencé par les éléments suivant :</p>';
+    
+        if($users){
+            echo '<p>Table USER (numéros valables pour cet article uniquement) :</p>';
+            echo '<ul>';
+            foreach($users as $row){
+                echo '<li>'.$row["pseudoUser"].'</li>';
+            }
+            echo '</ul>';
+        }
+    
+        if($membres){
+            echo '<p>Table MEMBRE :</p>';
+            echo '<ul>';
+            foreach($membres as $row){
+                echo '<li>'.$row["pseudoMemb"].'</li>';
+            }
+            echo '</ul>';
+        }
+    
+        echo '</div>';
+    
+    } elseif($deleted) {
+        echo '<p style="color:green;">Le statut "'.$libStat.'" a été supprimé.</p>';
+    }
+    ?>
 
-        $query = (array)$monStatut->get_1Statut($id);
+ <form method="post" action="./deleteStatut.php" enctype="multipart/form-data">
 
-        if ($query) {
-            $libStat = $query['libStat'];
-            $idStat = $query['idStat'];
-        }   
-    }   
-?>    <form method="post" action="./deleteStatut.php" enctype="multipart/form-data">
-
-        <input type="hidden" id="id" name="id" value="<?= $_GET['id'] ;?>" />
+        <input type="hidden" id="id" name="id" value="<?= $_GET["id"] ?>" />
 
         <div class="control-group">
             <label class="control-label" for="libStat"><b>Nom du statut :</b></label>
-            <input class='input-text' type="text" name="libStat" id="libStat" size="80" maxlength="80" value="<?= $libStat; ?>" disabled="disabled" />
+            <input class='input-text' type="text" name="libStat" id="libStat" size="80" maxlength="80"  value="<?= $deleted ? '' : $libStat; ?>" disabled="disabled" />
         </div>
 
         <div class="control-group">
             <div class="controls">
                 <br><br>
-                <input class='btn btn-primary bouton1' type="submit" value="Annuler" name="Submit" />
-                <input class='btn btn-danger bouton2' type="submit" value="Supprimer" name="Submit" />
+                <button class='btn btn-primary button1' type="submit" value="Annuler" name="Submit">Annuler</button>
+                <button class='btn btn-danger button2' type="submit" value="Valider" name="Submit">Valider</button>
                 <br>
             </div>
         </div>

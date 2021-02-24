@@ -25,7 +25,8 @@ $monAngle = new ANGLE;
 
     <style type='text/css'>
     body{
-        color: black; 
+        padding: 15px;
+        font-family: 'Roboto', sans-serif;
     }
     
     a {
@@ -45,6 +46,7 @@ $monAngle = new ANGLE;
             <th>&nbsp;numAngl&nbsp;</th>
             <th>&nbsp;libAngl&nbsp;</th>
             <th>&nbsp;numLang&nbsp;</th>
+            <th colspan='2'>&nbsp;Action&nbsp;</th>
         </tr>
     </thead>
     <tbody>
@@ -56,6 +58,8 @@ $monAngle = new ANGLE;
     <td><h4>&nbsp;  <?php echo $ligne['numAngl']; ?> &nbsp;</h4></td>
     <td><h4>&nbsp; <?php echo $ligne['libAngl']; ?> &nbsp;</h4></td>
     <td><h4>&nbsp; <?php echo  $ligne['numLang'];?> &nbsp;</h4></td>
+    <td><a href="./updateAngle.php?id=<?= $ligne["numAngl"]; ?>"><i>Modifier</i></a></td>
+    <td><a href="./deleteAngle.php?id=<?= $ligne["numAngl"]; ?>"><i>Supprimer</i></a></td>
     </tr>
     
 <?php
