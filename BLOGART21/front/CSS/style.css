@@ -48,6 +48,11 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: row;
+  z-index: 999;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #141414;
 }
 
 .column_left_sign {
@@ -80,6 +85,7 @@ body {
 .croix_sign a .croix_sign_img {
   width: 30px;
   height: auto;
+  height: 100%;
 }
 
 .box_title_sign {
@@ -117,13 +123,17 @@ body {
   font-family: "LGCR";
   width: 50%;
 }
+.box_formulaire_signup form input :focus {
+  border-color: #FF9185;
+  box-shadow: 0 0 8px 0 #FF9185;
+}
 .box_formulaire_signup form .champs, .box_formulaire_signup form .nom_sign input {
   padding-left: 10px;
   font-family: "LGCR";
   width: 95%;
 }
 .box_formulaire_signup form p {
-  margin-top: 23px;
+  margin-top: 3%;
   margin-bottom: 8px;
   color: #fcf8f2;
 }
@@ -191,7 +201,7 @@ body {
   color: #fcf8f296;
 }
 
-.connexion {
+.connect {
   font-family: "LGCL";
   display: flex;
   justify-content: flex-end;
@@ -200,7 +210,7 @@ body {
   height: 25px;
   margin-top: 10px;
 }
-.connexion input {
+.connect input {
   border-radius: 9px;
   border: none;
   background-color: #FF9185;
@@ -208,10 +218,8 @@ body {
   font-family: "LGCR";
 }
 
-.g-recaptcha {
-  background-color: #1A1A1A;
-  width: 45%;
-  height: 50px;
+input[type=submit]:hover {
+  box-shadow: 0 0 8px 0 #FF9185;
 }
 
 .remember {
@@ -359,17 +367,34 @@ table {
 }
 
 .header {
-  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
   height: 10vh;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   color: #fcf8f2;
-  background-color: blueviolet;
+  background-color: #101010;
+  align-items: center;
+}
+.header img {
+  width: 50px;
+  height: auto;
 }
 .header p {
   font-family: "Silk Medium";
+  display: flex;
+  align-items: center;
   font-size: 50px;
+}
+.header a {
+  font-family: "LGCR";
+  color: #fcf8f2;
+  text-decoration: none;
+}
+.header a:hover {
+  color: #FF9185;
+  transition: 400ms;
 }
 
 /* Section Newsletter */
@@ -410,7 +435,7 @@ table {
 }
 
 .ContainerFooter hr {
-  width: 100%;
+  width: 99.8%;
   color: #fcf8f2;
 }
 
@@ -468,6 +493,10 @@ table {
   height: 42px;
   align-items: center;
 }
+.ChampNewsletter ::placeholder {
+  color: #141414;
+  font-family: "LGCR";
+}
 
 .ChampNewsletter input[type=email] {
   position: absolute;
@@ -484,6 +513,7 @@ table {
 
 .ChampNewsletter input[type=email]:focus {
   border-color: #FF9185;
+  color: #141414;
   box-shadow: 0 0 8px 0 #FF9185;
 }
 
@@ -498,6 +528,21 @@ table {
 
 .is-active {
   display: block;
+}
+
+input {
+  outline: none;
+  border: 1px solid #fcf8f2;
+  color: #fcf8f2;
+}
+
+input:focus {
+  border: 1px solid #FF9185;
+  box-shadow: 0 0 8px 0 #FF9185;
+}
+
+::placeholder {
+  color: #fcf8f2;
 }
 
 /*# sourceMappingURL=style.css.map */

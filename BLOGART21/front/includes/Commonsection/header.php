@@ -8,9 +8,17 @@
 <body>
     
 <div class="header">
-<img src="/_assets/IMG/LOGO AK BLANC.png" alt="Logo">
+<a href=""><img src="/_assets/IMG/LOGO AK BLANC.png" alt="Logo"></a>
 <p>Arkitek</p> 
-<a href="#">Se connecter</a>
+<a id="se_connecter" href="#">Se connecter</a>
 
+<script>
+     document.getElementById("se_connecter").addEventListener("click", function() {
+                {
+                    document.getElementById("connexion_page").classList.remove('is-gone');
+                    document.getElementById("connexion_page").classList.add('is-active');
+                }
+            });
+</script>
 </div>
 

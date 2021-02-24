@@ -4,7 +4,21 @@
    
 }
 .is-active {
-   display: block;
-   
+display: block;
 
+
+}
+input{
+outline: none;
+border: 1px solid $blanc;
+color: $blanc;
+
+}
+input:focus {
+    border: 1px solid $rose;
+    box-shadow:0 0 8px 0 $rose;
+}
+
+::placeholder {
+    color: $blanc;
 }

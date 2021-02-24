@@ -11,6 +11,11 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: row;
+    z-index: 999;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: $noir;
 
   
 }  
@@ -45,6 +50,7 @@ body {
            a .croix_sign_img{
                 width: 30px;
                 height: auto;
+                height: 100%;
             }
         }
 
@@ -97,7 +103,7 @@ input :focus{
 
            }
         p {
-            margin-top: 23px;
+            margin-top: 3%;
             margin-bottom: 8px;
             color : $blanc;
         }
@@ -172,7 +178,7 @@ input :focus{
     }
 }
 
-.connexion {
+.connect {
     font-family: 'LGCL';
     display: flex;
     justify-content: flex-end;
@@ -188,13 +194,14 @@ input :focus{
     height: 100%;
     font-family: 'LGCR';
    }
+  
 
 }
-.g-recaptcha {
-    background-color: #1A1A1A ;
-    width: 45%;
-    height: 50px;
-    
+input[type=submit]:hover{
+   
+    box-shadow:0 0 8px 0 $rose;
+
+
 }
 
 .remember {

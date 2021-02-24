@@ -1,15 +1,32 @@
 .header {
-    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
     height: 10vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     color: $blanc;
-    background-color: blueviolet;
-
-    p {
-        font-family: 'Silk Medium';
-        font-size: 50px;
-
+    background-color: #101010;
+    align-items: center;
+  img {
+    width: 50px;
+    height: auto;
     }
+   p {
+        font-family: 'Silk Medium';
+        display: flex;
+        align-items: center;
+        font-size: 50px;
+    }
+    a {
+        font-family: 'LGCR';
+        color: $blanc;
+        text-decoration: none;
+        
+    }
+    a:hover {
+        color: $rose;
+        transition: 400ms;
+        
+        }
 }

@@ -37,7 +37,7 @@
 }
 
 .ContainerFooter hr {
-   width: 100%;
+   width: 99.8%;
    color: $blanc;
    
 }
@@ -99,6 +99,10 @@ color: $blanc;
     width: 30vw;
     height: 42px;
     align-items: center;
+    ::placeholder {
+        color: $noir;
+        font-family: 'LGCR';
+    }
 }
 
 .ChampNewsletter input[type=email]{
@@ -116,6 +120,7 @@ color: $blanc;
   
 .ChampNewsletter input[type=email]:focus{
     border-color: $rose;
+    color: $noir;
     box-shadow:0 0 8px 0 $rose;
   }
  
