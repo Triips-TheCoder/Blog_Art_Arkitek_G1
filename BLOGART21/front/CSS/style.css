@@ -1,0 +1,361 @@
+@font-face {
+  font-family: "LGCR";
+  src: url("/_assets/Font/Louis George Cafe.ttf") format("TrueType");
+}
+@font-face {
+  font-family: "LGCB";
+  src: url("/_assets/Font/Louis George Cafe Bold.ttf") format("TrueType");
+}
+@font-face {
+  font-family: "LGCBI";
+  src: url("/_assets/Font/Louis George Cafe Bold Italic.ttf") format("TrueType");
+}
+@font-face {
+  font-family: "LGCL";
+  src: url("/_assets/Font/Louis George Cafe Light.ttf") format("TrueType");
+}
+@font-face {
+  font-family: "LGCLI";
+  src: url("/_assets/Font/Louis George Cafe Light Italic.ttf") format("TrueType");
+}
+@font-face {
+  font-family: "Silk Regular";
+  src: url("/_assets/Font/Silk Serif Regular.otf") format("OpenType");
+}
+@font-face {
+  font-family: "Silk Medium";
+  src: url("/_assets/Font/Silk Serif Medium.otf") format("OpenType");
+}
+@font-face {
+  font-family: "Silk Bold";
+  src: url("/_assets/Font/Silk Serif Bold.otf") format("OpenType");
+}
+@font-face {
+  font-family: "Silk Black";
+  src: url("/_assets/Font/Silk Serif Black.otf") format("OpenType");
+}
+@font-face {
+  font-family: "Silk Light";
+  src: url("/_assets/Font/Silk Serif Light.otf") format("OpenType");
+}
+body {
+  background-color: #141414;
+  width: 100%;
+}
+
+.column_sign {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.column_left_sign {
+  height: 100vh;
+  width: 50%;
+}
+.column_left_sign img {
+  height: 100vh;
+  width: 100%;
+}
+
+.column_right_sign {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.column_right_sign .box_croix_sign {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  height: 10vh;
+  width: 100%;
+}
+
+.croix_sign {
+  width: 20%;
+}
+.croix_sign a .croix_sign_img {
+  width: 30px;
+  height: auto;
+}
+
+.box_title_sign {
+  width: 100%;
+  color: #fcf8f2;
+  font-size: 50px;
+  line-height: 50px;
+}
+.box_title_sign p {
+  padding-left: 106px;
+}
+
+.deja_inscrit {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 18px;
+  font-family: "LGCLI";
+}
+.deja_inscrit a {
+  color: #FF9185;
+  text-decoration: none;
+  transition: 0.4s;
+}
+.deja_inscrit a :hover {
+  text-decoration: underline;
+}
+
+.box_formulaire_signup {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+.box_formulaire_signup form {
+  font-family: "LGCR";
+  width: 50%;
+}
+.box_formulaire_signup form .champs, .box_formulaire_signup form .nom_sign input {
+  padding-left: 10px;
+  font-family: "LGCR";
+  width: 95%;
+}
+.box_formulaire_signup form p {
+  margin-top: 23px;
+  margin-bottom: 8px;
+  color: #fcf8f2;
+}
+.box_formulaire_signup form .nom_prenom_sign {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.box_formulaire_signup form .nom_prenom_sign input {
+  border-radius: 3px;
+  border: solid 1px #fcf8f2;
+  outline: none;
+  background-color: #1A1A1A;
+  width: 100%;
+  height: 42px;
+}
+.box_formulaire_signup form .nom_prenom_sign .nom_sign {
+  justify-self: start;
+  width: 47.5%;
+}
+.box_formulaire_signup form .nom_prenom_sign .nom_sign input {
+  width: 90%;
+}
+.box_formulaire_signup form .nom_prenom_sign .prenom_sign {
+  justify-self: end;
+  width: 47.5%;
+}
+.box_formulaire_signup form .nom_prenom_sign .prenom_sign input {
+  padding-left: 10px;
+  width: 90%;
+}
+.box_formulaire_signup form .champs {
+  border-radius: 3px;
+  border: none;
+  outline: none;
+  border: solid 1px #fcf8f2;
+  background-color: #1A1A1A;
+  width: 95%;
+  height: 42px;
+}
+.box_formulaire_signup form label {
+  color: #fcf8f2;
+}
+.box_formulaire_signup form .checkbox_sign {
+  margin-top: 10px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  color: #fcf8f2;
+  font-size: 12px;
+}
+.box_formulaire_signup form .checkbox_sign input {
+  width: auto;
+}
+.box_formulaire_signup form .checkbox_sign a {
+  color: #FF9185;
+  text-decoration: none;
+  transition: 400ms;
+}
+.box_formulaire_signup form .checkbox_sign a :hover {
+  text-decoration: underline;
+}
+.box_formulaire_signup form .required_caracter {
+  font-size: 11px;
+  color: #fcf8f296;
+}
+
+.connexion {
+  font-family: "LGCL";
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 25px;
+  margin-top: 10px;
+}
+.connexion input {
+  border-radius: 9px;
+  border: none;
+  background-color: #FF9185;
+  height: 100%;
+  font-family: "LGCR";
+}
+
+.g-recaptcha {
+  background-color: #1A1A1A;
+  width: 45%;
+  height: 50px;
+}
+
+.remember {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.remember .check {
+  height: fit-content;
+  align-items: center;
+}
+
+/* NE PAS TOUCHER !!!!!!!
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*# sourceMappingURL=style.css.map */
