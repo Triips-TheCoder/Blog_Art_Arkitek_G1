@@ -13,5 +13,5 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
 <footer>
     <br /><br /><hr />
-    <h2>Retour à la gestion des articles : <a href="./article.php">CRUD Article</a></h2>
+    <h2>Creer un article : <a href="./createArticle.php">Création d'un Article</a></h2>
 </footer>

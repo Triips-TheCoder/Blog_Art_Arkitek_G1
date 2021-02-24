@@ -50,12 +50,16 @@ $maThematique = new THEMATIQUE;
     <td><h4>&nbsp;  <?php echo $ligne['libThem']; ?> &nbsp;</h4></td>
     <td><h4>&nbsp;  <?php echo $ligne['numLang']; ?> &nbsp;</h4></td>
     </tr>
-    
+
 <?php
     }
 ?> 
     </tbody> 
     </table>
+    <footer>
+    <br /><br /><hr />
+    <h2>Créer une thématique : <a href="./createThematique.php">Creer une thématique</a></h2>
+    </footer>
 <?php 
 require_once __DIR__ . '/footer.php';
 ?>

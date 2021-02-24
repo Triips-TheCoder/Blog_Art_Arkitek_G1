@@ -12,7 +12,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 require_once __DIR__ . '/../../CLASS_CRUD/membre.class.php'; 
 global $db; 
 $monMembre = new MEMBRE;
-
+$created = false; 
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -44,11 +44,13 @@ $monMembre = new MEMBRE;
             <th>&nbsp;dtCreaMemb&nbsp;</th>
             <th>&nbsp;souvenirMemb&nbsp;</th>
             <th>&nbsp;accordMemb&nbsp;</th>
+            <th>&nbsp;Statut&nbsp;</th>
+            <th colspan='2'>&nbsp;Action&nbsp;</th>
         </tr>
     </thead>
     <tbody>
 <?php 
-    $allMembres = $monMembre -> get_AllMembres(); 
+    $allMembres = $monMembre -> get_AllMembersByStat(); 
     foreach($allMembres as $ligne){ 
 ?>
     <tr>
@@ -61,6 +63,11 @@ $monMembre = new MEMBRE;
     <td><h4>&nbsp;  <?php echo $ligne['dtCreaMemb']; ?> &nbsp;</h4></td>
     <td><h4>&nbsp;  <?php echo $ligne['souvenirMemb']; ?> &nbsp;</h4></td>
     <td><h4>&nbsp;  <?php echo $ligne['accordMemb']; ?> &nbsp;</h4></td>
+    <td><h4>&nbsp;  <?php echo $ligne['libStat']; ?> &nbsp;</h4></td>
+    <td>&nbsp;<a href="./updateMembre.php?id=<?= $ligne['numMemb']; ?>"><i>Modifier</i></a>&nbsp;
+	<br/></td> 
+	<td>&nbsp;<a href="./deleteMembre.php?id=<?= $ligne['numMemb']; ?>"><i>Supprimer</i></a>&nbsp;
+	<br/></td>
     </tr>
     
 <?php
@@ -71,10 +78,12 @@ $monMembre = new MEMBRE;
 
     <footer>
     <br /><br /><hr />
-    <h2>Créer un membre : <a href="./createMembre.php">CREER Membre</a></h2>
+    <h2>Créer un membre : <a href="./createMembre.php">Creer Membre</a></h2>
     </footer>
 <?php 
-
+    if($created == true){
+        echo "<p style ='color: green'>Le membre a bien été crée.</p>";
+    }
 require_once __DIR__ . '/footer.php';
 ?>
 </body>

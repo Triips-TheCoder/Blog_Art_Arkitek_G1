@@ -55,6 +55,10 @@ $monAngle = new ANGLE;
 ?> 
     </tbody> 
     </table>
+    <footer>
+    <br /><br /><hr />
+    <h2>Créer un angle : <a href="./createAngle.php">Creer un Angle</a></h2>
+    </footer>
 <?php 
 require_once __DIR__ . '/footer.php';
 ?>

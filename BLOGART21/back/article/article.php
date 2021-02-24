@@ -47,6 +47,7 @@ $monArticle = new ARTICLE;
             <th>&nbsp;urlPhotoArt&nbsp;</th>
             <th>&nbsp;numAngl&nbsp;</th>
             <th>&nbsp;numThem&nbsp;</th>
+            <th colspan="2">&nbsp;Action&nbsp;</th>
         </tr>
     </thead>
     <tbody>
@@ -65,16 +66,21 @@ $monArticle = new ARTICLE;
     <td><h4>&nbsp; <?php echo $ligne['libSsTitr2Art']; ?> &nbsp;</h4></td>
     <td><h4>&nbsp;  <?php echo $ligne['parag3Art']; ?> &nbsp;</h4></td>
     <td><h4>&nbsp; <?php echo $ligne['libConclArt']; ?> &nbsp;</h4></td>
-    <td><h4>&nbsp; <?php echo  $ligne['numAngl'];?> &nbsp;</h4></td>
+    <td><h4>&nbsp; <?php echo $ligne['urlPhotArt']; ?> &nbsp;</h4></td>
+    <td><h4>&nbsp; <?php echo $ligne['numAngl']; ?> &nbsp;</h4></td>
     <td><h4>&nbsp; <?php echo $ligne['numThem']; ?> &nbsp;</h4></td>
+    <td><a href="./updateArticle.php?id=<?= $ligne['numArt'];?>"><i>Modifier</i></a></td>
+    <td><a href="./deleteArticle.php?id=<?= $ligne['numArt'];?>"><i>Supprimer</i></a></td>
     </tr>
     
+
 <?php
     }
 ?> 
     </tbody> 
     </table>
 <?php 
+require_once __DIR__ . '/footerArticle.php';
 require_once __DIR__ . '/footer.php';
 ?>
 </body>

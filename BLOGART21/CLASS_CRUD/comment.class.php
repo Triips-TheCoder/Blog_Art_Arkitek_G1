@@ -21,6 +21,16 @@
 
 		}
 
+		function get_AllCommentsByArticle($numArt){
+		global $db;
+		$query = $db->prepare("SELECT * FROM comment WHERE numArt=:numArt");
+		$query->execute([
+			'numArt' => $numArt
+		]);
+		$result = $query->fetchAll(PDO::FETCH_OBJ);
+		return $result;
+		}
+
 		function create($libCom){
 
 			try {
