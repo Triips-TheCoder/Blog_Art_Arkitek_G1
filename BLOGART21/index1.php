@@ -19,6 +19,7 @@ require_once __DIR__ . '/util/utilErrOn.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
 				div {
 					padding-top: 60px;

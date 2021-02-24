@@ -35,6 +35,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
         .error {
             padding: 2px;
@@ -43,17 +44,26 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             font-style: italic;
             border-radius: 5px;
         }
+
+        a {
+        text-decoration: none; 
+        }   
+        
+        .title {
+            margin: 20px 0; 
+        }
+
     </style>
 </head>
 <body>
-	<h1>BLOGART21 Admin - Gestion du CRUD Statut</h1>
+	<h1 class='title'>BLOGART21 Admin - Gestion du CRUD Statut</h1>
 
 	<hr /><br />
 	<h2>Nouveau statut :&nbsp;<a href="./createStatut.php"><i>Créer un statut</i></a></h2>
 	<br /><hr />
 	<h2>Tous les statuts</h2>
 
-	<table border="3" bgcolor="aliceblue">
+	<table class=' tableau table-bordered' border="3" bgcolor="aliceblue">
     <thead>
         <tr>
             <th>&nbsp;Numéro&nbsp;</th>
@@ -65,7 +75,6 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 <?php
   $allStatuts = $monStatut->get_AllStatuts();
   foreach($allStatuts as $row) {
-
 
 ?>
         <tr>

@@ -23,16 +23,27 @@ $created = false;
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style type='text/css'>
-    body{
-        color: black; 
+    .error {
+        padding: 2px;
+        border: solid 0px black;
+        color: red;
+        font-style: italic;
+        border-radius: 5px;
     }
-    </style>
+    a {
+    text-decoration: none; 
+    }   
+    
+    .title {
+        margin: 20px 0; 
+    }
+</style>
 </head>
 <body>
     <h1>BLOGART21 Admin - Gestion du CRUD Membres</h1>
-    <table border = '3' bgcolor = 'aliceblue'>
+    <table class='table-bordered' border = '3' bgcolor = 'aliceblue'>
     <thead>
         <tr>
             <th>&nbsp;numMemb&nbsp;</th>

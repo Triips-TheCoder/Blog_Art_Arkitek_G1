@@ -13,5 +13,5 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
 <footer>
     <br /><br /><hr />
-    <h2>Créez une langue<a href="./createLangue.php">CRUD Langue</a></h2>
+    <h2>Créez une langue <a href="./createLangue.php"> CRUD Langue</a></h2>
 </footer>

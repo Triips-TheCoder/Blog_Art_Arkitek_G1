@@ -48,27 +48,72 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style> 
+    body {
+        font-family: 'Roboto', sans-serif;
+    }
 
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    .global-div {
+        width: 80%; 
+        padding: 10px;
+        border: 1px solid grey; 
+        border-radius: 15px; 
+        margin: 10px auto 0px auto;
+    }
+    .title {
+        margin: 40px auto; 
+        text-align: center; 
+    }
+    
+    .input-text {
+        width: 20%;
+        margin-bottom: 20px;
+    }
+
+    .controls {
+        display: flex; 
+        justify-content: space-between;
+        width: 250px;
+
+    }
+
+    .control-group {
+        display: flex; 
+        flex-direction: column; 
+        align-items: center;
+
+    }
+
+    .bouton1 {
+        width: 45%;
+    }
+
+    .bouton2 {
+        width: 45%; 
+    }
+
+    .list-box {
+        margin: 10px auto;
+    }
+</style>
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Angle</h1>
-    <h2>Ajout d'un Angle</h2>
+<div class="global-div">
+    <h1 class='title'>BLOGART21 Admin - Gestion du CRUD Angle</h1>
+    <h2 class='title'>Ajout d'un Angle</h2>
 
     <form method="post" action="./create_angle.php" enctype="multipart/form-data">
-
-      <fieldset>
-        <legend class="legend1">Formulaire Angle...</legend>
-
         <input type="hidden" id="id" name="id" value="<?= isset($_GET['id']) ? $_GET['id'] : '' ?>" />
 
         <div class="control-group">
-            <label class="control-label" for="libStat"><b>Nom de l'angle :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libStat" id="libAngl" size="80" maxlength="80" value="<?= $libAngl; ?>" autofocus="autofocus" />
+            <label class="control-label" for="libStat"><b>Nom de l'angle :</b></label>
+            <input class='input-text' type="text" name="libStat" id="libAngl" size="80" maxlength="80" value="<?= $libAngl; ?>" autofocus="autofocus" />
         </div>
 
         <div class="control-group">
-        <select id="numLang" name="numLang"  onchange="select()"> 
+        <select class='list-box' id="numLang" name="numLang"  onchange="select()"> 
                 <?php 
                 global $db;
                 $requete = 'SELECT numLang, lib1Lang FROM LANGUE ;';
@@ -84,14 +129,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </select>
             <div class="controls">
                 <br><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Initialiser" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
+                <input  class='btn btn-primary bouton1' type="submit" value="Initialiser" name="Submit" />
+                <input  class='btn btn-success bouton2' type="submit" value="Valider" name="Submit" />
                 <br>
             </div>
         </div>
-      </fieldset>
+</div>
     </form>
 <?
 require_once __DIR__ . '/footerAngle.php';

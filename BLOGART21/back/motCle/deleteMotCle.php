@@ -75,12 +75,10 @@ include __DIR__ . '/initMotCle.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
-        body{
-            color: #000; 
-        }
-        #p1 {
+         #p1 {
             max-width: 600px;
             width: 600px;
             max-height: 200px;
@@ -93,6 +91,7 @@ include __DIR__ . '/initMotCle.php';
             -webkit-border-radius: 8px;
             border-radius: 8px;
         }
+
         .error {
             padding: 2px;
             border: solid 0px black;
@@ -100,11 +99,63 @@ include __DIR__ . '/initMotCle.php';
             font-style: italic;
             border-radius: 5px;
         }
+    body {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .global-div {
+        width: 80%; 
+        padding: 10px;
+        border: 1px solid grey; 
+        border-radius: 15px; 
+        margin: 10px auto 0px auto;
+    }
+    .title {
+        margin: 40px auto; 
+        text-align: center; 
+    }
+    
+    .input-text {
+        width: 20%;
+        margin-bottom: 20px;
+    }
+
+    .controls {
+        display: flex; 
+        justify-content: space-between;
+        width: 250px;
+
+    }
+
+    .control-group {
+        display: flex; 
+        flex-direction: column; 
+        align-items: center;
+
+    }
+
+    .bouton1 {
+        width: 45%;
+    }
+
+    .bouton2 {
+        width: 45%; 
+    }
+
+    .list-box {
+        margin: 10px auto;
+    }
+
+    .warning {
+        text-align: center; 
+        margin: 10px;
+    }
     </style>
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD MotCle</h1>
-    <h2>Suppression d'un MotCle</h2>
+<div class="global-div">
+    <h1 class='title'>BLOGART21 Admin - Gestion du CRUD MotCle</h1>
+    <h2 class='title'>Suppression d'un MotCle</h2>
 <?
      // Modif : récup id à modifier
     if (isset($_GET['id']) AND !empty($_GET['id'])) {
@@ -124,33 +175,27 @@ include __DIR__ . '/initMotCle.php';
 ?>    
 
     <form method="post" action="./deleteMotCle.php" enctype="multipart/form-data">
-
-        <fieldset>
-            <legend class="legend1">Modification Mot Clé...</legend>
-
             <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
 
             <div class="control-group">
                 <label class="control-label" for="libMotCle"><b>Mot Clé :</b></label>
-                <input type="text" name="libMotCle" id="libMotCle" size="60" maxlength="80" value="<?= $libMotCle; ?>" autofocus="autofocus" />
+                <input class='input-text' type="text" name="libMotCle" id="libMotCle" size="60" maxlength="80" value="<?= $libMotCle; ?>" autofocus="autofocus" />
             </div>
             <br>
             <div class="control-group">
                 <label for="lib1Lang">Langue :</label>  
-                <input type="text" name="lib1Lang" id="lib1Lang" size="60" maxlength="80" value="<?= $lib1Lang; ?>" autofocus="autofocus" />
+                <input class='input-text' type="text" name="lib1Lang" id="lib1Lang" size="60" maxlength="80" value="<?= $lib1Lang; ?>" autofocus="autofocus" />
             </div>
             <div class="control-group">
                 <div class="controls">
                     <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="submit" value="Annuler" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="submit" value="Supprimer" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
+                    <input class='btn btn-primary' type="submit" value="Annuler" name="Submit" />
+                    <input class='btn btn-success' type="submit" value="Supprimer" name="Submit" />
                     <br>
                 </div>
             </div>
-            <p style ='color : red'>ATTENTION ! Avant de supprimer cette occurence vérifier si elle ne se trouve pas en clé étrangère dans une autre table !</p>
-        </fieldset>
+            <p class='warning' style ='color : red'>ATTENTION ! Avant de supprimer cette occurence vérifier si elle ne se trouve pas en clé étrangère dans une autre table !</p>
+        </div>
     </form>
     <br>
 <?php

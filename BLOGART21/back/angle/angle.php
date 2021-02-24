@@ -21,17 +21,25 @@ $monAngle = new ANGLE;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
     <style type='text/css'>
     body{
         color: black; 
+    }
+    
+    a {
+        text-decoration: none; 
+        }   
+        
+    .title {
+        margin: 20px 0; 
     }
     </style>
 </head>
 <body>
     <h1>BLOGART21 Admin - Gestion du CRUD Langue</h1>
-    <table border = '3' bgcolor = 'aliceblue'>
+    <table class='table-bordered' border = '3' bgcolor = 'aliceblue'>
     <thead>
         <tr>
             <th>&nbsp;numAngl&nbsp;</th>

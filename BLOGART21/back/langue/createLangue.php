@@ -75,31 +75,77 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+<style> 
+    body {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .global-div {
+        width: 80%; 
+        padding: 10px;
+        border: 1px solid grey; 
+        border-radius: 15px; 
+        margin: 10px auto 0px auto;
+    }
+    .title {
+        margin: 40px auto; 
+        text-align: center; 
+    }
+    
+    .input-text {
+        width: 20%;
+        margin-bottom: 20px;
+    }
+
+    .controls {
+        display: flex; 
+        justify-content: space-between;
+        width: 250px;
+
+    }
+
+    .control-group {
+        display: flex; 
+        flex-direction: column; 
+        align-items: center;
+
+    }
+
+    .bouton1 {
+        width: 45%;
+    }
+
+    .bouton2 {
+        width: 45%; 
+    }
+
+    .list-box {
+        margin: 10px auto;
+    }
+</style>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Langue</h1>
-    <h2>Ajout d'une langue</h2>
+<div class="global-div">
+    <h1 class='title'>BLOGART21 Admin - Gestion du CRUD Langue</h1>
+    <h2 class='title'>Ajout d'une langue</h2>
 
     <form method="post" action="./createLangue.php" enctype="multipart/form-data">
-
-      <fieldset>
-        <legend class="legend1">Formulaire Langue...</legend>
 
         <!--<input type="hidden" id="id" name="id" value=": /*$_GET['id']; */-->
         
         <div class="control-group">
-            <label class="control-label" for="lib1Lang"><b>Langue libellé court&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="lib1Lang" id="lib1Lang" size="80" maxlength="80" value="<?= $lib1Lang; ?>" autofocus="autofocus" />
+            <label class="control-label" for="lib1Lang"><b>Langue libellé court :</b></label>
+            <input class='input-text' type="text" name="lib1Lang" id="lib1Lang" size="80" maxlength="80" value="<?= $lib1Lang; ?>" autofocus="autofocus" />
         </div>
         <div class="control-group">
-            <label class="control-label" for="lib2Lang"><b>Langue libellé long&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="lib2Lang" id="lib2Lang" size="80" maxlength="80" value="<?= $lib2Lang; ?>" autofocus="autofocus" />
+            <label class="control-label" for="lib2Lang"><b>Langue libellé long :</b></label>
+            <input class='input-text' type="text" name="lib2Lang" id="lib2Lang" size="80" maxlength="80" value="<?= $lib2Lang; ?>" autofocus="autofocus" />
         </div>
         <div class="control-group">
             <label for="pays">Num Pays :</label>  
-            <select id="pays" name="pays"  onchange="select()">
+            <select class='list-box' id="pays" name="pays"  onchange="select()">
                 <option value="" selected disabled hidden>Sélectionner Pays</option>
                 <?php 
                 global $db;
@@ -116,15 +162,12 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
             </select>
             <div class="controls">
                 <br><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Initialiser" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
+                <input class='btn btn-primary bouton1' type="submit" value="Initialiser" name="Submit" />
+                <input class='btn btn-success bouton2' type="submit" value="Valider" name="Submit" />
                 <br>
             </div>
         </div>
-
-      </fieldset>
+        </div>
     </form>
     <footer>
     <br /><br /><hr />

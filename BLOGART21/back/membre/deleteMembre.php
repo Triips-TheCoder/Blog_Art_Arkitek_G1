@@ -45,9 +45,11 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-
-    <link href="../css/style.css" rel="stylesheet" disabled type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style disabled type="text/css">
+    body {
+        padding: 40px;
+    }
         #p1 {
             max-width: 600px;
             width: 600px;
@@ -82,7 +84,6 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
 <body>
     <h1>BLOGART21 Admin - Gestion du CRUD Membre</h1>
-    <h2>Suppression d'un Membre</h2>
 
     <form method="post" action=".\deleteMembre.php">
     <fieldset>
@@ -122,8 +123,8 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         <label>J'accepte les conditions d'utilisation</label>
         <br>
         <br>
-        <input type="submit" name="Submit" value="Annuler">
-        <input type="submit" name="Submit" value="Valider">
+        <input class='btn btn-primary' type="submit" name="Submit" value="Annuler">
+        <input class='btn btn-success' type="submit" name="Submit" value="Valider">
         <br>
         <br>
     <fieldset>

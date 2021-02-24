@@ -21,7 +21,7 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
         if ((isset($_POST["Submit"])) AND ($_POST["Submit"] === "Initialiser")) {
             $reload = $_POST['id'];
-            header("Location: ./updateMotCle.php?id=".$reload);
+            header("Location: ./motCle.php?id=".$reload);
         }   // End of if ((isset($_POST["submit"])) ...
 
         // Mode création   
@@ -66,11 +66,65 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+    a{
+        text-decoration: none; 
+    }
+     body {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .global-div {
+        width: 80%; 
+        padding: 10px;
+        border: 1px solid grey; 
+        border-radius: 15px; 
+        margin: 10px auto 0px auto;
+    }
+    .title {
+        margin: 30px auto; 
+        text-align: center; 
+    }
+    
+    .input-text {
+        width: 20%;
+        margin-bottom: 20px;
+    }
+    
+
+    .controls {
+        display: flex; 
+        justify-content: space-between;
+        width: 250px;
+
+    }
+
+    .control-group {
+        display: flex; 
+        flex-direction: column; 
+        align-items: center;
+
+    }
+
+    .bouton1 {
+        width: 45%;
+    }
+
+    .bouton2 {
+        width: 45%; 
+    }
+
+    .list-box {
+        margin: 10px auto;
+    }
+    </style>
 </head>
 <body>
-    <h1>BLOGART21 Admin - Gestion du CRUD Mots Clés</h1>
-    <h2>Modification d'un Mot Clé</h2>
+<div class="global-div">
+    <h1 class='title'>BLOGART21 Admin - Gestion du CRUD Mots Clés</h1>
+    <h2 class='title'>Modification d'un Mot Clé</h2>
 <?
     // Modif : récup id à modifier
     if (isset($_GET['id']) AND !empty($_GET['id'])) {
@@ -89,20 +143,16 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
 
 ?>
     <form method="post" action="./updateMotCle.php" enctype="multipart/form-data">
-
-      <fieldset>
-        <legend class="legend1">Modification Mot Clé...</legend>
-
         <input type="hidden" id="id" name="id" value="<?= $_GET['id']; ?>" />
 
         <div class="control-group">
-            <label class="control-label" for="libMotCle"><b>Mot Clé&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></label>
-            <input type="text" name="libMotCle" id="libMotCle" size="60" maxlength="80" value="<?= $libMotCle; ?>" autofocus="autofocus" />
+            <label class="control-label" for="libMotCle"><b>Mot Clé</b></label>
+            <input class='input-text' type="text" name="libMotCle" id="libMotCle" size="60" maxlength="80" value="<?= $libMotCle; ?>" autofocus="autofocus" />
         </div>
         
         <div class="control-group">
             <label for="numLang">Langue :</label>  
-            <select id="numLang" name="numLang"  onchange="select()"> 
+            <select class='list-box' id="numLang" name="numLang"  onchange="select()"> 
                 <?php
                 global $db;
                 $requete = 'SELECT numLang, lib1Lang FROM LANGUE ;';
@@ -120,14 +170,12 @@ require_once __DIR__ . '/../../util/utilErrOn.php';
         <div class="control-group">
             <div class="controls">
                 <br><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Initialiser" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="submit" value="Valider" style="cursor:pointer; padding:5px 20px; background-color:lightsteelblue; border:dotted 2px grey; border-radius:5px;" name="Submit" />
+                <input class='btn btn-primary' type="submit" value="Initialiser" name="Submit" />
+                <input class= 'btn btn-success' type="submit" value="Valider" name="Submit" />
                 <br>
             </div>
         </div>
-      </fieldset>
+      </div>
     </form>
 <?php
 require_once __DIR__ . '/footerMotCle.php';

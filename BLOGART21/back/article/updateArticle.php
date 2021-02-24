@@ -222,7 +222,7 @@ $thematics = $thematique->get_AllThematiques();
             ?>
         </div>
     </main>
-    
+
 </body>
 
 </html>
