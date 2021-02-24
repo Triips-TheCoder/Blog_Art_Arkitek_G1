@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-
-</head>
-
-<body>
 
 
-    <div class="column_sign">
+    <div class="column_sign ">
         <div class="column_left_sign">
             <img class="bg_sign" src="/_assets/IMG/P1188213.jpg" alt="">
         </div>
@@ -74,6 +66,6 @@
             </div>
         </div>
     </div>
-</body>
-
-</html>
+    <script>
+    
+  

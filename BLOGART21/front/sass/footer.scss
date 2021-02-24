@@ -1,0 +1,127 @@
+/* Section Newsletter */
+
+
+
+.ContainerFooter{
+    background-color: #101010;
+    z-index: 1;
+    
+}.Newsletter{
+    width: 100%;
+    height: 368px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;}
+
+.TitreNewsletter {
+    font-family: "Silk Medium";
+    font-size: 30px;
+    color: #FCF8F2;
+    margin-top: 34px;
+}
+
+.AccrocheNewsletter{
+    font-family:'LGCR';
+    font-size: 18px;
+    color: $blanc;
+    margin-top: 67px;
+    margin-bottom: 48px;
+}
+
+.DroitNewsletter{
+    font-family:'LGCR';
+    font-size: 14px;
+    color: #FCF8F2;
+    align-self: center ;
+    margin-top: 38px;
+}
+
+.ContainerFooter hr {
+   width: 100%;
+   color: $blanc;
+   
+}
+
+.Footer{
+    display: flex;
+    height: 234px;
+    margin-top: 60px;
+    padding-left: 93px;
+    padding-right: 93px;
+    justify-content: space-between;
+    a {
+    font-family: "LGCR";
+    text-decoration: none;
+    color: $blanc;
+    margin: 0;
+    transition: 400ms;
+}
+    a:hover {
+        color: $rose;
+
+    }
+    
+}
+
+.InstagramFooter{
+    display: flex;
+  
+}
+.InstagramFooter .FooterInstaLogo{
+    width: 18px;
+}
+
+.Footer p{
+    color: $blanc;
+    margin: 0;
+}
+
+.Footer img{
+color: $blanc;
+    width: 50px;
+    height: auto;
+}
+
+.ChampNewsletter img{
+   right: 0;
+    position: absolute;
+    height: 80%;
+    width: auto;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-right: 2%;
+    
+
+}
+
+.ChampNewsletter{
+    position: relative;
+    width: 30vw;
+    height: 42px;
+    align-items: center;
+}
+
+.ChampNewsletter input[type=email]{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    border:2px solid;
+    border-radius:4px;
+    outline:none;
+    padding:8px;
+    box-sizing:border-box;
+    transition:.3s;
+  }
+  
+.ChampNewsletter input[type=email]:focus{
+    border-color: $rose;
+    box-shadow:0 0 8px 0 $rose;
+  }
+ 
+  .InstagramFooter .FooterInstaLogo img{
+      width: 100%;
+      height: auto;
+      
+      
+  }

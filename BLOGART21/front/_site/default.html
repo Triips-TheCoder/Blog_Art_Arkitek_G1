@@ -13,10 +13,19 @@
 </style>
 </head>
 <body>
-   <div id="inscription"></div>
+   <div id="header"></div>
+  <div class="is-gone"id="inscription"></div>
+
+  <div id="footer"></div>
    
    <script> 
        
-          $("#inscription").load("/includes/Inscription.html");  </script>
+          $("#inscription").load("/includes/Inscription.php");  
+          $("#header").load("/includes/Commonsection/header.php"); 
+          
+          
+          $("#footer").load("/includes/Commonsection/footer.php"); 
+          
+          </script>
 </body>
 </html>

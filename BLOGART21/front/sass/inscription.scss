@@ -83,7 +83,11 @@ height: 100%;
    
     form {
         font-family: 'LGCR';
+input :focus{
+    border-color: $rose;
+    box-shadow:0 0 8px 0 $rose;
 
+}
            
            width: 50%;
            .champs, .nom_sign input  {

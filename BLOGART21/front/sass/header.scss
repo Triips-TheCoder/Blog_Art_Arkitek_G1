@@ -1,0 +1,15 @@
+.header {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: $blanc;
+    background-color: blueviolet;
+
+    p {
+        font-family: 'Silk Medium';
+        font-size: 50px;
+
+    }
+}
