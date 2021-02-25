@@ -5,7 +5,7 @@ require_once __DIR__ . '/../../util/ctrlSaisies.php';
 
 
 $monMembre = new MEMBRE;
-$created = "";
+$created = false;
 $passOk = 0; 
 $emailOk = 0;
 
@@ -96,10 +96,11 @@ include __DIR__ . '/initMembre.php'
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
     body{
         color: #000; 
+        padding: 20px;
     }
     .champ-obligatoire{
         background: none; 
@@ -114,6 +115,11 @@ include __DIR__ . '/initMembre.php'
 <body>
     <h1>BLOGART21 Admin - Gestion du CRUD Membre</h1>
     <h2>Ajout d'un Membre</h2>
+<?
+    if ($created) {
+        echo '<p style="color:green;">Le membre "' . $_POST['pseudoMemb'] . '" a été créé.</p>';
+    }
+?>
     <br>
     <form method="post" action=".\createMembre.php" enctype="multipart/form-data">
         <fieldset>
@@ -122,31 +128,31 @@ include __DIR__ . '/initMembre.php'
                 <label class='control-label'>Prénom:</label>
                 <span class='champ-obligatoire'>*</span>
                 <br>
-                <input pattern="^[A-Za-z]{2,70}$" type="text" name="prenomMemb" placeholder="Prénom">
+                <input pattern="^[A-Za-z]{2,70}$" type="text" name="prenomMemb" placeholder="Prénom" required>
                 <br>
                 <br>
                 <label>Nom:</label>
                 <span class='champ-obligatoire'>*</span>
                 <br>
-                <input pattern="^[A-Za-z]{2,70}$" type="text" name="nomMemb" placeholder="Nom" >
+                <input pattern="^[A-Za-z]{2,70}$" type="text" name="nomMemb" placeholder="Nom" required>
                 <br> 
                 <br>
                 <label>Pseudo: (entre 7 et 70 caractères)</label>
                 <span class='champ-obligatoire'>*</span>
                 <br>
-                <input pattern="^[\w\.](' ')?([\w\.])?{7,70}$" type="text" name="pseudoMemb" placeholder="Pseudo" minlength='7' maxlength = '70' >
+                <input pattern="^[\w\.](' ')?([\w\.])?{7,70}$" type="text" name="pseudoMemb" placeholder="Pseudo" minlength='7' maxlength = '70' required>
                 <br>
                 <br>
                 <label>Email:</label>
                 <span class='champ-obligatoire'>*</span>
                 <br>
-                <input type="email" name="eMail1Memb" placeholder="Email" >
+                <input type="email" name="eMail1Memb" placeholder="Email" required>
                 <br>
                 <br>
                 <label>Confirmation e-mail:</label>
                 <span class='champ-obligatoire'>*</span>
                 <br>
-                <input type="email" name="eMail2Memb" placeholder="Confirmation e-mail" >
+                <input type="email" name="eMail2Memb" placeholder="Confirmation e-mail" required>
                 <br>
                 <br>
                 <label>Mot de passe:
@@ -154,20 +160,20 @@ include __DIR__ . '/initMembre.php'
                 <i class ='italic'>(Au minimum un chiffre, une majuscule et une minuscule (8 caractères minimum)</i>
                 </label>
                 <br>
-                <input pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" type="password" name="pass1Memb" placeholder="Mot de passe" minlength='8' maxlength='100' >
+                <input pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" type="password" name="pass1Memb" placeholder="Mot de passe" minlength='8' maxlength='100' required>
                 <br>
                 <br>
                 <label>Confirmer votre mot de passe:</label>
                 <span class='champ-obligatoire'>*</span>
                 <br>
-                <input pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" type="password" name="pass2Memb" placeholder="Mot de passe" minlength='8' maxlength='100' >
+                <input pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" type="password" name="pass2Memb" placeholder="Mot de passe" minlength='8' maxlength='100' required>
                 <br>
                 <br>
                 <input id='souvenir' type="checkbox" tabindex="0" name="souvenirMemb">
                 <label for='souvenir'>Se souvenir de moi</label>
                 <br>
                 <br>
-                <input id='condition' type="checkbox" tabindex="0" name="accordMemb" >
+                <input id='condition' type="checkbox" tabindex="0" name="accordMemb" required>
                 <label for='condition'>J'accepte les conditions d'utilisations            
                 <span class='champ-obligatoire'>*</span>
                 </label>
@@ -193,8 +199,8 @@ include __DIR__ . '/initMembre.php'
             <br>
             <div class="champ-obligatoire">(*) Champs obligatoires</div>
             <br>
-            <input value='Valider' type="submit" name='Valider'/>
-            <input value ='Annuler' type="submit" name='annuler'/>
+            <input class='btn btn-primary' value ='Annuler' type="submit" name='annuler'/>
+            <input class='btn btn-success'value='Valider' type="submit" name='Valider'/>   
         </fieldset>
     </form>
     <?php
