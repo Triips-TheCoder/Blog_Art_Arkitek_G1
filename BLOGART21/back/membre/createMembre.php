@@ -8,8 +8,6 @@ $monMembre = new MEMBRE;
 $created = "";
 $passOk = 0; 
 $emailOk = 0;
-
-
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
     if ((isset($_POST["annuler"])) AND ($_POST["annuler"] === "Annuler")) {

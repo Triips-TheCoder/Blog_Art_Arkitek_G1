@@ -17,10 +17,12 @@
 <body>
     <div id="header"></div>
     <div class="is-gone" id="inscription_page"></div>
+    <div id="accueil_page"></div>
     <div class="is-gone" id="connexion_page"></div>
     <div id="footer"></div>
 
     <script>
+        $("#accueil_page").load("/includes/accueil.php");
         $("#inscription_page").load("/includes/Inscription.php");
         $("#connexion_page").load("/includes/Connexion.php");
         $("#header").load("/includes/Commonsection/header.php");

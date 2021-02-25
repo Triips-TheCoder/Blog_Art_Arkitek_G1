@@ -13,8 +13,8 @@
                 <p class="sous_titre_sign">Ravis de te Revoir !</p>
             </div>
             <div class="deja_inscrit">
-                <a id="connexionVersinscription" href="">
-                    <p>Pas encore inscrit ?</p>
+                <a id="connexionVersinscription" href="#">
+                <p>Pas encore inscrit ?</p>
             </div></a>
 
             <div class="box_formulaire_signup">
@@ -58,7 +58,7 @@
         })
 
         document.getElementById("connexionVersinscription").addEventListener("click", function() {
-            {
+            {   
                 document.getElementById("connexion_page").classList.remove('is-active');
                 document.getElementById("connexion_page").classList.add('is-gone');
                 document.getElementById("inscription_page").classList.remove('is-gone');

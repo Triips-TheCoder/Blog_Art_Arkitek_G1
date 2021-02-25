@@ -545,4 +545,57 @@ input:focus {
   color: #fcf8f2;
 }
 
+.container_accueil {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container_accueil img {
+  position: absolute;
+  height: 80%;
+  width: auto;
+}
+.container_accueil div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  height: 100%;
+}
+.container_accueil .column_vide {
+  width: 20%;
+}
+.container_accueil .column_vide a {
+  text-decoration: none;
+  color: #fcf8f2;
+  font-size: 40px;
+  font-family: "LGCL";
+  margin: 2px;
+  transition: 400ms;
+}
+.container_accueil .column_vide a:hover {
+  color: #FF9185;
+}
+.container_accueil .Chiffre_column {
+  margin-top: 10%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.container_accueil .Chiffre_column .chiffres {
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swipeUp {
+  transition: 1s;
+  transition-delay: 300ms;
+  transform: translate(0, 100%) scale(0.8);
+  opacity: 0;
+}
+
 /*# sourceMappingURL=style.css.map */
