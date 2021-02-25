@@ -61,7 +61,7 @@ $created = false;
     </thead>
     <tbody>
 <?php 
-    $allMembres = $monMembre -> get_AllMembersByStat(); 
+    $allMembres = $monMembre -> get_AllMembresWithStatut(); 
     foreach($allMembres as $ligne){ 
 ?>
     <tr>
