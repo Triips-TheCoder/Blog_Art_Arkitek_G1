@@ -1,7 +1,7 @@
     <?php
 require_once __DIR__ . '/../../util/utilErrOn.php';
 require_once __DIR__ . '../../../CLASS_CRUD/membre.class.php';
-require_once __DIR__ . '../../util/crtlSaisies.php';
+require_once __DIR__ . '/../../util/ctrlSaisies.php';
 
 function ctrlSaisies($saisie){
 
