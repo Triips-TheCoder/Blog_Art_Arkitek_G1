@@ -1,6 +1,6 @@
 @font-face {
   font-family: "LGCR";
-  src: url("../_assets/Font/LouisGeorgeCafe.ttf") format("TrueType");
+  src: url("../../front/_assets/Font/LouisGeorgeCafe.ttf") format("TrueType");
 }
 @font-face {
   font-family: "LGCB";
@@ -24,7 +24,7 @@
 }
 @font-face {
   font-family: "Silk Medium";
-  src: url("../_assets/Font/SilkSerifMedium.otf") format("OpenType");
+  src: url("../../front/_assets/Font/SilkSerifMedium.otf") format("OpenType");
 }
 @font-face {
   font-family: "Silk Bold";
