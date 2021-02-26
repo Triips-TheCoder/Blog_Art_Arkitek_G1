@@ -141,7 +141,7 @@ include __DIR__ . '/initMembre.php'
                 <label>Pseudo: (entre 7 et 70 caractères)</label>
                 <span class='champ-obligatoire'>*</span>
                 <br>
-                <input pattern="^[\w\.](' ')?([\w\.])?{7,70}$" type="text" name="pseudoMemb" placeholder="Pseudo" minlength='7' maxlength = '70' required>
+                <input type="text" name="pseudoMemb" placeholder="Pseudo" minlength='7' maxlength = '70' required>
                 <br>
                 <br>
                 <label>Email:</label>
