@@ -10,7 +10,7 @@
             </div>
             <div class="box_title_sign">
                 <p class="titre_sign"> Hello,</p>
-                <p class="sous_titre_sign">Ravis de te Revoir !</p>
+                <p class="sous_titre_sign">Ravis de te revoir !</p>
             </div>
             <div class="deja_inscrit">
                 <a id="connexionVersinscription" href="#">
@@ -40,7 +40,7 @@
 
                     </div>
 
-                    <div class="connect"><input type="submit" value="connect" /></div>
+                    <div class="connect"><input type="submit" value="Connexion" /></div>
 
 
                 </form>

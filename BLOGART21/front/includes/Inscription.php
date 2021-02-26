@@ -77,11 +77,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             }
             
             if ($prenomMemb != "" && $nomMemb != "" && $emailOk == 1 && $passOk == 1 && $pseudoOk == 1 && $accordMemb == 1) {
-                $pass1Memb = ($_POST['pass1Memb']);
+               try { $pass1Memb = ($_POST['pass1Memb']);
                 $idStat = 1;
                 $monMembre->create($prenomMemb, $nomMemb, $pseudoMemb, $eMail1Memb, $dtCreaMemb, $pass1Memb, $souvenirMemb, $accordMemb, $idStat);
-                // header("Location: front\_site\default.html");
-                echo"toto4"; 
+                header("Location: front\_site\default.html");
+            } catch (Exception $e) {
+
+            }
+            die('Echec envoi BLOGART : ' . $e->getMessage());
             } 
         
     }
@@ -98,9 +101,10 @@ include __DIR__ . '/../../back/membre/initMembre.php'
         <div class="column_right_sign">
             <div class="box_croix_sign">
                 <div class="croix_sign">
-                    <a  href="#"><img id="fermer_inscription" class="croix_sign_img" src="/_assets/IMG/cancel.png" alt="Fermer"></a>
+                    <a  href="#"><img id="fermer_inscription" class="croix_sign_img" src="../_assets/IMG/cancel.png" alt="Fermer"></a>
                 </div>
             </div>
+
             <div class="box_title_sign">
                 <p class="titre_sign"> Hello,</p>
                 <p class="sous_titre_sign">Ravis de te rencontrer !</p>    
@@ -151,7 +155,7 @@ include __DIR__ . '/../../back/membre/initMembre.php'
 
              </div>
                   
-                <div class="connect"><input  name="Submit" type="submit" value="Connect" /></div>
+                <div class="connect"><input  name="Submit" type="submit" value="Connexion" /></div>
 
    
                 </form>
