@@ -77,12 +77,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             }
             
             if ($prenomMemb != "" && $nomMemb != "" && $emailOk == 1 && $passOk == 1 && $pseudoOk == 1 && $accordMemb == 1) {
-            die('Echec envoi BLOGART : ');
+               try { $pass1Memb = ($_POST['pass1Memb']);
                 $idStat = 1;
                 $monMembre->create($prenomMemb, $nomMemb, $pseudoMemb, $eMail1Memb, $dtCreaMemb, $pass1Memb, $souvenirMemb, $accordMemb, $idStat);
-                // header("Location: front\_site\default.html");
-           
-            
+                header("Location: front\_site\default.html");
+            } catch (Exception $e) {
+
+            }
+            die('Echec envoi BLOGART : ' . $e->getMessage());
+            } 
         
     }
 }
