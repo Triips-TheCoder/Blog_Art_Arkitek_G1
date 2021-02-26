@@ -93,7 +93,7 @@ include __DIR__ . '/../../back/membre/initMembre.php'
 
     <div class="column_sign ">
         <div class="column_left_sign">
-            <img class="bg_sign" src="/_assets/IMG/P1188213.jpg" alt="">
+            <img class="bg_sign" src="../_assets/IMG/P1188213.jpg" alt="">
         </div>
         <div class="column_right_sign">
             <div class="box_croix_sign">
