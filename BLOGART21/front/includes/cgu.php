@@ -1,5 +1,5 @@
     <div class="rgpd_container">
-    <div class="croix_container_cgu" ><a class="Ferme_les_CGU" href="#"><img  src="/_assets/IMG/cancel.png" alt="Fermer"></a></div>
+    <div class="croix_container_cgu" ><a class="Ferme_les_CGU" href="#"><img  src="../_assets/IMG/cancel.png" alt="Fermer"></a></div>
     <h1>Conditions Générales d’Utilisation :</h1>
     <br>
     <br>

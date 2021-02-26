@@ -1,7 +1,7 @@
 <div class="container_accueil">
     <div class="column_vide explain_column">
         <div class="explain">
-            <a href=""><img src="/_assets/IMG/icons8-flèche-haut-90-2.png" alt=""></a>
+            <a href=""><img src="../_assets/IMG/icons8-flèche-haut-90-2.png" alt=""></a>
             
             <p> Swipe vers le bas si je te plais </p>
             
