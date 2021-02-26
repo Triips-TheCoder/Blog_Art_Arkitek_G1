@@ -15,19 +15,24 @@
 </head>
 
 <body>
+
     <div id="header"></div>
     <div class="is-gone" id="inscription_page"></div>
     <div id="accueil_page"></div>
     <div class="is-gone" id="connexion_page"></div>
-    <div id="footer"></div>
+    <div class="is-gone" id="footer_page"></div>
 
     <script>
-        $("#accueil_page").load("/includes/accueil.php");
-        $("#inscription_page").load("/includes/Inscription.php");
-        $("#connexion_page").load("/includes/Connexion.php");
-        $("#header").load("/includes/Commonsection/header.php");
+        window.addEventListener('DOMContentLoaded', e => {
 
-        $("#footer").load("/includes/Commonsection/footer.php");
+            $("#accueil_page").load("/includes/accueil.php");
+            $("#inscription_page").load("/includes/Inscription.php");
+            $("#connexion_page").load("/includes/Connexion.php");
+            $("#header").load("/includes/Commonsection/header.php");
+
+            $("#footer_page").load("/includes/Commonsection/footer.php");
+
+        })
     </script>
 </body>
 

@@ -123,11 +123,8 @@ body {
   font-family: "LGCR";
   width: 50%;
 }
-.box_formulaire_signup form input :focus {
-  border-color: #FF9185;
-  box-shadow: 0 0 8px 0 #FF9185;
-}
-.box_formulaire_signup form .champs, .box_formulaire_signup form .nom_sign input {
+.box_formulaire_signup form .champs,
+.box_formulaire_signup form .nom_sign input {
   padding-left: 10px;
   font-family: "LGCR";
   width: 95%;
@@ -144,7 +141,6 @@ body {
 }
 .box_formulaire_signup form .nom_prenom_sign input {
   border-radius: 3px;
-  border: solid 1px #fcf8f2;
   outline: none;
   background-color: #1A1A1A;
   width: 100%;
@@ -167,9 +163,7 @@ body {
 }
 .box_formulaire_signup form .champs {
   border-radius: 3px;
-  border: none;
   outline: none;
-  border: solid 1px #fcf8f2;
   background-color: #1A1A1A;
   width: 95%;
   height: 42px;
@@ -367,6 +361,7 @@ table {
 }
 
 .header {
+  z-index: 99;
   padding-left: 20px;
   padding-right: 20px;
   height: 10vh;
@@ -528,6 +523,20 @@ table {
 
 .is-active {
   display: block;
+  opacity: 1;
+}
+
+.is-here {
+  display: block;
+  transition: 1s;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.is-out {
+  transition: 1s;
+  opacity: 0;
+  transition: scale(0.8);
 }
 
 input {
@@ -552,39 +561,74 @@ input:focus {
   justify-content: center;
   align-items: center;
 }
-.container_accueil img {
-  position: absolute;
-  height: 80%;
-  width: auto;
-}
-.container_accueil div {
+.container_accueil .profil1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 70%;
   height: 100%;
 }
-.container_accueil .column_vide {
-  width: 20%;
+.container_accueil .profil1 img {
+  position: absolute;
+  height: 70%;
+  width: auto;
 }
-.container_accueil .column_vide a {
+.container_accueil .column_vide {
+  z-index: 55;
+  width: 20%;
+  height: 100%;
+}
+.container_accueil .column_vide .explain {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: #fcf8f2;
+  font-size: 17px;
+  font-family: "LGCL";
+}
+.container_accueil .column_vide .explain img {
+  margin-bottom: 8px;
+  margin-top: 8px;
+  width: 15px;
+  height: auto;
+}
+.container_accueil .column_vide .explain p {
+  padding-left: 6px;
+}
+.container_accueil .explain_column {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.container_accueil .Chiffre_column {
+  flex-direction: column;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.container_accueil .Chiffre_column a {
   text-decoration: none;
   color: #fcf8f2;
   font-size: 40px;
   font-family: "LGCL";
-  margin: 2px;
+  margin: 6px;
   transition: 400ms;
 }
-.container_accueil .column_vide a:hover {
+.container_accueil .Chiffre_column a:hover {
   color: #FF9185;
 }
-.container_accueil .Chiffre_column {
-  margin-top: 10%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+.container_accueil .Chiffre_column hr {
+  width: 30%;
+  color: #FF9185;
+  border: 0.5px solid #FF9185;
+}
+.container_accueil .Chiffre_column p {
+  color: #fcf8f2;
+  font-family: "LGCL";
 }
 .container_accueil .Chiffre_column .chiffres {
+  margin-top: 15%;
   height: 30px;
   display: flex;
   justify-content: center;
@@ -593,9 +637,38 @@ input:focus {
 
 .swipeUp {
   transition: 1s;
-  transition-delay: 300ms;
+  transform: translate(0, -100%) scale(0.8);
+  opacity: 0;
+}
+
+.swipeDown {
+  transition: 1s;
   transform: translate(0, 100%) scale(0.8);
   opacity: 0;
+}
+
+.cookie p {
+  color: #f2f2f2;
+  font-family: "Louis George Cafe";
+  font-weight: normal;
+  font-size: 18px;
+  margin: 0;
+}
+
+.cookie h1 {
+  color: #f2f2f2;
+  font-family: "Silk Serif";
+  font-weight: normal;
+  font-size: 36px;
+  margin: 0;
+}
+
+.cookie h2 {
+  color: #f2f2f2;
+  font-family: "Louis George Cafe";
+  font-weight: normal;
+  font-size: 20px;
+  margin: 0;
 }
 
 /*# sourceMappingURL=style.css.map */

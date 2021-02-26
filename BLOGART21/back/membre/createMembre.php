@@ -8,6 +8,7 @@ $monMembre = new MEMBRE;
 $created = false;
 $passOk = 0; 
 $emailOk = 0;
+
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
     if ((isset($_POST["annuler"])) AND ($_POST["annuler"] === "Annuler")) {
@@ -37,7 +38,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $eMail1Memb = ctrlSaisies($_POST['eMail1Memb']);
             $eMail2Memb = ctrlSaisies($_POST['eMail2Memb']);
             $dtCreaMemb = date("Y-m-d-H-i-s");
+           
             $ctrlSouvenirMemb = ctrlSaisies($_POST['souvenirMemb']);
+            
             $ctrlAccordMemb = ctrlSaisies($_POST['accordMemb']);
             $idStat = ctrlSaisies($_POST['statut']);
             $pseudoExist = $monMembre->get_ExistPseudo($pseudoMemb);

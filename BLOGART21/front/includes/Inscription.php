@@ -1,14 +1,29 @@
     <?php
-require_once __DIR__ . '../../../util/utilErrOn.php';
+require_once __DIR__ . '/../../util/utilErrOn.php';
 require_once __DIR__ . '../../../CLASS_CRUD/membre.class.php';
-require_once __DIR__ . '../../../util/ctrlSaisies.php';
+// require_once __DIR__ . '/ctrlSaisies.php';
 
 $monMembre = new MEMBRE;
-$created = "";
+
 $passOk = 0; 
 $emailOk = 0;
 
+function ctrlSaisies($saisie){
 
+    // Convertion caractères spéciaux en entités HTML => peu performant
+    // Préférer htmlentities()
+    $saisie = htmlspecialchars($saisie);
+    // Suppression des espaces (ou d'autres caractères) en début et fin de chaîne
+    $saisie = trim($saisie);
+    // Suppression des antislashs d'une chaîne
+    $saisie = stripslashes($saisie);
+    // Conversion des caractères spéciaux en entités HTML
+    $saisie = htmlentities($saisie);
+
+    return $saisie;
+  }
+
+  echo "toto 1";
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
     if(isset($_POST['souvenirMemb'])){
@@ -21,11 +36,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     }else{
         $accordMemb = 0;
     }
+    echo"toto2";
+    echo $_POST['prenomMemb'] . $_POST['nomMemb'] . $_POST['pseudoMemb'] . 
+    $_POST['eMail1Memb'] . $_POST['pass1Memb'] . $_POST['pass2Memb'] . $_POST['souvenirMemb'] . $_POST['accordMemb'];
+
     if(!empty($_POST['prenomMemb']) && !empty($_POST['nomMemb']) 
     && !empty($_POST['pseudoMemb']) && !empty($_POST['eMail1Memb']) 
     && !empty($_POST['pass1Memb']) && !empty($_POST['pass2Memb'])
     && !empty($_POST['souvenirMemb']) && !empty($_POST['accordMemb'])){
-        if ((isset($_POST['statut'])) AND !empty($_POST['statut'])) {
             $prenomMemb = ctrlSaisies($_POST['prenomMemb']);
             $nomMemb = ctrlSaisies($_POST['nomMemb']);
             $pseudoMemb = ctrlSaisies($_POST['pseudoMemb']);
@@ -36,6 +54,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $ctrlSouvenirMemb = ctrlSaisies($_POST['souvenirMemb']);
             $ctrlAccordMemb = ctrlSaisies($_POST['accordMemb']);
             $pseudoExist = $monMembre->get_ExistPseudo($pseudoMemb);
+            echo"toto3";
             if ($pseudoExist == 0){
                 $errMessage = '';
                 $pseudoOk = 1;
@@ -56,20 +75,18 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 echo "<h3 style='color: red;'>Les mots de passe ne correspondent pas!</h3>";
  
             }
-
+            
             if ($prenomMemb != "" && $nomMemb != "" && $emailOk == 1 && $passOk == 1 && $pseudoOk == 1 && $accordMemb == 1) {
                 $pass1Memb = ($_POST['pass1Memb']);
-                $idStat = "Membre Niveau 2"
-                $created = true;
+                $idStat = 1;
                 $monMembre->create($prenomMemb, $nomMemb, $pseudoMemb, $eMail1Memb, $dtCreaMemb, $pass1Memb, $souvenirMemb, $accordMemb, $idStat);
-                header("Location: accueil.php");
-
-            } else {
-                header("Location: accueil.php");
-            }
-        }
+                // header("Location: front\_site\default.html");
+                echo"toto4"; 
+            } 
+        
     }
 }
+include __DIR__ . '/../../back/membre/initMembre.php'
     ?>
 
 
@@ -108,13 +125,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 <p>Pseudo</p>
                 <input class="champs" type="text" name="pseudoMemb" placeholder="Pseudo" size="20" required/>
                    <p>E-mail</p>
-                    <input class="champs" type="email" name="email1Memb" placeholder="E-mail" size="20" required/>
+                    <input class="champs" type="email" name="eMail1Memb" placeholder="E-mail" size="20" required/>
                     <p>Mot de passe</p>
                     <input  class="champs" type="password" name="pass1Memb" placeholder="Mot de passe" autocomplete="new-password" minlength="7" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
                     <label class="required_caracter" for="condition_password">Doit contenir au moins 7 caractères dont 1 lettre majuscule, 1  minuscule et 1 chiffre</label>
                     <p>Confirmer le mot de passe</p>
                     <input  class="champs" type="password" name="pass2Memb" placeholder="Mot de passe" minlength="7" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
-                     
                 
                     <div class="checkbox_sign">
               
@@ -122,7 +138,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 <div class="remember">     
                    <div class="check">
                 <input type="checkbox" id="checkbox" name="souvenirMemb">
-                <label for="remember">Se souvenir de moi<label>
+                <label for="remember">Se souvenir de moi</label>
                 </div>    
                   
                 </div>  
@@ -135,7 +151,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
              </div>
                   
-                <div class="connect"><input  type="submit" value="Connect" /></div>
+                <div class="connect"><input  name="Submit" type="submit" value="Connect" /></div>
 
    
                 </form>

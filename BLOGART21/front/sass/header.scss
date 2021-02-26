@@ -1,4 +1,5 @@
 .header {
+    z-index: 99;
     padding-left: 20px;
     padding-right: 20px;
     height: 10vh;
@@ -8,11 +9,11 @@
     color: $blanc;
     background-color: #101010;
     align-items: center;
-  img {
-    width: 50px;
-    height: auto;
+    img {
+        width: 50px;
+        height: auto;
     }
-   p {
+    p {
         font-family: 'Silk Medium';
         display: flex;
         align-items: center;
@@ -22,11 +23,9 @@
         font-family: 'LGCR';
         color: $blanc;
         text-decoration: none;
-        
     }
     a:hover {
         color: $rose;
         transition: 400ms;
-        
-        }
+    }
 }
