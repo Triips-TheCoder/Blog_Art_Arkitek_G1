@@ -13,14 +13,31 @@
 
 </div>
 <script>
+    document.cookie = ""; ;
+
+
+if (document.cookie == "0" ) {
+   
+    document.getElementById("accueil_page").classList.remove('blur');
+    document.getElementById("cookiePop").classList.add('is-gone');
+}
+if (document.cookie == "1" ) {
+   
+   document.getElementById("accueil_page").classList.remove('blur');
+   document.getElementById("cookiePop").classList.add('is-gone');
+}
      document.getElementById("accepter_cookiePop").addEventListener("click", function() {
                 {
+                    
+                    document.cookie = "1";
                     document.getElementById("cookiePop").classList.add('is-gone');
                     document.getElementById("accueil_page").classList.remove('blur');
+
                 }
             });
             document.getElementById("fermer_cookiePop").addEventListener("click", function() {
                 {
+                    document.cookie = "0";
                     document.getElementById("cookiePop").classList.add('is-gone');
                     document.getElementById("accueil_page").classList.remove('blur');
                 }
