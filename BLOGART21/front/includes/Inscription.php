@@ -80,7 +80,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             die('Echec envoi BLOGART : ');
                 $idStat = 1;
                 $monMembre->create($prenomMemb, $nomMemb, $pseudoMemb, $eMail1Memb, $dtCreaMemb, $pass1Memb, $souvenirMemb, $accordMemb, $idStat);
-                header("Location: front\_site\default.html");
+                // header("Location: front\_site\default.html");
            
             
         
