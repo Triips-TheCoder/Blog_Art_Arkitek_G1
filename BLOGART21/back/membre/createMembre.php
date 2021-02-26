@@ -4,7 +4,7 @@ require_once __DIR__ . '/../../CLASS_CRUD/membre.class.php';
 require_once __DIR__ . '/../../util/ctrlSaisies.php';
 
 
-$monMembre = new MEMBRE;
+$monMembre = new membre;
 $created = false;
 $passOk = 0; 
 $emailOk = 0;
