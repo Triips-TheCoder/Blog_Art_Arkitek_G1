@@ -185,7 +185,7 @@ include __DIR__ . '/initMembre.php'
                     <option value="" selected disabled hidden>Sélectionner un statut</option>
                     <?php 
                     global $db;
-                    $requete = 'SELECT * FROM STATUT ;';
+                    $requete = 'SELECT * FROM statut ;';
                     $result = $db->query($requete);
                     $allStatut = $result->fetchAll();
                     foreach ($allStatut AS $row)
