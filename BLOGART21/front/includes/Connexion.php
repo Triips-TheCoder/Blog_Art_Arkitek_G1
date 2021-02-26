@@ -59,6 +59,8 @@
 
         document.getElementById("connexionVersinscription").addEventListener("click", function() {
             {   
+                document.getElementById("accueil_page").classList.add('is-gone');
+
                 document.getElementById("connexion_page").classList.remove('is-active');
                 document.getElementById("connexion_page").classList.add('is-gone');
                 document.getElementById("inscription_page").classList.remove('is-gone');
