@@ -1,12 +1,7 @@
     <?php
 require_once __DIR__ . '/../../util/utilErrOn.php';
 require_once __DIR__ . '../../../CLASS_CRUD/membre.class.php';
-// require_once __DIR__ . '/ctrlSaisies.php';
-
-$monMembre = new MEMBRE;
-
-$passOk = 0; 
-$emailOk = 0;
+require_once __DIR__ . '../../util/crtlSaisies.php';
 
 function ctrlSaisies($saisie){
 
@@ -22,6 +17,13 @@ function ctrlSaisies($saisie){
 
     return $saisie;
   }
+
+$monMembre = new membre;
+
+$passOk = 0; 
+$emailOk = 0;
+
+
 
   echo "toto 1";
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -81,11 +83,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $idStat = 1;
                 $monMembre->create($prenomMemb, $nomMemb, $pseudoMemb, $eMail1Memb, $dtCreaMemb, $pass1Memb, $souvenirMemb, $accordMemb, $idStat);
                 header("Location: front\_site\default.html");
+            }
           
         
     }
 }
-include __DIR__ . '/../../back/membre/initMembre.php'
+
+
+include __DIR__ . '/../../back/membre/initMembre.php';
+    
     ?>
 
 
@@ -158,9 +164,8 @@ include __DIR__ . '/../../back/membre/initMembre.php'
                
 
             </div>
-        </div>
-    </div>
-    <script>
+        </div> 
+        <script>
          document.getElementById("fermer_inscription").addEventListener("click", function() {
                 {
                     document.getElementById("inscription_page").classList.add('is-gone');
@@ -177,5 +182,3 @@ include __DIR__ . '/../../back/membre/initMembre.php'
 
             }); 
     </script>
-    
-  
