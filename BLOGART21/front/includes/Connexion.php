@@ -1,11 +1,11 @@
     <div class="column_sign ">
         <div class="column_left_sign">
-            <img class="bg_sign" src="/_assets/IMG/P1188213.jpg" alt="">
+            <img class="bg_sign" src="../_assets/IMG/P1188213.jpg" alt="">
         </div>
         <div class="column_right_sign">
             <div class="box_croix_sign">
                 <div class="croix_sign">
-                    <a href="#"><img id="fermer_connexion" class="croix_sign_img" src="/_assets/IMG/cancel.png" alt="Fermer"></a>
+                    <a href="#"><img id="fermer_connexion" class="croix_sign_img" src="../_assets/IMG/cancel.png" alt="Fermer"></a>
                 </div>
             </div>
             <div class="box_title_sign">

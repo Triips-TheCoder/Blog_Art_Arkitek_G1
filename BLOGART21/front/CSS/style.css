@@ -1,14 +1,14 @@
 @font-face {
   font-family: "LGCR";
-  src: url("../../_assets/Font/LouisGeorgeCafe.ttf") format("TrueType");
+  src: url("../_assets/Font/LouisGeorgeCafe.ttf") format("TrueType");
 }
 @font-face {
   font-family: "LGCB";
-  src: url("/_assets/Font/Louis/GeorgeCafeBold.ttf") format("TrueType");
+  src: url("../_assets/Font/Louis/GeorgeCafeBold.ttf") format("TrueType");
 }
 @font-face {
   font-family: "LGCBI";
-  src: url("/_assets/Font/Louis/GeorgeCafeBoldItalic.ttf") format("TrueType");
+  src: url("../_assets/Font/Louis/GeorgeCafeBoldItalic.ttf") format("TrueType");
 }
 @font-face {
   font-family: "LGCL";
@@ -16,23 +16,23 @@
 }
 @font-face {
   font-family: "LGCLI";
-  src: url("/_assets/Font/Louis George Cafe Light Italic.ttf") format("TrueType");
+  src: url("../../front/_assets/Font/LouisGeorgeCafeLightItalic.ttf") format("TrueType");
 }
 @font-face {
   font-family: "Silk Regular";
-  src: url("/_assets/Font/Silk Serif Regular.otf") format("OpenType");
+  src: url("../_assets/Font/Silk Serif Regular.otf") format("OpenType");
 }
 @font-face {
   font-family: "Silk Medium";
-  src: url("/_assets/Font/Silk Serif Medium.otf") format("OpenType");
+  src: url("../_assets/Font/SilkSerifMedium.otf") format("OpenType");
 }
 @font-face {
   font-family: "Silk Bold";
-  src: url("/_assets/Font/Silk Serif Bold.otf") format("OpenType");
+  src: url("../_assets/Font/Silk Serif Bold.otf") format("OpenType");
 }
 @font-face {
   font-family: "Silk Black";
-  src: url("/_assets/Font/Silk Serif Black.otf") format("OpenType");
+  src: url("../_assets/Font/Silk Serif Black.otf") format("OpenType");
 }
 @font-face {
   font-family: "Silk Light";
