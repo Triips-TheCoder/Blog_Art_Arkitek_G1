@@ -28,19 +28,22 @@
     src: url("/_assets/Font/Silk\ Serif\ Regular.otf") format("OpenType");
 }
 
-// @font-face {
-//     font-family: "Silk Medium";
-//     src: url("/_assets/Font/Silk\ Serif\ Medium.otf") format("OpenType")
-// }
-// @font-face {
-//     font-family: "Silk Bold";
-//     src: url("/_assets/Font/Silk\ Serif\ Bold.otf") format("OpenType");
-// }
-// @font-face {
-//     font-family: "Silk Black";
-//     src: url("/_assets/Font/Silk\ Serif\ Black.otf") format("OpenType");
-// }
-// @font-face {
-//     font-family: "Silk Light";
-//     src: url("../_assets/Font/Silk\ Serif\ Light.otf") format("OpenType");
-// }
+@font-face {
+    font-family: "Silk Medium";
+    src: url("/_assets/Font/Silk\ Serif\ Medium.otf") format("OpenType")
+}
+
+@font-face {
+    font-family: "Silk Bold";
+    src: url("/_assets/Font/Silk\ Serif\ Bold.otf") format("OpenType");
+}
+
+@font-face {
+    font-family: "Silk Black";
+    src: url("/_assets/Font/Silk\ Serif\ Black.otf") format("OpenType");
+}
+
+@font-face {
+    font-family: "Silk Light";
+    src: url("../_assets/Font/Silk\ Serif\ Light.otf") format("OpenType");
+}
