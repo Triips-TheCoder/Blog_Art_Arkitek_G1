@@ -1,0 +1,40 @@
+.rgpd_container {
+    width: 90%;
+    padding: 10vh;
+    position: absolute;
+    top: 10vh;
+    background-color: $noir;
+    z-index: 998;
+    .croix_container_cgu {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        a {
+            height: 100%;
+        }
+        img {
+            width: 30px;
+            height: auto;
+        }
+    }
+    h1 {
+        color: $blanc;
+        font-family: 'Silk Medium';
+        margin: 0;
+        font-size: 36px;
+    }
+    h2 {
+        color: $blanc;
+        font-family: 'LGCB';
+        margin: 0;
+        font-size: 23px;
+        padding-top: 100px;
+    }
+    P {
+        line-height: initial;
+        color: $blanc;
+        font-family: 'LGCR';
+        margin: 0;
+        font-size: 18px;
+    }
+}

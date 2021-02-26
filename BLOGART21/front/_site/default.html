@@ -19,6 +19,8 @@
     <div id="header"></div>
     <div class="is-gone" id="inscription_page"></div>
     <div id="accueil_page"></div>
+    <div class="is-gone" id="cgu_page"></div>
+    <div class="is-gone" id="mention_legales"></div>
     <div class="is-gone" id="connexion_page"></div>
     <div class="is-gone" id="footer_page"></div>
 
@@ -29,6 +31,9 @@
             $("#inscription_page").load("/includes/Inscription.php");
             $("#connexion_page").load("/includes/Connexion.php");
             $("#header").load("/includes/Commonsection/header.php");
+
+            $("#cgu_page").load("/includes/cgu.php");
+            $("#mention_legales").load("/includes/mentionLegales.php");
 
             $("#footer_page").load("/includes/Commonsection/footer.php");
 

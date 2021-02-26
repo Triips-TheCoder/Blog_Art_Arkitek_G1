@@ -613,7 +613,7 @@ input:focus {
   font-size: 40px;
   font-family: "LGCL";
   margin: 6px;
-  transition: 400ms;
+  transition: 200ms;
 }
 .container_accueil .Chiffre_column a:hover {
   color: #FF9185;
@@ -669,6 +669,47 @@ input:focus {
   font-weight: normal;
   font-size: 20px;
   margin: 0;
+}
+
+.rgpd_container {
+  width: 90%;
+  padding: 10vh;
+  position: absolute;
+  top: 10vh;
+  background-color: #141414;
+  z-index: 998;
+}
+.rgpd_container .croix_container_cgu {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+.rgpd_container .croix_container_cgu a {
+  height: 100%;
+}
+.rgpd_container .croix_container_cgu img {
+  width: 30px;
+  height: auto;
+}
+.rgpd_container h1 {
+  color: #fcf8f2;
+  font-family: "Silk Medium";
+  margin: 0;
+  font-size: 36px;
+}
+.rgpd_container h2 {
+  color: #fcf8f2;
+  font-family: "LGCB";
+  margin: 0;
+  font-size: 23px;
+  padding-top: 100px;
+}
+.rgpd_container P {
+  line-height: initial;
+  color: #fcf8f2;
+  font-family: "LGCR";
+  margin: 0;
+  font-size: 18px;
 }
 
 /*# sourceMappingURL=style.css.map */

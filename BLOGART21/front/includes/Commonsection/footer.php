@@ -25,12 +25,12 @@
         <div class="Footer">
             <a href="#"><img src="../../_assets/IMG/LOGO AK BLANC.png" alt="Logo arkitek" /></a>
             <a href="#">Accueil</a>
-            <a href="#">Mentions légales</a>
-            <a href="#">CGU</a>
-            <a href="#">Nous contacter</a>
+            <a id="MLbutton" href="#">Mentions légales</a>
+            <a id="CguButton" href="#">CGU</a>
+            <a href="https://www.instagram.com/arkitekbordeaux/">Nous contacter</a>
             <div class="InstagramFooter">
-            <a class="FooterInstaLogo" href="#"><img src="../../_assets/IMG/Instagram logo.svg" alt="Instagram" /></a>
-                <a href="#">ArkitekBordeaux</a>
+            <a class="FooterInstaLogo" href="https://www.instagram.com/arkitekbordeaux/"><img src="../../_assets/IMG/Instagram logo.svg" alt="Instagram" /></a>
+                <a href="https://www.instagram.com/arkitekbordeaux/">ArkitekBordeaux</a>
             </div>
 
         </div>
@@ -40,6 +40,21 @@
 
 
     </div>
+    <script>
+         document.getElementById("CguButton").addEventListener("click", function() {
+                {
+                    document.getElementById("cgu_page").classList.remove('is-gone');
+                    document.getElementById("cgu_page").classList.add('is-active');
+                }
+            });
+            document.getElementById("MLbutton").addEventListener("click", function() {
+                {
+                    document.getElementById("mention_legales").classList.remove('is-gone');
+                    document.getElementById("mention_legales").classList.add('is-active');
+                }
+            });
+            
+    </script>
 </body>
 
 </html>
