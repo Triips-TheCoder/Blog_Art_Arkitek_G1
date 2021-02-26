@@ -1,5 +1,9 @@
-    <body>
-        <div class="cookie">
+        <div class="cookie rgpd_container">
+        <div class="croix_container_cgu" >
+            <a class="Ferme_les_CGU" id="fermer_cookie" href="#">
+                <img  src="../_assets/IMG/cancel.png" alt="Fermer">
+            </a>
+        </div>
      <h1>Politiques sur les cookies : </h1>
      <br></br>
      <p>En visitant notre site Web et en utilisant nos services, vous comprenez et acceptez la façon dont nous traitons les données personnelles conformément à notre politique de confidentialité. Nous respectons votre vie privée et le droit de contrôler vos données personnelles. Nos principes directeurs sont simples. Nous allons être ouverts avec quelles données nous collectons et pourquoi. Veuillez prendre un moment pour les lire. C'est important !</p>
@@ -67,6 +71,13 @@
         <p><br> Pour plus d'informations sur la gestion des données personnelles ou si vous avez des questions, n'hésitez pas à nous contacter.</br></p>
         <p><br> Arkitek, 20 rue de Toulon, 33000 Bordeaux</br></p>
         <p><br> Cette politique de confidentialité s'applique à partir du 09/02/2021</br></p>
-    </body>
-    </div>
-</html>
+
+        
+        <script>
+             document.getElementById("fermer_cookie").addEventListener("click", function() {
+                {
+                    document.getElementById("cookie_page").classList.add('is-gone');
+                    document.getElementById("cookie_page").classList.remove('is-active');
+                }
+            });
+        </script>

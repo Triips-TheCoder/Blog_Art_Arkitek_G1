@@ -11,7 +11,7 @@
 
 
     echo "toto 1";
-    if ($_SERVER['REQUEST_METHOD'] == 'post') {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
         if (isset($_POST['souvenirMemb'])) {
@@ -73,7 +73,10 @@
 
             }
         }
-    }
+    }else {
+
+    echo "toto2"; 
+}
 
 
     include __DIR__ . '/../../back/membre/initMembre.php';
@@ -105,7 +108,7 @@
             </div></a>
 
             <div class="box_formulaire_signup">
-                <form action="" method="post">
+                <form action="" method="POST">
                     <div class="nom_prenom_sign">
                         <div class="nom_sign">
                             <p>Nom</p>
@@ -145,7 +148,7 @@
 
                     </div>
 
-                    <div class="connect"><input name="Submit" type="submit" value="Connexion" /></div>
+                    <div class="connect"><button name="Submit" type="button" value="Connexion" ></button></div>
 
 
                 </form>

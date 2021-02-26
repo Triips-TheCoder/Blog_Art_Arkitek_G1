@@ -1,5 +1,5 @@
 <div class="rgpd_container">
-    <div class="croix_container_cgu" ><a class="Fermer_mentionLegales" href="#"><img  src="/_assets/IMG/cancel.png" alt="Fermer"></a></div>
+    <div class="croix_container_cgu" ><a class="Fermer_mentionLegales" id="Fermer_mentionLegales" href="#"><img  src="../_assets/IMG/cancel.png" alt="Fermer"></a></div>
     <h1>Mentions légales</h1>
     <br>
     <p><b>Société : </b>Arkitek</p>

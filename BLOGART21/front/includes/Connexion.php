@@ -18,10 +18,10 @@
             </div></a>
 
             <div class="box_formulaire_signup">
-                <form style="padding-top:10vh;" action="" method="post" enctype="multipart/form-data">
+                <form style="padding-top:10vh;" action="" method="POST" enctype="multipart/form-data">
 
                     <p>E-mail</p>
-                    <input class="champs" type="email" name="email2Memb" placeholder="E-mail" size="20" required />
+                    <input class="champs" type="email" name="eMail1Memb" placeholder="E-mail" size="20" required />
                     <p>Mot de passe</p>
                     <input class="champs" type="password" name="passMemb" placeholder="Mot de passe" autocomplete="new-password" minlength="7" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
 
@@ -40,7 +40,8 @@
 
                     </div>
 
-                    <div class="connect"><input type="submit" value="Connexion" /></div>
+                    <div class="connect"><input name="Submit" type="Submit" value="Connexion" /></div>
+
 
 
                 </form>
