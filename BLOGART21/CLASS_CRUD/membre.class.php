@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '../../CONNECT/database.php';
-class MEMBRE{
+class membre {
     function get_1Membre($numMemb){
         global $db;
 
@@ -92,7 +92,7 @@ class MEMBRE{
     }
     function get_ExistPseudo($pseudoMemb){
         global $db;
-        $query = 'SELECT * FROM MEMBRE WHERE pseudoMemb = ?;'; 
+        $query = 'SELECT * FROM membre WHERE pseudoMemb = ?;'; 
         $result = $db->prepare($query); 
         $result->execute([$pseudoMemb]); 
         return($result->rowCount());
