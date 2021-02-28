@@ -1,6 +1,14 @@
 <?php
 require_once __DIR__ . '../../CONNECT/database.php';
 class MEMBRE{
+    function get_AllMembres()
+	{
+		global $db;
+		$query = $db->query('SELECT * FROM membre');
+		$result = $query->fetchAll(PDO::FETCH_OBJ);
+		return $result;
+	}
+
     function get_1Membre($numMemb){
         global $db;
 

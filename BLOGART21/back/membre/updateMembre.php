@@ -134,7 +134,11 @@ include __DIR__ . '/initMembre.php'
 
 <body class="ui container">
     <h1>BLOGART21 Admin - Gestion du CRUD Membre</h1>
-
+<?
+    if($updated) {
+    echo '<p style="color:green;">Le membre ' . $pseudoMemb . ' #' . $numMemb . ' a été bien modifié.</p>';
+    }
+?>
     <form method="post" action=".\updateMembre.php" enctype="multipart/form-data">
     <fieldset>
         <legend class="legend1">Modification du membre <?echo($pseudoMemb)?>...</legend>
@@ -178,6 +182,21 @@ include __DIR__ . '/initMembre.php'
         <br>
         <br>
         <label for="statut">Modifier son statut: </label>
+        <select id="statut" name="statut"  onchange="select()">
+                    <option value="" selected disabled hidden>Sélectionner un statut</option>
+                    <?php 
+                    global $db;
+                    $requete = 'SELECT * FROM STATUT ;';
+                    $result = $db->query($requete);
+                    $allStatut = $result->fetchAll();
+                    foreach ($allStatut AS $row)
+                    {
+                    ?>
+                    <option value="<?php echo $row['idStat'];?>"><?php echo $row['libStat'];?></option>
+                    <?php
+                }
+                ?>
+            </select>
         <br>
         <br>
         <input class='btn btn-primary' value ='Annuler' type="submit" name='submit'/>
@@ -186,12 +205,7 @@ include __DIR__ . '/initMembre.php'
     </form>
 <?php
 
-if($updated) {
-    echo '<p style="color:green;">Le membre ' . $pseudoMemb . ' #' . $numMemb . ' a été bien modifié.</p>';
-}
-
 require_once __DIR__ . '/footerMembre.php';
-
 require_once __DIR__ . '/footer.php';
 ?>
 </body>

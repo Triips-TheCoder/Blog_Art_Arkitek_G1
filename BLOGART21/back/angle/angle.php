@@ -55,7 +55,7 @@ $monAngle = new ANGLE;
     foreach($allAngles as $ligne){ 
 ?>
     <tr>
-    <td><h4>&nbsp;  <?php echo $ligne['numAngl']; ?> &nbsp;</h4></td>
+    <td><h4>&nbsp; <?php echo $ligne['numAngl']; ?> &nbsp;</h4></td>
     <td><h4>&nbsp; <?php echo $ligne['libAngl']; ?> &nbsp;</h4></td>
     <td><h4>&nbsp; <?php echo  $ligne['numLang'];?> &nbsp;</h4></td>
     <td><a href="./updateAngle.php?id=<?= $ligne["numAngl"]; ?>"><i>Modifier</i></a></td>

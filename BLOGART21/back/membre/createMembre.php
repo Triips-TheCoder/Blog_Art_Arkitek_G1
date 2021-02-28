@@ -12,7 +12,7 @@ $emailOk = 0;
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
-    if ((isset($_POST["annuler"])) AND ($_POST["annuler"] === "Annuler")) {
+    if ((isset($_POST["Annuler"])) AND ($_POST["Annuler"] === "Annuler")) {
 
         header("Location: ./membre.php");
     } 
@@ -128,31 +128,31 @@ include __DIR__ . '/initMembre.php'
                 <label class='control-label'>Prénom:</label>
                 <span class='champ-obligatoire'>*</span>
                 <br>
-                <input pattern="^[A-Za-z]{2,70}$" type="text" name="prenomMemb" placeholder="Prénom" required>
+                <input pattern="^[A-Za-z]{2,70}$" type="text" name="prenomMemb" placeholder="Prénom" >
                 <br>
                 <br>
                 <label>Nom:</label>
                 <span class='champ-obligatoire'>*</span>
                 <br>
-                <input pattern="^[A-Za-z]{2,70}$" type="text" name="nomMemb" placeholder="Nom" required>
+                <input pattern="^[A-Za-z]{2,70}$" type="text" name="nomMemb" placeholder="Nom" >
                 <br> 
                 <br>
                 <label>Pseudo: (entre 7 et 70 caractères)</label>
                 <span class='champ-obligatoire'>*</span>
                 <br>
-                <input pattern="^[\w\.](' ')?([\w\.])?{7,70}$" type="text" name="pseudoMemb" placeholder="Pseudo" minlength='7' maxlength = '70' required>
+                <input pattern="^[\w\.](' ')?([\w\.])?{7,70}$" type="text" name="pseudoMemb" placeholder="Pseudo" minlength='7' maxlength = '70' >
                 <br>
                 <br>
                 <label>Email:</label>
                 <span class='champ-obligatoire'>*</span>
                 <br>
-                <input type="email" name="eMail1Memb" placeholder="Email" required>
+                <input type="email" name="eMail1Memb" placeholder="Email" >
                 <br>
                 <br>
                 <label>Confirmation e-mail:</label>
                 <span class='champ-obligatoire'>*</span>
                 <br>
-                <input type="email" name="eMail2Memb" placeholder="Confirmation e-mail" required>
+                <input type="email" name="eMail2Memb" placeholder="Confirmation e-mail" >
                 <br>
                 <br>
                 <label>Mot de passe:
@@ -160,20 +160,20 @@ include __DIR__ . '/initMembre.php'
                 <i class ='italic'>(Au minimum un chiffre, une majuscule et une minuscule (8 caractères minimum)</i>
                 </label>
                 <br>
-                <input pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" type="password" name="pass1Memb" placeholder="Mot de passe" minlength='8' maxlength='100' required>
+                <input pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" type="password" name="pass1Memb" placeholder="Mot de passe" minlength='8' maxlength='100' >
                 <br>
                 <br>
                 <label>Confirmer votre mot de passe:</label>
                 <span class='champ-obligatoire'>*</span>
                 <br>
-                <input pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" type="password" name="pass2Memb" placeholder="Mot de passe" minlength='8' maxlength='100' required>
+                <input pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" type="password" name="pass2Memb" placeholder="Mot de passe" minlength='8' maxlength='100' >
                 <br>
                 <br>
                 <input id='souvenir' type="checkbox" tabindex="0" name="souvenirMemb">
                 <label for='souvenir'>Se souvenir de moi</label>
                 <br>
                 <br>
-                <input id='condition' type="checkbox" tabindex="0" name="accordMemb" required>
+                <input id='condition' type="checkbox" tabindex="0" name="accordMemb" >
                 <label for='condition'>J'accepte les conditions d'utilisations            
                 <span class='champ-obligatoire'>*</span>
                 </label>
@@ -199,7 +199,7 @@ include __DIR__ . '/initMembre.php'
             <br>
             <div class="champ-obligatoire">(*) Champs obligatoires</div>
             <br>
-            <input class='btn btn-primary' value ='Annuler' type="submit" name='annuler'/>
+            <input class='btn btn-primary' value ='Annuler' type="submit" name='Annuler'/>
             <input class='btn btn-success'value='Valider' type="submit" name='Valider'/>   
         </fieldset>
     </form>
