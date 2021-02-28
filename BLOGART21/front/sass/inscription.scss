@@ -1,6 +1,6 @@
-$blanc : #fcf8f2;
-$rose : #FF9185;
-$noir : #141414 ;
+$blanc: #fcf8f2;
+$rose: #FF9185;
+$noir: #141414;
 body {
     background-color: $noir;
     width: 100%;
@@ -16,15 +16,15 @@ body {
     top: 0;
     right: 0;
     background-color: $noir;
+}
 
-  
-}  
-.column_left_sign  {
+.column_left_sign {
     height: 100vh;
     width: 50%;
     img {
         height: 100vh;
         width: 100%;
+        object-fit: cover;
     }
 }
 
@@ -33,7 +33,6 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-
     .box_croix_sign {
         display: flex;
         flex-direction: row;
@@ -41,18 +40,17 @@ body {
         justify-content: flex-end;
         height: 10vh;
         width: 100%;
-        
     }
 }
-.croix_sign {
-            width: 20%;
 
-           a .croix_sign_img{
-                width: 30px;
-                height: auto;
-                height: 100%;
-            }
-        }
+.croix_sign {
+    width: 20%;
+    a .croix_sign_img {
+        width: 30px;
+        height: auto;
+        height: 100%;
+    }
+}
 
 .box_title_sign {
     width: 100%;
@@ -63,118 +61,101 @@ body {
         padding-left: 106px;
     }
 }
+
 .deja_inscrit {
     margin-top: 10px;
     text-align: center;
-    
     font-size: 18px;
     font-family: 'LGCLI';
-   
     a {
-    color: $rose;
-    text-decoration: none;
-    transition: 0.4s;
-    :hover {
-        text-decoration: underline;
-    }
-
+        color: $rose;
+        text-decoration: none;
+        transition: 0.4s;
+         :hover {
+            text-decoration: underline;
+        }
     }
 }
 
 .box_formulaire_signup {
     width: 100%;
-height: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
-   
     form {
         font-family: 'LGCR';
-input :focus{
-    border-color: $rose;
-    box-shadow:0 0 8px 0 $rose;
-
-}
-           
-           width: 50%;
-           .champs, .nom_sign input  {
-               padding-left: 10px;
-               font-family: 'LGCR';
-               width: 95%;
-
-           }
+        width: 50%;
+        .champs,
+        .nom_sign input {
+            padding-left: 10px;
+            font-family: 'LGCR';
+            width: 95%;
+        }
         p {
             margin-top: 3%;
             margin-bottom: 8px;
-            color : $blanc;
+            color: $blanc;
         }
         .nom_prenom_sign {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
-            input  {
-            border-radius: 3px;
-            border: solid 1px $blanc;
-            outline: none;
-            background-color: #1A1A1A;
-            width: 100%;
-            height: 42px;
-           
+            input {
+                border-radius: 3px;
+                outline: none;
+                background-color: #1A1A1A;
+                width: 100%;
+                height: 42px;
             }
-           .nom_sign {
-               justify-self: start;
-               width: 47.5%;
-               input {
-                   width : 90%;
-               }
-            
-           }
-           .prenom_sign{
-               justify-self: end;
-               width: 47.5%;
-               input {
-                   padding-left:10px ;
-                width : 90%;
+            .nom_sign {
+                justify-self: start;
+                width: 47.5%;
+                input {
+                    width: 90%;
+                }
             }
-           }
-           
+            .prenom_sign {
+                justify-self: end;
+                width: 47.5%;
+                input {
+                    padding-left: 10px;
+                    width: 90%;
+                }
+            }
         }
         .champs {
             border-radius: 3px;
-            border: none;
             outline: none;
-            border: solid 1px $blanc;
             background-color: #1A1A1A;
             width: 95%;
             height: 42px;
-            
         }
         label {
             color: $blanc;
-
         }
-.checkbox_sign {
-    margin-top: 10px;
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    color: $blanc;
-    font-size: 12px;
-    input {
-        width: auto;
-    }
-    a {
-        color: $rose;
-        text-decoration: none;
-        transition: 400ms;
-        :hover {
-            text-decoration: underline;
+        .checkbox_sign {
+            margin-top: 10px;
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            color: $blanc;
+            font-size: 12px;
+            input {
+                width: auto;
+            }
+            a {
+                color: $rose;
+                text-decoration: none;
+                transition: 400ms;
+                 :hover {
+                    text-decoration: underline;
+                }
+            }
         }
-    }
-}
-.required_caracter {
-    font-size: 11px;
-    color: #fcf8f296;
-}
+        .required_caracter {
+            font-size: 11px;
+            color: #fcf8f296;
+        }
     }
 }
 
@@ -183,25 +164,20 @@ input :focus{
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    
     width: 100%;
     height: 25px;
     margin-top: 10px;
-   input {
-    border-radius: 9px;
-    border: none;
-    background-color: $rose;   
-    height: 100%;
-    font-family: 'LGCR';
-   }
-  
-
+    input {
+        border-radius: 9px;
+        border: none;
+        background-color: $rose;
+        height: 100%;
+        font-family: 'LGCR';
+    }
 }
-input[type=submit]:hover{
-   
-    box-shadow:0 0 8px 0 $rose;
 
-
+input[type=submit]:hover {
+    box-shadow: 0 0 8px 0 $rose;
 }
 
 .remember {

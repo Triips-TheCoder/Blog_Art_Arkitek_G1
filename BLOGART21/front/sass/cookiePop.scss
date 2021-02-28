@@ -1,0 +1,72 @@
+.bigContainer_cookiePop {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-direction: column;
+    z-index: 99;
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    .overlay-cook {
+        background-color: black;
+        width: 100%;
+        height: 100%;
+        opacity: 0.2;
+    }
+    .container_cookiePop {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: $blanc;
+        width: 100%;
+        height: 20vh;
+        background-color: #070707;
+        opacity: 1;
+        p {
+            font-family: 'LGCR';
+            a {
+                text-decoration: none;
+                color: $rose;
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+        }
+        .container_button_cookiePop {
+            width: 100%;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            a {
+                width: 5%;
+                font-size: 15px;
+                border-radius: 15px;
+                padding: 4px;
+                text-decoration: none;
+                color: $noir;
+                font-family: 'LGCR';
+                font-weight: 900;
+                margin-top: 10px;
+            }
+            a:hover {
+                box-shadow: 0 0 8px 0 $rose;
+                transition: 200ms;
+            }
+            .accepter {
+                background-color: $rose;
+                margin-right: 5px;
+            }
+            .decliner {
+                background-color: $blanc;
+                margin-left: 5px;
+            }
+        }
+    }
+}
+
+.blur {
+    filter: blur(4px);
+    transition: 1s;
+}

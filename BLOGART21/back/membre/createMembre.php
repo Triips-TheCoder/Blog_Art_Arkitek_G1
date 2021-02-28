@@ -4,11 +4,10 @@ require_once __DIR__ . '/../../CLASS_CRUD/membre.class.php';
 require_once __DIR__ . '/../../util/ctrlSaisies.php';
 
 
-$monMembre = new MEMBRE;
+$monMembre = new membre;
 $created = false;
 $passOk = 0; 
 $emailOk = 0;
-
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $Submit = isset($_POST['Submit']) ? $_POST['Submit'] : '';
@@ -39,7 +38,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $eMail1Memb = ctrlSaisies($_POST['eMail1Memb']);
             $eMail2Memb = ctrlSaisies($_POST['eMail2Memb']);
             $dtCreaMemb = date("Y-m-d-H-i-s");
+           
             $ctrlSouvenirMemb = ctrlSaisies($_POST['souvenirMemb']);
+            
             $ctrlAccordMemb = ctrlSaisies($_POST['accordMemb']);
             $idStat = ctrlSaisies($_POST['statut']);
             $pseudoExist = $monMembre->get_ExistPseudo($pseudoMemb);
@@ -140,7 +141,11 @@ include __DIR__ . '/initMembre.php'
                 <label>Pseudo: (entre 7 et 70 caractères)</label>
                 <span class='champ-obligatoire'>*</span>
                 <br>
+<<<<<<< HEAD
                 <input pattern="^[\w\.](' ')?([\w\.])?{7,70}$" type="text" name="pseudoMemb" placeholder="Pseudo" minlength='7' maxlength = '70' >
+=======
+                <input type="text" name="pseudoMemb" placeholder="Pseudo" minlength='7' maxlength = '70' required>
+>>>>>>> bc5525a6f62dd9d6522a16e41d091300c80d5190
                 <br>
                 <br>
                 <label>Email:</label>
@@ -184,7 +189,7 @@ include __DIR__ . '/initMembre.php'
                     <option value="" selected disabled hidden>Sélectionner un statut</option>
                     <?php 
                     global $db;
-                    $requete = 'SELECT * FROM STATUT ;';
+                    $requete = 'SELECT * FROM statut ;';
                     $result = $db->query($requete);
                     $allStatut = $result->fetchAll();
                     foreach ($allStatut AS $row)

@@ -7,26 +7,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arkitek</title>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <link rel="stylesheet" href="/CSS/style.css">
-    <style>
 
-    </style>
+    <link rel="stylesheet" href="../../../BLOGART21/front/CSS/style.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js">
+    </script>
+
+
 </head>
 
 <body>
-    <div id="header"></div>
-    <div class="is-gone" id="inscription_page"></div>
-    <div class="is-gone" id="connexion_page"></div>
-    <div id="footer"></div>
+
+    <div id="header">
+    </div>
+
+    <div class="is-gone" id="inscription_page">
+    </div>
+
+    <div class="blur" id="accueil_page">
+    </div>
+
+    <div class="is-gone" id="cgu_page">
+    </div>
+
+    <div id="cookiePop">
+    </div>
+
+    <div class="is-gone" id="cookie_page">
+    </div>
+
+    <div class="is-gone" id="mention_legales">
+    </div>
+
+    <div class="is-gone" id="connexion_page">
+    </div>
+
+    <div class="is-gone" id="footer_page">
+    </div>
 
     <script>
-        $("#inscription_page").load("/includes/Inscription.php");
-        $("#connexion_page").load("/includes/Connexion.php");
-        $("#header").load("/includes/Commonsection/header.php");
+        $("#accueil_page").load("../../../BLOGART21/front/includes/accueil.php", function(response, status, xhr) {
+            if (status == "error") {
+                // alert(msg + xhr.status + " " + xhr.statusText);
+                console.log(msg + xhr.status + " " + xhr.statusText);
+            }
+        });
+        $("#inscription_page").load("../../../BLOGART21/front/includes/Inscription.php");
+        $("#connexion_page").load("../../../BLOGART21/front/includes/Connexion.php");
 
-        $("#footer").load("/includes/Commonsection/footer.php");
+        $("#header").load("../../../BLOGART21/front/includes/Commonsection/header.php");
+
+        $("#cgu_page").load("../../../BLOGART21/front/includes/cgu.php");
+        $("#mention_legales").load("../../../BLOGART21/front/includes/mentionLegales.php");
+        $("#cookiePop").load("../../../BLOGART21/front/includes/cookiePop.php");
+
+        $("#cookie_page").load("../../../BLOGART21/front/includes/cookie.php");
+        $("#footer_page").load("../../../BLOGART21/front/includes/Commonsection/footer.php");
     </script>
+
 </body>
 
 </html>
