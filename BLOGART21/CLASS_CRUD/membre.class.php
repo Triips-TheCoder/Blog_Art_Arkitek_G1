@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '../../CONNECT/database.php';
-<<<<<<< HEAD
 class MEMBRE{
     function get_AllMembres()
 	{
@@ -10,9 +9,6 @@ class MEMBRE{
 		return $result;
 	}
 
-=======
-class membre {
->>>>>>> bc5525a6f62dd9d6522a16e41d091300c80d5190
     function get_1Membre($numMemb){
         global $db;
 
