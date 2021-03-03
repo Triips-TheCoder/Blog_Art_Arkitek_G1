@@ -13,7 +13,7 @@
 
 </div>
 <script>
-    document.cookie = ""; ;
+  
 
 
 if (document.cookie == "0" ) {

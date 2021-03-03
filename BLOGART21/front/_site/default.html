@@ -9,6 +9,7 @@
 
 
     <link rel="stylesheet" href="../../../BLOGART21/front/CSS/style.css">
+    <link rel="stylesheet" href="../../../BLOGART21/front/CSS/article.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js">
     </script>
 
@@ -35,6 +36,13 @@
     <div class="is-gone" id="cookie_page">
     </div>
 
+    <div class="is-gone" id="article_1">
+    </div>
+    <div class="is-gone" id="article_2">
+    </div>
+    <div class="is-gone" id="article_3">
+    </div>
+
     <div class="is-gone" id="mention_legales">
     </div>
 
@@ -56,6 +64,9 @@
 
         $("#header").load("../../../BLOGART21/front/includes/Commonsection/header.php");
 
+        $("#article_1").load("../../../BLOGART21/front/includes/pages/article_1.php");
+        $("#article_2").load("../../../BLOGART21/front/includes/pages/article_2.php");
+        $("#article_3").load("../../../BLOGART21/front/includes/pages/article_3.php");
         $("#cgu_page").load("../../../BLOGART21/front/includes/cgu.php");
         $("#mention_legales").load("../../../BLOGART21/front/includes/mentionLegales.php");
         $("#cookiePop").load("../../../BLOGART21/front/includes/cookiePop.php");

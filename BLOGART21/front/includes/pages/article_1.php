@@ -1,10 +1,10 @@
-<link rel="stylesheet" type="text/css" href="../../CSS/article.css" />
-<body>
+
+
   <section class="article">
     <div class="fleche__retour">
       <a href="#">
         <img
-          src="../../../front/_assets/icone/fleche_retour.svg"
+          src="../../front/_assets/icone/fleche_retour.svg"
           alt="Cette flèche permet de revenir à la page précédente"
         />
       </a>
@@ -35,13 +35,13 @@
             </p>
             <div class="citation">
               <img
-                src="../../../front/_assets/icone/guillemet_gauche.svg"
+                src="../../front/_assets/icone/guillemet_gauche.svg"
                 alt="guillemet gauche qui entour la citation qui se trouve à droite."
               />
               <p>En bref, je suis jeune, plutôt belle gosse,</p>
               <p>avec un faible pour l'art et la culture.</p>
               <img
-                src="../../../front/_assets/icone/guillement_droit.svg"
+                src="../../front/_assets/icone/guillement_droit.svg"
                 alt="guillemet droit qui entour la citation qui se trouve à gauche."
               />
             </div>
@@ -162,7 +162,7 @@
             <div class="heart">
               <button id="btn-heart">
                 <img
-                  src="../../../front/_assets/icone/coeur_article.svg"
+                  src="../../front/_assets/icone/coeur_article.svg"
                   alt="Icone qui représente un coeur. Lorsque vous cliquez sur ce coeur vous likez l'article"
                 />
               </button>
@@ -172,13 +172,13 @@
                 <img
                   id="bubble-empty"
                   class="bubble bubble--commented"
-                  src="../../../front/_assets/icone/bulle_article_vide.svg"
+                  src="../../front/_assets/icone/bulle_article_vide.svg"
                   alt="Icone qui représente une bulle. Lorsque vous cliquez sur cette bulle vous likez l'article"
                 />
                 <img
                   id="bubble-filled"
                   class="bubble"
-                  src="../../../front/_assets/icone/bulle_article_pleine.svg"
+                  src="../../front/_assets/icone/bulle_article_pleine.svg"
                   alt="Icone qui représente une bulle. Lorsque vous cliquez sur cette bulle vous likez l'article"
                 />
               </button>
@@ -186,7 +186,7 @@
             <div class="share">
               <button>
                 <img
-                  src="../../../front/_assets/icone/share_article.svg"
+                  src="../../front/_assets/icone/share_article.svg"
                   alt="Icone qui représente une bulle. Lorsque vous cliquez sur cette bulle vous likez l'article"
                 />
               </button>
@@ -203,7 +203,7 @@
           <div class="btn-comment__container">
             <button class="btn-comment">
               <img
-                src="../../../front/_assets/icone/fleche_commentaire.svg"
+                src="../../front/_assets/icone/fleche_commentaire.svg"
                 alt="Icone qui représente une flêche. Cette flêche vous permets de poster votre commentaire qui pourra être vu par les autres utilisateurs"
               />
             </button>
@@ -214,38 +214,38 @@
         <img
           data-anim="1"
           class="photo_meca photo_meca--selected"
-          src="../../../front/_assets/IMG/photo_meca.jpg"
+          src="../../front/_assets/IMG/photo_meca.jpg"
           alt="Image qui représente la MECA, un batiment architecturale fortement réputé à Bordeaux"
         />
         <img
           data-anim="2"
           class="photo_meca"
-          src="../../../front/_assets/IMG/photo_meca2.jpg"
+          src="../../front/_assets/IMG/photo_meca2.jpg"
           alt="Image qui représente la MECA, un batiment architecturale fortement réputé à Bordeaux"
         />
         <img
           data-anim="3"
           class="photo_meca"
-          src="../../../front/_assets/IMG/photo_meca3.jpg"
+          src="../../front/_assets/IMG/photo_meca3.jpg"
           alt="Image qui représente la MECA, un batiment architecturale fortement réputé à Bordeaux"
         />
         <img
           data-anim="4"
           class="photo_meca"
-          src="../../../front/_assets/IMG/photo_meca3.jpg"
+          src="../../front/_assets/IMG/photo_meca3.jpg"
           alt="Image qui représente la MECA, un batiment architecturale fortement réputé à Bordeaux"
         />
         <img
           data-anim="5"
           class="photo_meca"
-          src="../../../front/_assets/IMG/photo_meca3.jpg"
+          src="../../front/_assets/IMG/photo_meca3.jpg"
           alt="Image qui représente la MECA, un batiment architecturale fortement réputé à Bordeaux"
         />
         <div class="social">
           <a href="#" target="blank">
             <img
               class="instagram__logo"
-              src="../../../front/_assets/icone/logo_instagram.svg"
+              src="../../front/_assets/icone/logo_instagram.svg"
               alt="Icone d'instagram. Cliquer sur l'icone pour être redirégé sur la page instagram d'Arkitek"
             />
             <p>Rejoins-moi sur Instagram !</p>
@@ -325,4 +325,4 @@
     btnComment.addEventListener("click", comment);
     allBtns.forEach((btn) => btn.addEventListener("click", changeContent));
   </script>
-</body>
+

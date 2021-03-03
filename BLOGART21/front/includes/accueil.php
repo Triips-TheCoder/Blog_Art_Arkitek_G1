@@ -115,8 +115,8 @@
             setTimeout(function() {
 
                 document.getElementById('accueil_page').classList.add('is-gone');
-                
                 document.getElementById('footer_page').classList.remove('is-gone');
+                document.getElementById('article_1').classList.remove('is-gone');
                 
 
             }, 500);
