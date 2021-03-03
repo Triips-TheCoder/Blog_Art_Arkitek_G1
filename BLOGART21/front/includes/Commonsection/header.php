@@ -1,5 +1,5 @@
 <div class="header">
-<a href="#"><img src="../_assets/IMG/LOGOAKBLANC.png" alt="Logo"></a>
+<a href=""><img src="../_assets/IMG/LOGOAKBLANC.png" alt="Logo"></a>
 <p>Arkitek</p> 
 <a id="se_connecter" href="#">Se connecter</a>
 

@@ -2,7 +2,7 @@
 
   <section class="article">
     <div class="fleche__retour">
-      <a href="#">
+      <a href="">
         <img
           src="../../front/_assets/icone/fleche_retour.svg"
           alt="Cette flèche permet de revenir à la page précédente"
